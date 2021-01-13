@@ -36,9 +36,8 @@ Plug 'tpope/vim-surround'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 " lang file types
+Plug 'evanleck/vim-svelte'
 " Plug 'rust-lang/rust.vim'
-" " Plug 'leafOfTree/vim-svelte-plugin'
-" Plug 'evanleck/vim-svelte'
 " Plug 'hashivim/vim-terraform'
 " theme
 
@@ -74,9 +73,12 @@ augroup GANSITO
     autocmd!
     " cleanup trailing whitespaces
     autocmd BufWritePre * :call TrimWhitespace()
+    " inlay hints
     autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
-    " run terraform files through fmt
-    autocmd BufWritePost *.tf !terraform fmt %
+    " format on save
+    autocmd BufWritePre *.svelte lua vim.lsp.buf.formatting_sync()
     " spell checking and text wrapping for commits
     autocmd Filetype gitcommit setlocal spell textwidth=72
+    " run terraform files through fmt
+    " autocmd BufWritePost *.tf !terraform fmt %
 augroup END

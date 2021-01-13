@@ -11,9 +11,11 @@ nnoremap <leader>vsd :lua vim.lsp.util.show_line_diagnostics(); vim.lsp.util.sho
 
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
-" yarn global add yarn global add typescript-language-server
+" yarn global add typescript-language-server
 lua require'lspconfig'.tsserver.setup{ on_attach=require'completion'.on_attach }
+" yarn global add svelte-language-server
+lua require'lspconfig'.svelte.setup{ on_attach=require'completion'.on_attach }
 " pip3 install python-language-server
 lua require'lspconfig'.pyls.setup{ on_attach=require'completion'.on_attach }
-lua require'lspconfig'.gopls.setup{ on_attach=require'completion'.on_attach }
-lua require'lspconfig'.rust_analyzer.setup{ on_attach=require'completion'.on_attach }
+" lua require'lspconfig'.gopls.setup{ on_attach=require'completion'.on_attach }
+" lua require'lspconfig'.rust_analyzer.setup{ on_attach=require'completion'.on_attach }
