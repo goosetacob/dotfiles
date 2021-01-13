@@ -32,6 +32,10 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 # GNU sed
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 
+# Terraform - greedier by default
+export TF_CLI_ARGS_plan="--parallelism=50 --compact-warnings"
+export TF_CLI_ARGS_apply="--parallelism=50 --compact-warnings"
+
 # Boto - used by gsutil
 export BOTO_CONFIG="$XDG_CONFIG_HOME/.boto"
 
