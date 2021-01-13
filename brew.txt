@@ -14,7 +14,6 @@ imagemagick
 jpegoptim
 jq
 k6
-kubectx
 libpq
 libtermkey
 libuv
@@ -32,7 +31,6 @@ speedtest-cli
 teensy_loader_cli
 telnet
 terraform
-the_silver_searcher
 tmux
 tree
 watch
