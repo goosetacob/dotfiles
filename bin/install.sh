@@ -12,22 +12,22 @@ mkdir -p $HOME/.local/share
 # neovim
 ###############
 mkdir -p $CONFIG_HOME/nvim/{plugin,plugged,undodir}
-ln -svf $PWD/init.vim $CONFIG_HOME/nvim/init.vim
-for f in plugin/*; do
-    ln -svf $PWD/$f $CONFIG_HOME/nvim/$f
+ln -svf $PWD/nvim/init.vim $CONFIG_HOME/nvim/init.vim
+for f in nvim/plugin/*; do
+    ln -svf $PWD/$f $CONFIG_HOME/$f
 done
 
 ###############
 # oh-my-zsh
 ###############
 mkdir -p $CONFIG_HOME/zsh
-ln -svf $PWD/.zshrc $CONFIG_HOME/zsh/.zshrc
+ln -svf $PWD/zsh/.zshrc $CONFIG_HOME/zsh/.zshrc
 
 ###############
 # karabiner
 ###############
 mkdir -p $CONFIG_HOME/karabiner
-ln -svf $PWD/karabiner.json $CONFIG_HOME/karabiner/karabiner.json
+ln -svf $PWD/karabiner/karabiner.json $CONFIG_HOME/karabiner/karabiner.json
 
 ###############
 # misc dotfiles
