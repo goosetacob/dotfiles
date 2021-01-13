@@ -74,9 +74,9 @@ augroup GANSITO
     " cleanup trailing whitespaces
     autocmd BufWritePre * :call TrimWhitespace()
     " inlay hints
-    autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
+    autocmd BufEnter,BufWinEnter,TabEnter *.js,*.ts,*.svelte :lua require'lsp_extensions'.inlay_hints{}
     " format on save
-    autocmd BufWritePre *.svelte lua vim.lsp.buf.formatting_sync()
+    autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()
     " spell checking and text wrapping for commits
     autocmd Filetype gitcommit setlocal spell textwidth=72
     " run terraform files through fmt
