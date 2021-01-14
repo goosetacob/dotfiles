@@ -4,7 +4,7 @@ set nohlsearch
 set hidden
 set tabstop=4 softtabstop=4
 set shiftwidth=4
-set expandtab
+set noexpandtab
 set smartindent
 set smartcase
 set ignorecase
@@ -18,7 +18,6 @@ set undodir=~/.config/nvim/undodir
 set undofile
 set incsearch
 set scrolloff=8
-set listchars=tab:>-
 set list
 set colorcolumn=80
 set signcolumn=yes
