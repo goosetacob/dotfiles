@@ -71,7 +71,7 @@ bindkey -s "\C-r" "\C-a hstr -- \C-j"     # bind hstr to Ctrl-r (for Vi mode che
 # pyenv
 export PATH="/Users/gustavo/.pyenv/shims:${PATH}"
 export PYENV_SHELL=zsh
-source '/usr/local/Cellar/pyenv/1.2.21/libexec/../completions/pyenv.zsh'
+source '/usr/local/Cellar/pyenv/1.2.22/libexec/../completions/pyenv.zsh'
 command pyenv rehash 2>/dev/null
 pyenv() {
   local command
