@@ -76,7 +76,7 @@ augroup GANSITO
     " inlay hints
     autocmd BufEnter,BufWinEnter,TabEnter *.js,*.ts,*.svelte :lua require'lsp_extensions'.inlay_hints{}
     " format on save
-    autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()
+    autocmd BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 1000)
     " spell checking and text wrapping for commits
     autocmd Filetype gitcommit setlocal spell textwidth=72
     " run terraform files through fmt
