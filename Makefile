@@ -1,14 +1,10 @@
-.PHONY: all clean install
-all: brew.txt brewCask.txt
+.PHONY: brew-install build-rust-analyzer link-files
 
-brew.txt:
-	brew leaves > brew.txt
+brew-install:
+	brew bundle install --file ./Brewfile
 
-brewCask.txt:
-	brew list --cask > brewCask.txt
+build-rust-analyzer:
+	./bin/build-rust-analyzer.sh
 
-clean:
-	rm brew.txt brewCask.txt
-
-install:
-	./bin/install.sh
+link-files:
+	./bin/link-files.sh
