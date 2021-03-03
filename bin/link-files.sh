@@ -11,9 +11,12 @@ mkdir -p $HOME/.local/share
 ###############
 # neovim
 ###############
-mkdir -p $CONFIG_HOME/nvim/{plugin,plugged,undodir}
+mkdir -p $CONFIG_HOME/nvim/{lua,plugin,plugged,undodir}
 ln -svf $PWD/nvim/init.vim $CONFIG_HOME/nvim/init.vim
 for f in nvim/plugin/*; do
+    ln -svf $PWD/$f $CONFIG_HOME/$f
+done
+for f in nvim/lua/*; do
     ln -svf $PWD/$f $CONFIG_HOME/$f
 done
 
