@@ -41,3 +41,8 @@ ln -svf $PWD/.hstr_blacklist $HOME/.hstr_blacklist
 # git
 ###############
 ln -svf $PWD/.gitconfig $HOME/.gitconfig
+
+###############
+# tmux
+###############
+ln -svf $PWD/.tmux.conf $HOME/.tmux.conf
