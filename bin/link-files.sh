@@ -20,9 +20,9 @@ ln -svf $PWD/nvim/lua $CONFIG_HOME/nvim
 # oh-my-zsh
 ###############
 mkdir -p $CONFIG_HOME/zsh
-ln -svf $PWD/zsh/.zshrc $CONFIG_HOME/zsh/.zshrc
+ln -svf $PWD/zsh/zshrc $CONFIG_HOME/zsh/.zshrc
 ln -svf $PWD/zsh/pure $CONFIG_HOME/zsh/pure
-ln -svf $PWD/.zshenv $HOME/.zshenv
+ln -svf $PWD/zshenv $HOME/.zshenv
 
 ###############
 # karabiner
@@ -33,14 +33,14 @@ ln -svf $PWD/karabiner/karabiner.json $CONFIG_HOME/karabiner/karabiner.json
 ###############
 # hstr
 ###############
-ln -svf $PWD/.hstr_blacklist $HOME/.hstr_blacklist
+ln -svf $PWD/hstr_blacklist $HOME/.hstr_blacklist
 
 ###############
 # git
 ###############
-ln -svf $PWD/.gitconfig $HOME/.gitconfig
+ln -svf $PWD/gitconfig $HOME/.gitconfig
 
 ###############
 # tmux
 ###############
-ln -svf $PWD/.tmux.conf $HOME/.tmux.conf
+ln -svf $PWD/tmux.conf $HOME/.tmux.conf
