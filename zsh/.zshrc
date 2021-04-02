@@ -4,8 +4,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/gustavo/.oh-my-zsh"
 
-# ZSH_THEME="alien-minimal/alien-minimal"
-ZSH_THEME="spaceship" # https://github.com/denysdovhan/spaceship-prompt
+ZSH_THEME="" # disable oh-my-zsh themes
 
 HYPHEN_INSENSITIVE="true"
 DISABLE_LS_COLORS="true" # exa provides colors
@@ -24,6 +23,13 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+# Pure prompt
+# https://github.com/sindresorhus/pure
+fpath+=$HOME/.config/zsh/pure
+autoload -U promptinit; promptinit
+zstyle :prompt:pure:git:stash show yes
+prompt pure
+
 # User Config
 export MANPATH="/usr/local/man:$MANPATH"
 export LANG=en_US.UTF-8
@@ -31,31 +37,31 @@ export SSH_KEY_PATH="/Users/gustavo/.ssh/rsa_id"
 export HISTFILE="/Users/gustavo/.config/zsh/.zsh_history"
 
 # Spaceship Config
-export SPACESHIP_CHAR_SYMBOL=" $ "
+# export SPACESHIP_CHAR_SYMBOL=" $ "
 
-export SPACESHIP_TIME_SHOW=true
-export SPACESHIP_TIME_PREFIX=""
+# export SPACESHIP_TIME_SHOW=true
+# export SPACESHIP_TIME_PREFIX=""
 
-export SPACESHIP_DIR_PREFIX=""
+# export SPACESHIP_DIR_PREFIX=""
 
-export SPACESHIP_GIT_BRANCH_PREFIX=""
-export SPACESHIP_GIT_PREFIX=""
+# export SPACESHIP_GIT_BRANCH_PREFIX=""
+# export SPACESHIP_GIT_PREFIX=""
 
-export SPACESHIP_PROMPT_ADD_NEWLINE=false
-export SPACESHIP_PROMPT_SEPARATE_LINE=true
-export SPACESHIP_PROMPT_ORDER=(
-  time          # Time stamps section
-  dir           # Current directory section
-  git           # Git section (git_branch + git_status)
-  aws           # Amazon Web Services section
-  terraform     # Terraform workspace section
-  line_sep      # Line break
-  exit_code     # Exit code section
-  char          # Prompt character
-)
-export SPACESHIP_RPROMPT_ORDER=(
-  exec_time     # Execution time
-)
+# export SPACESHIP_PROMPT_ADD_NEWLINE=false
+# export SPACESHIP_PROMPT_SEPARATE_LINE=true
+# export SPACESHIP_PROMPT_ORDER=(
+#   time          # Time stamps section
+#   dir           # Current directory section
+#   git           # Git section (git_branch + git_status)
+#   aws           # Amazon Web Services section
+#   terraform     # Terraform workspace section
+#   line_sep      # Line break
+#   exit_code     # Exit code section
+#   char          # Prompt character
+# )
+# export SPACESHIP_RPROMPT_ORDER=(
+#   exec_time     # Execution time
+# )
 
 # Individual tab history
 unsetopt inc_append_history
@@ -69,7 +75,7 @@ export HSTR_PROMPT="$ "
 bindkey -s "\C-r" "\C-a hstr -- \C-j"     # bind hstr to Ctrl-r (for Vi mode check doc)
 
 # pyenv
-export PATH="/Users/gustavo/.pyenv/shims:${PATH}"
+# export PATH="/Users/gustavo/.pyenv/shims:${PATH}"
 export PYENV_SHELL=zsh
 source '/usr/local/Cellar/pyenv/1.2.22/libexec/../completions/pyenv.zsh'
 command pyenv rehash 2>/dev/null

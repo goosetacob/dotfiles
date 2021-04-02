@@ -11,20 +11,18 @@ mkdir -p $HOME/.local/share
 ###############
 # neovim
 ###############
-mkdir -p $CONFIG_HOME/nvim/{lua,plugin,plugged,undodir}
+mkdir -p $CONFIG_HOME/nvim/{plugged,undodir}
 ln -svf $PWD/nvim/init.vim $CONFIG_HOME/nvim/init.vim
-for f in nvim/plugin/*; do
-    ln -svf $PWD/$f $CONFIG_HOME/$f
-done
-for f in nvim/lua/*; do
-    ln -svf $PWD/$f $CONFIG_HOME/$f
-done
+ln -svf $PWD/nvim/plugin $CONFIG_HOME/nvim
+ln -svf $PWD/nvim/lua $CONFIG_HOME/nvim
 
 ###############
 # oh-my-zsh
 ###############
 mkdir -p $CONFIG_HOME/zsh
 ln -svf $PWD/zsh/.zshrc $CONFIG_HOME/zsh/.zshrc
+ln -svf $PWD/zsh/pure $CONFIG_HOME/zsh/pure
+ln -svf $PWD/.zshenv $HOME/.zshenv
 
 ###############
 # karabiner

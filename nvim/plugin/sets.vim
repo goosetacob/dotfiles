@@ -27,3 +27,6 @@ set updatetime=50 " ms
 set shortmess+=c
 " More space for messages
 set cmdheight=2
+" enable mouse support
+set mouse=a
+

@@ -1,4 +1,6 @@
 # This is Git's per-user configuration file.
 [user]
-name = Gustavo Blanco
-email = gustavo.jr.blanco@gmail.com
+	name = Gustavo Blanco
+	email = gustavo.jr.blanco@gmail.com
+[push]
+	default = current

@@ -2,9 +2,10 @@
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
+export LOCAL_BIN="$HOME/.local/bin"
 
 # Neovim
-export PATH=$PATH:$HOME/build/nvim-osx64/bin
+export PATH=$PATH:$LOCAL_BIN/nvim-osx64/bin
 
 # ZSH
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
@@ -20,12 +21,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Deno
 export PATH="$HOME/.deno/bin:$PATH"
 
-# FlameGraph
-export PATH="$PATH:$GOPATH/src/github.com/uber/go-torch/FlameGraph"
-
-# Flutter
-export PATH="$PATH:/usr/local/bin/flutter/bin"
-
 # Yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
@@ -40,13 +35,10 @@ export TF_CLI_ARGS_apply="--parallelism=50 --compact-warnings"
 export BOTO_CONFIG="$XDG_CONFIG_HOME/.boto"
 
 # Updates PATH w/ Google Cloud SDK.
-source '/usr/local/bin/google-cloud-sdk/path.zsh.inc'
+source "$LOCAL_BIN/google-cloud-sdk/path.zsh.inc"
 
 # gcloud shell command completion
-source '/usr/local/bin/google-cloud-sdk/completion.zsh.inc'
-
-# Flutter shell command completion
-source <(flutter bash-completion)
+source "$LOCAL_BIN/google-cloud-sdk/completion.zsh.inc"
 
 # kubectl shell command completion
 source <(kubectl completion zsh)

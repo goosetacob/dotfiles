@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
-cd /usr/local/bin
+LOCAL_BIN_DIR=$HOME/.local/bin
+mkdir -p $LOCAL_BIN_DIR
+pushd $LOCAL_BIN_DIR
 git clone https://github.com/rust-analyzer/rust-analyzer.git
-cd rust-analyzer
+pushd rust-analyzer
 cargo xtask install --server
-cd $HOME
+pushd +0

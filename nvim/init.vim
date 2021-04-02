@@ -22,7 +22,13 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " status line
-Plug 'vim-airline/vim-airline'
+Plug 'hoob3rt/lualine.nvim'
+
+" lang file types
+Plug 'evanleck/vim-svelte'
+" Plug 'rust-lang/rust.vim'
+" Plug 'hashivim/vim-terraform'
+" theme
 
 " debuggers
 Plug 'puremourning/vimspector'
@@ -35,26 +41,31 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+Plug 'norcalli/nvim-colorizer.lua'
 
-" lang file types
-Plug 'evanleck/vim-svelte'
-" Plug 'rust-lang/rust.vim'
-" Plug 'hashivim/vim-terraform'
-" theme
-
-Plug 'NLKNguyen/papercolor-theme'
+" colors
+" Plug 'NLKNguyen/papercolor-theme'
+" Plug 'ghifarit53/tokyonight-vim'
+" Plug 'nanotech/jellybeans.vim'
+" Plug 'challenger-deep-theme/vim'
+" Plug 'jdsimcoe/abstract.vim'
+" Plug 'gruvbox-community/gruvbox'
+" Plug 'cseelus/vim-colors-lucid'
+" Plug 'tyrannicaltoucan/vim-deep-space'
+Plug 'tomasiser/vim-code-dark'
 
 " Initialize plugin system
 call plug#end()
+
+syntax on
+let g:codedark_conservative = 1
+colorscheme codedark
 
 " remap : to ;
 nnoremap ; :
 
 " set leader key
 let mapleader=" "
-
-syntax on
-colorscheme papercolor
 
 if executable('rg')
     let g:rg_derive_root='true'
