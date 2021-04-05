@@ -43,4 +43,5 @@ ln -svf $PWD/gitconfig $HOME/.gitconfig
 ###############
 # tmux
 ###############
-ln -svf $PWD/tmux.conf $HOME/.tmux.conf
+mkdir -p $CONFIG_HOME/tmux
+ln -svf $PWD/tmux/tmux.conf $CONFIG_HOME/tmux/tmux.conf

@@ -9,11 +9,12 @@ call plug#begin('~/.config/nvim/plugged')
 " lsp
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
-Plug 'tjdevries/nlua.nvim'
 Plug 'tjdevries/lsp_extensions.nvim'
+Plug 'tjdevries/nlua.nvim'
 
 " tree sitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'p00f/nvim-ts-rainbow'
 
 " file finding
 Plug 'nvim-lua/popup.nvim'
@@ -26,13 +27,12 @@ Plug 'hoob3rt/lualine.nvim'
 
 " lang file types
 Plug 'evanleck/vim-svelte'
-" Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim'
 " Plug 'hashivim/vim-terraform'
 " theme
 
 " debuggers
 Plug 'puremourning/vimspector'
-Plug 'szw/vim-maximizer'
 
 " misc tools
 Plug 'mbbill/undotree'
@@ -44,22 +44,17 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'norcalli/nvim-colorizer.lua'
 
 " colors
-" Plug 'NLKNguyen/papercolor-theme'
-" Plug 'ghifarit53/tokyonight-vim'
-" Plug 'nanotech/jellybeans.vim'
-" Plug 'challenger-deep-theme/vim'
-" Plug 'jdsimcoe/abstract.vim'
-" Plug 'gruvbox-community/gruvbox'
-" Plug 'cseelus/vim-colors-lucid'
-" Plug 'tyrannicaltoucan/vim-deep-space'
+Plug 'jaredgorski/SpaceCamp'
 Plug 'tomasiser/vim-code-dark'
 
 " Initialize plugin system
 call plug#end()
 
+" Colors
 syntax on
-let g:codedark_conservative = 1
-colorscheme codedark
+" let g:codedark_conservative = 1
+" colorscheme codedark
+colorscheme spacecamp_lite
 
 " remap : to ;
 nnoremap ; :
@@ -70,9 +65,6 @@ let mapleader=" "
 if executable('rg')
     let g:rg_derive_root='true'
 endif
-
-" tree sitter
-lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 
 fun! TrimWhitespace()
     let l:save = winsaveview()
@@ -86,9 +78,10 @@ augroup GANSITO
     " cleanup trailing whitespaces
     autocmd BufWritePre * :call TrimWhitespace()
     " inlay hints
-    autocmd BufEnter,BufWinEnter,TabEnter *.js,*.ts,*.svelte :lua require'lsp_extensions'.inlay_hints{}
+    " autocmd CursorHold,CursorHoldI,CursorMoved *.rs :lua require'lsp_extensions'.inlay_hints{}
+    " autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
     " format on save
-    autocmd BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 1000)
+    autocmd BufWritePre * :lua vim.lsp.buf.formatting_sync(nil, 1000)
     " spell checking and text wrapping for commits
     autocmd Filetype gitcommit setlocal spell textwidth=72
     " run terraform files through fmt
