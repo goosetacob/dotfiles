@@ -21,7 +21,7 @@ ln -svf $PWD/nvim/lua $CONFIG_HOME/nvim
 ###############
 mkdir -p $CONFIG_HOME/zsh
 ln -svf $PWD/zsh/zshrc $CONFIG_HOME/zsh/.zshrc
-ln -svf $PWD/zsh/pure $CONFIG_HOME/zsh/pure
+ln -svf $PWD/zsh/pure $CONFIG_HOME/zsh
 ln -svf $PWD/zshenv $HOME/.zshenv
 
 ###############
