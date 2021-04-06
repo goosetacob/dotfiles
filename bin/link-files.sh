@@ -45,3 +45,10 @@ ln -svf $PWD/gitconfig $HOME/.gitconfig
 ###############
 mkdir -p $CONFIG_HOME/tmux
 ln -svf $PWD/tmux/tmux.conf $CONFIG_HOME/tmux/tmux.conf
+
+
+###############
+# alacritty
+###############
+mkdir -p $CONFIG_HOME/alacritty
+ln -svf $PWD/alacritty/alacritty.yml $CONFIG_HOME/alacritty/alacritty.yml
