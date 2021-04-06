@@ -23,7 +23,7 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# Pure prompt
+# pure prompt
 # https://github.com/sindresorhus/pure
 fpath+=$HOME/.config/zsh/pure
 autoload -U promptinit; promptinit
@@ -31,51 +31,24 @@ zstyle :prompt:pure:git:stash show yes
 prompt pure
 
 # User Config
-export MANPATH="/usr/local/man:$MANPATH"
-export LANG=en_US.UTF-8
-export SSH_KEY_PATH="/Users/gustavo/.ssh/rsa_id"
-export HISTFILE="/Users/gustavo/.config/zsh/.zsh_history"
+MANPATH="/usr/local/man:$MANPATH"
+LANG=en_US.UTF-8
+SSH_KEY_PATH="/Users/gustavo/.ssh/rsa_id"
 
-# Spaceship Config
-# export SPACESHIP_CHAR_SYMBOL=" $ "
-
-# export SPACESHIP_TIME_SHOW=true
-# export SPACESHIP_TIME_PREFIX=""
-
-# export SPACESHIP_DIR_PREFIX=""
-
-# export SPACESHIP_GIT_BRANCH_PREFIX=""
-# export SPACESHIP_GIT_PREFIX=""
-
-# export SPACESHIP_PROMPT_ADD_NEWLINE=false
-# export SPACESHIP_PROMPT_SEPARATE_LINE=true
-# export SPACESHIP_PROMPT_ORDER=(
-#   time          # Time stamps section
-#   dir           # Current directory section
-#   git           # Git section (git_branch + git_status)
-#   aws           # Amazon Web Services section
-#   terraform     # Terraform workspace section
-#   line_sep      # Line break
-#   exit_code     # Exit code section
-#   char          # Prompt character
-# )
-# export SPACESHIP_RPROMPT_ORDER=(
-#   exec_time     # Execution time
-# )
-
-# Individual tab history
-unsetopt inc_append_history
-unsetopt share_history
+export HISTFILE="$HOME/.config/zsh/.zsh_history"
+export HISTSIZE=10000
+export SAVEHIST=10000
+setopt appendhistory
 
 # hstr
-alias hh=hstr                    # hh to be alias for hstr
+alias hh=hstr
 setopt histignorespace           # skip cmds w/ leading space from history
 export HSTR_CONFIG=prompt-bottom,hicolor,raw-history-view,help-on-opposite-side,keywords-matching,blacklist
 export HSTR_PROMPT="$ "
 bindkey -s "\C-r" "\C-a hstr -- \C-j"     # bind hstr to Ctrl-r (for Vi mode check doc)
 
 # pyenv
-# export PATH="/Users/gustavo/.pyenv/shims:${PATH}"
+# do i really want this?
 export PYENV_SHELL=zsh
 source '/usr/local/Cellar/pyenv/1.2.26/libexec/../completions/pyenv.zsh'
 command pyenv rehash 2>/dev/null
