@@ -26,19 +26,20 @@ Plug 'hoob3rt/lualine.nvim'
 
 " lang file types
 Plug 'hashivim/vim-terraform'
-Plug 'evanleck/vim-svelte'
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'rust-lang/rust.vim'
 
 " debuggers
 Plug 'puremourning/vimspector'
 
-" misc tools
-Plug 'hrsh7th/nvim-compe'
-Plug 'mbbill/undotree'
+" text manipulation
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
+
+" nicetes
+Plug 'mbbill/undotree'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'norcalli/nvim-colorizer.lua'
 
