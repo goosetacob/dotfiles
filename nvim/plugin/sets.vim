@@ -29,4 +29,8 @@ set shortmess+=c
 set cmdheight=2
 " enable mouse support
 set mouse=a
+<<<<<<< Updated upstream
 set clipboard=unnamedplus
+=======
+set completeopt=menuone,noselect
+>>>>>>> Stashed changes

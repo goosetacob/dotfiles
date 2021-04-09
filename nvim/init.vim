@@ -14,7 +14,6 @@ Plug 'tjdevries/nlua.nvim'
 
 " tree sitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" Plug 'p00f/nvim-ts-rainbow'
 
 " file finding
 Plug 'nvim-lua/popup.nvim'
@@ -26,14 +25,15 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'hoob3rt/lualine.nvim'
 
 " lang file types
+Plug 'hashivim/vim-terraform'
 Plug 'evanleck/vim-svelte'
 Plug 'rust-lang/rust.vim'
-Plug 'hashivim/vim-terraform'
 
 " debuggers
 Plug 'puremourning/vimspector'
 
 " misc tools
+Plug 'hrsh7th/nvim-compe'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'

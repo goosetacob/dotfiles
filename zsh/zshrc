@@ -44,10 +44,10 @@ unsetopt inc_append_history
 unsetopt share_history
 
 # hstr
-setopt histignorespace           # skip cmds w/ leading space from history
-export HSTR_CONFIG=prompt-bottom,hicolor,raw-history-view,help-on-opposite-side,keywords-matching,blacklist
+setopt histignorespace # skip cmds w/ leading space from history
+export HSTR_CONFIG=prompt-bottom,hicolor,raw-history-view,help-on-opposite-side,keywords-matching,blacklist,no-confirm
 export HSTR_PROMPT="$ "
-bindkey -s "\C-r" "\C-a hstr -- \C-j"     # bind hstr to Ctrl-r (for Vi mode check doc)
+bindkey -s "\C-r" "\C-a hstr -- \C-j" # bind hstr to Ctrl-r (for vi mode check doc)
 
 # aliases
 alias vim="nvim"
