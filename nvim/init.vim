@@ -14,7 +14,7 @@ Plug 'tjdevries/nlua.nvim'
 
 " tree sitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'p00f/nvim-ts-rainbow'
+" Plug 'p00f/nvim-ts-rainbow'
 
 " file finding
 Plug 'nvim-lua/popup.nvim'
@@ -28,8 +28,7 @@ Plug 'hoob3rt/lualine.nvim'
 " lang file types
 Plug 'evanleck/vim-svelte'
 Plug 'rust-lang/rust.vim'
-" Plug 'hashivim/vim-terraform'
-" theme
+Plug 'hashivim/vim-terraform'
 
 " debuggers
 Plug 'puremourning/vimspector'
@@ -49,6 +48,8 @@ Plug 'tomasiser/vim-code-dark'
 
 " Initialize plugin system
 call plug#end()
+
+lua require("goosetacob")
 
 " Colors
 syntax on

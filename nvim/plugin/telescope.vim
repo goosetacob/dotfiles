@@ -1,4 +1,4 @@
-lua require('goosetacob')
+" lua require('goosetacob')
 
 nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("grep for > ")})<CR>
 nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>

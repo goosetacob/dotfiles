@@ -7,6 +7,15 @@ require('telescope').setup {
 			"node_modules/*",
 			"scratch/.*",
 			"%.env"
+		},
+		file_previewer   = require('telescope.previewers').vim_buffer_cat.new,
+		grep_previewer   = require('telescope.previewers').vim_buffer_vimgrep.new,
+		qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
+		mappings = {
+			i = {
+				["<C-x>"] = false,
+				["<C-q>"] = require('telescope.actions').send_to_qflist,
+			},
 		}
 	},
 	extensions = {
