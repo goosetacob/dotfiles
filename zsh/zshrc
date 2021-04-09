@@ -31,41 +31,23 @@ zstyle :prompt:pure:git:stash show yes
 prompt pure
 
 # User Config
-MANPATH="/usr/local/man:$MANPATH"
-LANG=en_US.UTF-8
-SSH_KEY_PATH="/Users/gustavo/.ssh/rsa_id"
+export MANPATH="/usr/local/man:$MANPATH"
+export LANG=en_US.UTF-8
+export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
 
 export HISTFILE="$HOME/.config/zsh/.zsh_history"
 export HISTSIZE=10000
 export SAVEHIST=10000
-setopt appendhistory
+
+# Individual tab history
+unsetopt inc_append_history
+unsetopt share_history
 
 # hstr
-alias hh=hstr
 setopt histignorespace           # skip cmds w/ leading space from history
 export HSTR_CONFIG=prompt-bottom,hicolor,raw-history-view,help-on-opposite-side,keywords-matching,blacklist
 export HSTR_PROMPT="$ "
 bindkey -s "\C-r" "\C-a hstr -- \C-j"     # bind hstr to Ctrl-r (for Vi mode check doc)
-
-# pyenv
-# do i really want this?
-export PYENV_SHELL=zsh
-source '/usr/local/Cellar/pyenv/1.2.26/libexec/../completions/pyenv.zsh'
-command pyenv rehash 2>/dev/null
-pyenv() {
-  local command
-  command="${1:-}"
-  if [ "$#" -gt 0 ]; then
-    shift
-  fi
-
-  case "$command" in
-  rehash|shell)
-    eval "$(pyenv "sh-$command" "$@")";;
-  *)
-    command pyenv "$command" "$@";;
-  esac
-}
 
 # aliases
 alias vim="nvim"
