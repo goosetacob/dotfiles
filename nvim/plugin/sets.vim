@@ -30,4 +30,3 @@ set cmdheight=2
 " enable mouse support
 set mouse=a
 set clipboard=unnamedplus
-

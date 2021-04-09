@@ -87,4 +87,6 @@ augroup GANSITO
     autocmd Filetype gitcommit setlocal spell textwidth=72
     " run terraform files through fmt
     " autocmd BufWritePost *.tf !terraform fmt %
+	" enable type inlay hints
+	autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
 augroup END
