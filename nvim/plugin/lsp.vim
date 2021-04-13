@@ -1,4 +1,7 @@
 set completeopt=menuone,noinsert,noselect
+
+" possible value: 'UltiSnips', 'Neosnippet', 'vim-vsnip', 'snippets.nvim'
+let g:completion_enable_snippet = 'UltiSnips'
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
 " Use <Tab> and <S-Tab> to navigate through popup menu
@@ -20,8 +23,8 @@ nnoremap <leader>gca :lua vim.lsp.buf.code_action()<CR>
 nnoremap <leader>gsd :lua vim.lsp.util.show_line_diagnostics(); vim.lsp.util.show_line_diagnostics()<CR>
 
 " Set updatetime for CursorHold
-" 300ms of no cursor movement to trigger CursorHold
-set updatetime=300
+" 200ms of no cursor movement to trigger CursorHold
+set updatetime=200
 " Show diagnostic popup on cursor hold
 autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
 
