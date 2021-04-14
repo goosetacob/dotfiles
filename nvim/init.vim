@@ -90,4 +90,6 @@ augroup GANSITO
     " autocmd BufWritePost *.tf !terraform fmt %
 	" enable type inlay hints
 	autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
+	" https://vim.fandom.com/wiki/Keep_your_cursor_centered_vertically_on_the_screen#Centering_automatically_with_autocmds
+	autocmd BufEnter,WinEnter,WinNew,VimResized *,*.* let &scrolloff=winheight(win_getid())/2
 augroup END

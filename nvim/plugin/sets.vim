@@ -17,7 +17,6 @@ set nobackup
 set undodir=~/.config/nvim/undodir
 set undofile
 set incsearch
-set scrolloff=8
 set list
 set colorcolumn=80
 set signcolumn=yes
