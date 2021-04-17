@@ -14,6 +14,7 @@ Plug 'tjdevries/nlua.nvim'
 
 " tree sitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'norcalli/snippets.nvim'
 
 " file finding
 Plug 'nvim-lua/popup.nvim'

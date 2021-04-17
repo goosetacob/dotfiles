@@ -1,7 +1,7 @@
 set completeopt=menuone,noinsert,noselect
 
 " possible value: 'UltiSnips', 'Neosnippet', 'vim-vsnip', 'snippets.nvim'
-let g:completion_enable_snippet = 'UltiSnips'
+let g:completion_enable_snippet = 'snippets.nvim'
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
 " Use <Tab> and <S-Tab> to navigate through popup menu
