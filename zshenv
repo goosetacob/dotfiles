@@ -5,15 +5,16 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export LOCAL_BIN="$HOME/.local/bin"
 
 # Neovim
-export PATH=$PATH:$LOCAL_BIN/nvim-osx64/bin
+export PATH="$PATH:$LOCAL_BIN/nvim-osx64/bin"
 
 # ZSH
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 # Go
-export GOPATH=$HOME/Projects/go
-export PATH=$PATH:/usr/local/go/bin
+export PATH="$PATH:/usr/local/go/bin"
+export GOPATH="$LOCAL_BIN/golib"
 export PATH=$PATH:$GOPATH/bin
+export GOPATH="$GOPATH:$HOME/Projects/go"
 
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
