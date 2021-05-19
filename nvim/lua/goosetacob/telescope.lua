@@ -5,7 +5,6 @@ require('telescope').setup {
 		color_devicons = true,
 		file_ignore_patterns = {
 			"node_modules/*",
-			"scratch/.*",
 			"%.env"
 		},
 		file_previewer   = require('telescope.previewers').vim_buffer_cat.new,

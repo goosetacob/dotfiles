@@ -29,6 +29,8 @@ Plug 'hoob3rt/lualine.nvim'
 Plug 'hashivim/vim-terraform'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'rust-lang/rust.vim'
+" post install (yarn install | npm install) then load plugin only for editing supported files
+Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 " debuggers
 Plug 'puremourning/vimspector'
@@ -84,7 +86,7 @@ augroup GANSITO
     " autocmd CursorHold,CursorHoldI,CursorMoved *.rs :lua require'lsp_extensions'.inlay_hints{}
     " autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
     " format on save
-    autocmd BufWritePre * :lua vim.lsp.buf.formatting_sync(nil, 1000)
+    " autocmd BufWritePre * :lua vim.lsp.buf.formatting_sync(nil, 1000)
     " spell checking and text wrapping for commits
     autocmd Filetype gitcommit setlocal spell textwidth=72
     " run terraform files through fmt
