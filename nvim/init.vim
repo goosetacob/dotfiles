@@ -45,6 +45,7 @@ Plug 'tpope/vim-surround'
 Plug 'mbbill/undotree'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'norcalli/nvim-colorizer.lua'
+Plug 'airblade/vim-gitgutter'
 
 " colors
 Plug 'jaredgorski/SpaceCamp'
@@ -86,7 +87,7 @@ augroup GANSITO
     " autocmd CursorHold,CursorHoldI,CursorMoved *.rs :lua require'lsp_extensions'.inlay_hints{}
     " autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
     " format on save
-    " autocmd BufWritePre * :lua vim.lsp.buf.formatting_sync(nil, 1000)
+    autocmd BufWritePre *.go,*.rs :lua vim.lsp.buf.formatting_sync(nil, 1000)
     " spell checking and text wrapping for commits
     autocmd Filetype gitcommit setlocal spell textwidth=72
     " run terraform files through fmt
