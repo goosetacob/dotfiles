@@ -9,6 +9,8 @@
 	rebase = true
 [push]
 	default = current
+[init]
+	defaultBranch = main
 [color]
 	ui = auto
 [color "branch"]
