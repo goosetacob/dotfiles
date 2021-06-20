@@ -44,6 +44,7 @@ Plug 'mbbill/undotree'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-scriptease'
 
 " colors
 Plug 'jaredgorski/SpaceCamp'
@@ -81,17 +82,15 @@ augroup GANSITO
     autocmd!
     " cleanup trailing whitespaces
     autocmd BufWritePre * :call TrimWhitespace()
+    " format on save
+    autocmd BufWritePre * :lua vim.lsp.buf.formatting()
     " inlay hints
     " autocmd CursorHold,CursorHoldI,CursorMoved *.rs :lua require'lsp_extensions'.inlay_hints{}
     " autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
-    " format on save
-    autocmd BufWritePre *.go,*.rs :lua vim.lsp.buf.formatting_sync(nil, 1000)
-    " spell checking and text wrapping for commits
-    autocmd Filetype gitcommit setlocal spell textwidth=72
     " run terraform files through fmt
     " autocmd BufWritePost *.tf !terraform fmt %
 	" enable type inlay hints
-	autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
+	" autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
 	" https://vim.fandom.com/wiki/Keep_your_cursor_centered_vertically_on_the_screen#Centering_automatically_with_autocmds
 	autocmd BufEnter,WinEnter,WinNew,VimResized *,*.* let &scrolloff=winheight(win_getid())/2
 augroup END
