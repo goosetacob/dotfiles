@@ -5,17 +5,18 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local on_attach = function(client, bufnr)
-	require'completion'.on_attach(client)
+	client.resolved_capabilities.document_formatting = true
+	require'completion'.on_attach(client, bufnr)
 end
 
-lspconfig.tsserver.setup{
+lspconfig.tsserver.setup {
 	on_attach = function(client)
-		client.resolved_capabilities.document_formatting = false
 		on_attach(client)
+		client.resolved_capabilities.document_formatting = false
 	end
 }
 
-lspconfig.gopls.setup{ on_attach=on_attach }
+lspconfig.gopls.setup { on_attach=on_attach }
 
 -- lspconfig.rust_analyzer.setup{ on_attach=on_attach }
 
