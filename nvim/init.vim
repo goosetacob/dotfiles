@@ -1,8 +1,8 @@
 " Automagically install `vim-plug` if it does not exist
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+	silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 call plug#begin('~/.config/nvim/plugged')
 
@@ -68,27 +68,27 @@ nnoremap ; :
 let mapleader=" "
 
 if executable('rg')
-    let g:rg_derive_root='true'
+	let g:rg_derive_root='true'
 endif
 
 fun! TrimWhitespace()
-    let l:save = winsaveview()
-    keeppatterns %s/\s\+$//e
-    call winrestview(l:save)
+	let l:save = winsaveview()
+	keeppatterns %s/\s\+$//e
+	call winrestview(l:save)
 endfun
 
 augroup GANSITO
-    " clear things out
-    autocmd!
-    " cleanup trailing whitespaces
-    autocmd BufWritePre * :call TrimWhitespace()
-    " format on save
-    autocmd BufWritePre * :lua vim.lsp.buf.formatting()
-    " inlay hints
-    " autocmd CursorHold,CursorHoldI,CursorMoved *.rs :lua require'lsp_extensions'.inlay_hints{}
-    " autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
-    " run terraform files through fmt
-    " autocmd BufWritePost *.tf !terraform fmt %
+	" clear things out
+	autocmd!
+	" cleanup trailing whitespaces
+	autocmd BufWritePre * :call TrimWhitespace()
+	" format on save
+	autocmd BufWritePre * :lua vim.lsp.buf.formatting()
+	" inlay hints
+	" autocmd CursorHold,CursorHoldI,CursorMoved *.rs :lua require'lsp_extensions'.inlay_hints{}
+	" autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
+	" run terraform files through fmt
+	" autocmd BufWritePost *.tf !terraform fmt %
 	" enable type inlay hints
 	" autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
 	" https://vim.fandom.com/wiki/Keep_your_cursor_centered_vertically_on_the_screen#Centering_automatically_with_autocmds
