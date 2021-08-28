@@ -53,12 +53,14 @@ lspconfig.efm.setup {
 	init_options = {documentFormatting = true},
 	on_attach = on_attach,
 	filetypes = {
-		'javascript'
+		'javascript',
+		'typescript',
 	},
 	settings = {
 		rootMarkers = {'.git/'},
 		languages = {
-			javascript = {eslint, prettier}
+			javascript = {eslint, prettier},
+			typescript = {eslint, prettier},
 		}
 	}
 }
