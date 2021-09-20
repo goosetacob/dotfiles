@@ -25,3 +25,4 @@ fn.sign_define("LspDiagnosticsSignHint", { text = "❖", numhl = "LspDiagnostics
 require('goosetacob.telescope')
 require('goosetacob.lualine')
 require('goosetacob.lsp')
+require('goosetacob.treesitter')
