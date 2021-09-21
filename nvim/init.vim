@@ -8,17 +8,19 @@ call plug#begin('~/.config/nvim/plugged')
 
 " lsp
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
 Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'tjdevries/nlua.nvim'
 
 " tree sitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'norcalli/snippets.nvim'
+Plug 'nvim-treesitter/playground'
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+Plug 'p00f/nvim-ts-rainbow'
 
 " file finding
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
@@ -33,18 +35,23 @@ Plug 'rust-lang/rust.vim'
 " debuggers
 Plug 'puremourning/vimspector'
 
-" text manipulation
+" git things
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+
+" text manipulation
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
+" Plug 'norcalli/snippets.nvim'
 
 " nicetes
 Plug 'mbbill/undotree'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-scriptease'
+" Plug 'tpope/vim-scriptease'
+" Plug 'phaazon/hop.nvim'
 
 " colors
 Plug 'jaredgorski/SpaceCamp'
@@ -66,6 +73,9 @@ nnoremap ; :
 
 " set leader key
 let mapleader=" "
+
+" avoid loading matchparen
+let g:loaded_matchparen = 1
 
 if executable('rg')
 	let g:rg_derive_root='true'
