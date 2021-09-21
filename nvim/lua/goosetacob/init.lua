@@ -22,6 +22,9 @@ fn.sign_define("LspDiagnosticsSignWarning", { text = "▲", numhl = "LspDiagnost
 fn.sign_define("LspDiagnosticsSignInformation", { text = "⁈", numhl = "LspDiagnosticsDefaultInformation" })
 fn.sign_define("LspDiagnosticsSignHint", { text = "❖", numhl = "LspDiagnosticsDefaultHint" })
 
+vim.o.termguicolors = true
+
+require('goosetacob.colors')
 require('goosetacob.telescope')
 require('goosetacob.lualine')
 require('goosetacob.lsp')
