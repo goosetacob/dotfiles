@@ -9,6 +9,34 @@ local on_attach = function(client, bufnr)
 	require'completion'.on_attach(client, bufnr)
 end
 
+local sumneko_root_path = vim.env.HOME..'/Projects/mac-os-conf/third-party-builds/lua-language-server'
+local sumneko_binary = sumneko_root_path.."/bin/macOS/lua-language-server"
+lspconfig.sumneko_lua.setup {
+	cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+	settings = {
+		Lua = {
+			runtime = {
+				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+				version = 'LuaJIT',
+				-- Setup your lua path
+				path = runtime_path,
+			},
+			diagnostics = {
+				-- Get the language server to recognize the `vim` global
+				globals = {'vim'},
+			},
+			workspace = {
+				-- Make the server aware of Neovim runtime files
+				library = vim.api.nvim_get_runtime_file("", true),
+			},
+			telemetry = {
+				-- Do not send telemetry data containing a randomized but unique identifier
+				enable = false,
+			},
+		},
+	},
+}
+
 lspconfig.tsserver.setup {
 	on_attach = function(client)
 		on_attach(client)
@@ -16,25 +44,6 @@ lspconfig.tsserver.setup {
 	end
 }
 
-lspconfig.gopls.setup { on_attach=on_attach }
-
--- lspconfig.rust_analyzer.setup{ on_attach=on_attach }
-
--- lspconfig.svelte.setup{ on_attach=on_attach }
-
--- lspconfig.terraformls.setup{ on_attach=on_attach }
-
--- lspconfig.bashls.setup{ on_attach=on_attach }
-
--- lspconfig.cssls.setup{
--- 	on_attach=on_attach,
--- 	capabilities = capabilities,
--- }
-
--- lspconfig.html.setup{
--- 	on_attach=on_attach,
--- 	capabilities = capabilities,
--- }
 local eslint = {
 	lintCommand = 'eslint_d -f unix --stdin --stdin-filename ${INPUT}',
 	lintStdin = true,
@@ -65,3 +74,24 @@ lspconfig.efm.setup {
 	}
 }
 
+lspconfig.gopls.setup { on_attach=on_attach }
+
+
+
+-- lspconfig.rust_analyzer.setup{ on_attach=on_attach }
+
+-- lspconfig.svelte.setup{ on_attach=on_attach }
+
+-- lspconfig.terraformls.setup{ on_attach=on_attach }
+
+-- lspconfig.bashls.setup{ on_attach=on_attach }
+
+-- lspconfig.cssls.setup{
+-- 	on_attach=on_attach,
+-- 	capabilities = capabilities,
+-- }
+
+-- lspconfig.html.setup{
+-- 	on_attach=on_attach,
+-- 	capabilities = capabilities,
+-- }
