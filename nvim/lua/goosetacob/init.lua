@@ -8,14 +8,14 @@ local fn = vim.fn
 
 lsp.handlers["textDocument/publishDiagnostics"] =
 	lsp.with(
-	lsp.diagnostic.on_publish_diagnostics,
-	{
-		underline = true,
-		virtual_text = false,
-		signs = true,
-		update_in_insert = true,
-	}
-)
+		lsp.diagnostic.on_publish_diagnostics,
+		{
+			underline = true,
+			virtual_text = false,
+			signs = true,
+			update_in_insert = true,
+		}
+	)
 
 fn.sign_define("LspDiagnosticsSignError", { text = "✖", numhl = "LspDiagnosticsDefaultError" })
 fn.sign_define("LspDiagnosticsSignWarning", { text = "▲", numhl = "LspDiagnosticsDefaultWarning" })

@@ -46,7 +46,6 @@ lspconfig.tsserver.setup {
 		client.resolved_capabilities.document_formatting = false
 	end
 }
-
 local eslint = {
 	lintCommand = 'eslint_d -f unix --stdin --stdin-filename ${INPUT}',
 	lintStdin = true,
@@ -77,15 +76,18 @@ lspconfig.efm.setup {
 	}
 }
 
+lspconfig.terraformls.setup{
+	on_attach = function(client)
+		on_attach(client)
+		client.resolved_capabilities.document_formatting = false
+	end
+}
+
 lspconfig.gopls.setup { on_attach=on_attach }
-
-
 
 -- lspconfig.rust_analyzer.setup{ on_attach=on_attach }
 
 -- lspconfig.svelte.setup{ on_attach=on_attach }
-
--- lspconfig.terraformls.setup{ on_attach=on_attach }
 
 -- lspconfig.bashls.setup{ on_attach=on_attach }
 
