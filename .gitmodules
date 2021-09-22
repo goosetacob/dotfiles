@@ -2,3 +2,6 @@
 	path = zsh/pure
 	url = https://github.com/sindresorhus/pure
 	branch = main
+[submodule "third-party-builds/lua-language-server"]
+	path = third-party-builds/lua-language-server
+	url = https://github.com/sumneko/lua-language-server
