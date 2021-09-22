@@ -18,8 +18,10 @@ set undodir=~/.config/nvim/undodir
 set undofile
 set incsearch
 set list
+set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 set colorcolumn=80
 set signcolumn=yes
+set ttyfast
 " default 4000 ms it too slow and noticeable
 set updatetime=50 " ms
 " do not pass messages to |ins-completion-menu|
