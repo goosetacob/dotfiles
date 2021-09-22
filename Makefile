@@ -3,6 +3,9 @@
 brew-install:
 	brew bundle install --file ./Brewfile
 
+brew-dump:
+	mv -f Brewfile Brewfile.bk && brew bundle dump
+
 build-rust-analyzer:
 	./bin/build-rust-analyzer.sh
 
