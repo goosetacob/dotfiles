@@ -1,5 +1,14 @@
 -- Docs: https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
 local lspconfig = require'lspconfig'
+local saga = require'lspsaga'
+
+saga.init_lsp_saga {
+	error_sign = '',
+	warn_sign = '',
+	hint_sign = '',
+	infor_sign = '',
+	border_style = "round",
+}
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -83,7 +92,17 @@ lspconfig.terraformls.setup{
 	end
 }
 
-lspconfig.gopls.setup { on_attach=on_attach }
+lspconfig.gopls.setup {
+	on_attach=on_attach,
+	settings = {
+		gopls = {
+			analyses = {
+				unusedparams = true,
+			},
+			staticcheck = true,
+		},
+	},
+}
 
 -- lspconfig.rust_analyzer.setup{ on_attach=on_attach }
 
