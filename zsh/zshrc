@@ -43,19 +43,8 @@ export SAVEHIST=10000
 unsetopt inc_append_history
 unsetopt share_history
 
-# Setup fzf
-# ---------
-if [[ ! "$PATH" == */usr/local/opt/fzf/bin* ]]; then
-  export PATH="${PATH:+${PATH}:}/usr/local/opt/fzf/bin"
-fi
-
-# Auto-completion
-# ---------------
-[[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
-
-# Key bindings
-# ------------
-source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+# Setup McFly
+eval "$(mcfly init zsh)"
 
 # modern unix aliases
 alias vim="nvim"
@@ -65,6 +54,7 @@ alias ls="exa --group-directories-first"
 alias cat="bat --paging=never --style=plain"
 
 # util aliases
+alias vpn-connect-nova="osascript -e 'tell application \"Viscosity\" to connect \"TycheVPN\"'"
 alias localscan="nmap -sn 192.168.1.0/24"
 alias cleanup="find . -type f \( -name '.DS_Store' -o -name '.localized' \) -delete"
 alias valid-yaml="ruby -ryaml -e 'p YAML.load(STDIN.read)' < "
