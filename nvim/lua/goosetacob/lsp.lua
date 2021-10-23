@@ -1,7 +1,6 @@
 -- Docs: https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
 local lspconfig = require'lspconfig'
 local saga = require'lspsaga'
-local cmp = require'cmp'
 
 saga.init_lsp_saga {
 	-- error_sign = '',
@@ -11,41 +10,6 @@ saga.init_lsp_saga {
 	border_style = "round",
 }
 
-cmp.setup({
-    snippet = {
-        expand = function(args)
-            -- For `vsnip` user.
-            -- vim.fn["vsnip#anonymous"](args.body)
-
-            -- For `luasnip` user.
-            require('luasnip').lsp_expand(args.body)
-
-            -- For `ultisnips` user.
-            -- vim.fn["UltiSnips#Anon"](args.body)
-        end,
-    },
-    mapping = {
-        ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-d>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.close(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    },
-    sources = {
-        { name = 'nvim_lsp' },
-
-        -- For vsnip user.
-        -- { name = 'vsnip' },
-
-        -- For luasnip user.
-        { name = 'luasnip' },
-
-        -- For ultisnips user.
-        -- { name = 'ultisnips' },
-
-        { name = 'buffer' },
-    }
-})
 
 local on_attach = function(client, bufnr)
 	client.resolved_capabilities.document_formatting = true

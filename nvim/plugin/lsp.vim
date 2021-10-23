@@ -1,5 +1,3 @@
-set completeopt=menuone,noinsert,noselect
-
 " Code navigation shortcuts
 nnoremap <leader>gd :lua vim.lsp.buf.definition()<CR>
 nnoremap <leader>gi :lua vim.lsp.buf.implementation()<CR>
