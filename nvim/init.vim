@@ -21,9 +21,17 @@ Plug 'p00f/nvim-ts-rainbow'
 " file finding
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
+
+" autocomplete
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
+" Plug 'norcalli/snippets.nvim'
+" Plug 'nvim-lua/completion-nvim'
 
 " status line
 Plug 'hoob3rt/lualine.nvim'
@@ -35,7 +43,8 @@ Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'rust-lang/rust.vim'
 
 " debuggers
-Plug 'puremourning/vimspector'
+" Plug 'puremourning/vimspector'
+" Plug 'mfussenegger/nvim-dap'
 
 " git things
 Plug 'tpope/vim-fugitive'
@@ -47,11 +56,11 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 
 " nicetes
-Plug 'norcalli/snippets.nvim'
 Plug 'mbbill/undotree'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'airblade/vim-gitgutter'
+" Plug 'nvim-lspinstall'
 " Plug 'tpope/vim-scriptease'
 " Plug 'phaazon/hop.nvim'
 
