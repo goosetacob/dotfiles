@@ -10,6 +10,8 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'neovim/nvim-lspconfig'
 Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'tjdevries/nlua.nvim'
+Plug 'glepnir/lspsaga.nvim'
+" Plug 'ray-x/navigator.lua' " looks sweet, but can't figure out setup...
 
 " tree sitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
