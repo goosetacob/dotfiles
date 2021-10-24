@@ -1,18 +1,23 @@
-require('telescope').setup {
+local telescope = require('telescope')
+local actions = require("telescope.actions")
+local sorters = require('telescope.sorters')
+local previewers = require('telescope.previewers')
+
+telescope.setup {
 	defaults = {
-		file_sorter = require('telescope.sorters').get_fzy_sorter,
+		file_sorter = sorters.get_fzy_sorter,
 		prompt_prefix = ' >',
 		color_devicons = true,
 		file_ignore_patterns = {
 			"node_modules/*",
 			"%.env"
 		},
-		file_previewer   = require('telescope.previewers').vim_buffer_cat.new,
-		grep_previewer   = require('telescope.previewers').vim_buffer_vimgrep.new,
-		qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
+		file_previewer   = previewers.vim_buffer_cat.new,
+		grep_previewer   = previewers.vim_buffer_vimgrep.new,
+		qflist_previewer = previewers.vim_buffer_qflist.new,
 		mappings = {
 			i = {
-				["<C-q>"] = require('telescope.actions').send_to_qflist,
+				["<C-q>"] = actions.send_to_qflist,
 			},
 		}
 	},
@@ -24,4 +29,4 @@ require('telescope').setup {
 	}
 }
 
-require('telescope').load_extension('fzy_native')
+telescope.load_extension('fzy_native')

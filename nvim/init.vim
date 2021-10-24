@@ -25,13 +25,16 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " autocomplete
 Plug 'hrsh7th/nvim-cmp'
+Plug 'onsails/lspkind-nvim'
+
+" autocomplete providers
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'f3fora/cmp-spell'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'onsails/lspkind-nvim'
 " Plug 'norcalli/snippets.nvim'
 " Plug 'nvim-lua/completion-nvim'
 
@@ -85,7 +88,7 @@ colorscheme spacecamp_lite
 nnoremap ; :
 
 " set leader key
-let mapleader=" "
+let g:mapleader=" "
 
 " avoid loading matchparen
 let g:loaded_matchparen = 1
