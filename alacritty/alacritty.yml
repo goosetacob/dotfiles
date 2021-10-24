@@ -103,6 +103,7 @@ dynamic_title: true
   #multiplier: 3
 
 # Font configuration
+# tip(macOS): look at FontBook to get family name
 font:
   normal:
     # family: "Hack Nerd Font Mono"
