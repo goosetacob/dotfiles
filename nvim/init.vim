@@ -12,6 +12,7 @@ Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'tjdevries/nlua.nvim'
 Plug 'glepnir/lspsaga.nvim'
 " Plug 'ray-x/navigator.lua' " looks sweet, but can't figure out setup...
+" Plug 'williamboman/nvim-lsp-installer' " i think i want this, but too much work rn
 
 " tree sitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
