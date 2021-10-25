@@ -54,4 +54,27 @@ function M.edit(target)
 	require("telescope.builtin").find_files(opts_with_preview)
 end
 
+function M.edit_notes()
+	require("telescope.builtin").file_browser({
+		prompt_title = '~ notes ~',
+		shorten_path = false,
+		cwd = '~/Documents/notes',
+		hidden = true,
+		depth = 0,
+
+		layout_strategy = "flex",
+		layout_config = {
+			width = 0.9,
+			height = 0.8,
+
+			horizontal = {
+				width = { padding = 0.15 },
+			},
+			vertical = {
+				preview_height = 0.75,
+			},
+		},
+	})
+end
+
 return M
