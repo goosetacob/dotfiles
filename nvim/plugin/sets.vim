@@ -14,7 +14,7 @@ set backspace=indent,eol,start
 set nowrap
 set noswapfile
 set nobackup
-set undodir=~/.config/nvim/undodir
+set undodir=$XDG_DATA_HOME/nvim/undodir
 set undofile
 set incsearch
 set list
