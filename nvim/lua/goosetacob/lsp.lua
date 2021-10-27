@@ -4,9 +4,11 @@ local saga = require 'lspsaga'
 
 saga.init_lsp_saga()
 
-local on_attach = function(client, bufnr)
+local custom_attach = function(client, bufnr)
 	client.resolved_capabilities.document_formatting = true
 end
+
+local custom_capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local sumneko_root_path = vim.env.HOME..'/Projects/mac-os-conf/third-party-builds/lua-language-server'
 local sumneko_binary = sumneko_root_path.."/bin/macOS/lua-language-server"
@@ -14,7 +16,7 @@ local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 lspconfig.sumneko_lua.setup {
-	capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+	capabilities = custom_capabilities,
 	cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
 	settings = {
 		Lua = {
@@ -41,9 +43,9 @@ lspconfig.sumneko_lua.setup {
 }
 
 lspconfig.tsserver.setup {
-	capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+	capabilities = custom_capabilities,
 	on_attach = function(client)
-		on_attach(client)
+		custom_attach(client)
 		client.resolved_capabilities.document_formatting = false
 	end
 }
@@ -62,9 +64,9 @@ local prettier = {
 	formatStdin = true
 }
 lspconfig.efm.setup {
-	capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+	capabilities = custom_capabilities,
 	init_options = {documentFormatting = true},
-	on_attach = on_attach,
+	on_attach = custom_attach,
 	filetypes = {
 		'javascript',
 		'typescript',
@@ -79,16 +81,16 @@ lspconfig.efm.setup {
 }
 
 lspconfig.terraformls.setup{
-	capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+	capabilities = custom_capabilities,
 	on_attach = function(client)
-		on_attach(client)
+		custom_attach(client)
 		client.resolved_capabilities.document_formatting = false
 	end
 }
 
 lspconfig.gopls.setup {
-	capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-	on_attach=on_attach,
+	capabilities = custom_capabilities,
+	on_attach=custom_attach,
 	settings = {
 		gopls = {
 			analyses = {
