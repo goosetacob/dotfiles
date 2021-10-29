@@ -1,7 +1,11 @@
-[submodule "zsh/pure"]
-	path = zsh/pure
+[submodule "zsh/.config/zsh/pure"]
+	path = zsh/.config/zsh/pure
 	url = https://github.com/sindresorhus/pure
 	branch = main
+[submodule "zsh/.config/oh-my-zsh"]
+	path = zsh/.config/oh-my-zsh
+	url = https://github.com/ohmyzsh/ohmyzsh
+	branch = master
 [submodule "third-party-builds/lua-language-server"]
 	path = third-party-builds/lua-language-server
 	url = https://github.com/sumneko/lua-language-server
