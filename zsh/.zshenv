@@ -4,6 +4,12 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export LOCAL_BIN="$HOME/.local/bin"
 
+# M1 Max
+export ARCHFLAGS='-arch arm64'
+
+# OhMyZsh
+export ZSH_CUSTOM="$XDG_DATA_HOME/ohmyzsh/custom"
+
 # Go
 export PATH="$PATH:/usr/local/go/bin"
 export GOPATH="$LOCAL_BIN/golib"

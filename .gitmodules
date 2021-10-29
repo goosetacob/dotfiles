@@ -1,11 +1,16 @@
+[submodule "third-party-builds/lua-language-server"]
+	path = third-party-builds/lua-language-server
+	url = https://github.com/sumneko/lua-language-server
 [submodule "zsh/.config/zsh/pure"]
 	path = zsh/.config/zsh/pure
 	url = https://github.com/sindresorhus/pure
 	branch = main
-[submodule "zsh/.config/oh-my-zsh"]
-	path = zsh/.config/oh-my-zsh
+[submodule "zsh/.config/ohmyzsh"]
+	path = zsh/.config/ohmyzsh
 	url = https://github.com/ohmyzsh/ohmyzsh
-	branch = master
-[submodule "third-party-builds/lua-language-server"]
-	path = third-party-builds/lua-language-server
-	url = https://github.com/sumneko/lua-language-server
+[submodule "zsh/.local/share/ohmyzsh/custom/plugins/zsh-syntax-highlighting"]
+	path = zsh/.local/share/ohmyzsh/custom/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting
+[submodule "zsh/.local/share/ohmyzsh/custom/plugins/zsh-autosuggestions"]
+	path = zsh/.local/share/ohmyzsh/custom/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
