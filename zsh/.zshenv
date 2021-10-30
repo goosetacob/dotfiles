@@ -10,6 +10,9 @@ export ARCHFLAGS='-arch arm64'
 # OhMyZsh
 export ZSH_CUSTOM="$XDG_DATA_HOME/ohmyzsh/custom"
 
+# kitty
+export KITTY_CONFIG_DIRECTORY="$XDG_CONFIG_HOME/kitty"
+
 # Go
 export PATH="$PATH:/usr/local/go/bin"
 export GOPATH="$LOCAL_BIN/golib"
