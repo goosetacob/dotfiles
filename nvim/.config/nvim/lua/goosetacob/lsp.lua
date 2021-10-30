@@ -1,8 +1,5 @@
 -- Docs: https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
 local lspconfig = require'lspconfig'
-local saga = require 'lspsaga'
-
-saga.init_lsp_saga()
 
 local custom_attach = function(client, bufnr)
 	client.resolved_capabilities.document_formatting = true

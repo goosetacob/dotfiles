@@ -10,7 +10,6 @@ call plug#begin('$XDG_DATA_HOME/nvim/plugged')
 Plug 'neovim/nvim-lspconfig'
 Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'tjdevries/nlua.nvim'
-Plug 'glepnir/lspsaga.nvim'
 Plug 'williamboman/nvim-lsp-installer' " i think i want this, but too much work rn
 " Plug 'ray-x/navigator.lua' " looks sweet, but can't figure out setup...
 
