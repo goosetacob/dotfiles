@@ -13,10 +13,14 @@ export ZSH_CUSTOM="$XDG_DATA_HOME/ohmyzsh/custom"
 # kitty
 export KITTY_CONFIG_DIRECTORY="$XDG_CONFIG_HOME/kitty"
 
+# n
+export N_PREFIX="$XDG_DATA_HOME/n"
+export PATH="$N_PREFIX/bin:$PATH"
+
 # Go
-export PATH="$PATH:/usr/local/go/bin"
+export PATH="/usr/local/go/bin:$PATH"
 export GOPATH="$LOCAL_BIN/golib"
-export PATH=$PATH:$GOPATH/bin
+export PATH="$GOPATH/bin:$PATH"
 export GOPATH="$GOPATH:$HOME/Projects/go"
 
 # Rust
@@ -39,10 +43,10 @@ export TF_CLI_ARGS_apply="--parallelism=50 --compact-warnings"
 export BOTO_CONFIG="$XDG_CONFIG_HOME/.boto"
 
 # Updates PATH w/ Google Cloud SDK.
-source "$LOCAL_BIN/google-cloud-sdk/path.zsh.inc"
+# source "$LOCAL_BIN/google-cloud-sdk/path.zsh.inc"
 
 # gcloud shell command completion
-source "$LOCAL_BIN/google-cloud-sdk/completion.zsh.inc"
+# source "$LOCAL_BIN/google-cloud-sdk/completion.zsh.inc"
 
 # kubectl shell command completion
-source <(kubectl completion zsh)
+# source <(kubectl completion zsh)

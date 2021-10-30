@@ -34,8 +34,6 @@ prompt pure
 export MANPATH="/usr/local/man:$MANPATH"
 export LANG=en_US.UTF-8
 export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
-
-export HISTFILE="$HOME/.config/zsh/.zsh_history"
 export HISTSIZE=10000
 export SAVEHIST=10000
 
