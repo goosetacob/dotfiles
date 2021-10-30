@@ -104,7 +104,7 @@ if executable('rg')
 endif
 
 " node.js provider install with yarn1
-let g:node_host_prog='~/.local/share/yarn/global/node_modules/neovim/bin/cli.js'
+" let g:node_host_prog='~/.local/share/yarn/global/node_modules/neovim/bin/cli.js'
 
 fun! TrimWhitespace()
 	let l:save = winsaveview()
