@@ -21,7 +21,7 @@ function M.edit(target)
 		prompt_title = '~ '..target..' config ~',
 		shorten_path = false,
 		hidden = true,
-		cwd = '~/.dotfiles/'..target,
+		cwd = '~/.dotfiles/'..target..'/.config/'..target,
 
 		layout_strategy = "flex",
 		layout_config = {
