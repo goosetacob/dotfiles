@@ -17,6 +17,7 @@ vim.o.termguicolors = true
 require('goosetacob.colors')
 require('goosetacob.telescope')
 require('goosetacob.lualine')
+require('goosetacob.lsp_clients')
 require('goosetacob.lsp')
 require('goosetacob.treesitter')
 require('goosetacob.completion')

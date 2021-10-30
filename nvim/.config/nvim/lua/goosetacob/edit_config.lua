@@ -20,7 +20,8 @@ function M.edit(target)
 	opts_with_preview = {
 		prompt_title = '~ '..target..' config ~',
 		shorten_path = false,
-		cwd = '~/Projects/mac-os-conf/'..target,
+		hidden = true,
+		cwd = '~/.dotfiles/'..target,
 
 		layout_strategy = "flex",
 		layout_config = {
@@ -28,7 +29,8 @@ function M.edit(target)
 			height = 0.8,
 
 			horizontal = {
-				width = { padding = 0.15 },
+				width = { padding = 0.0 },
+				preview_width = 0.50,
 			},
 			vertical = {
 				preview_height = 0.75,

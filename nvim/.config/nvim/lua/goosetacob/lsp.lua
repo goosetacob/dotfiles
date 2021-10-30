@@ -10,8 +10,8 @@ end
 
 local custom_capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-local sumneko_root_path = vim.env.HOME..'/Projects/mac-os-conf/third-party-builds/lua-language-server'
-local sumneko_binary = sumneko_root_path.."/bin/macOS/lua-language-server"
+local sumneko_root_path = vim.env.HOME..'/.local/share/nvim/lsp_servers/sumneko_lua/extension/server'
+local sumneko_binary = sumneko_root_path..'/bin/macOS/lua-language-server'
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
