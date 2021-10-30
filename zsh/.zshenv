@@ -1,3 +1,4 @@
+# Checking for TMUX to avoid doubling these
 if [[ -z $TMUX ]]; then
 	# XDG User Dirs
 	export XDG_CONFIG_HOME="$HOME/.config"
@@ -10,6 +11,9 @@ if [[ -z $TMUX ]]; then
 
 	# OhMyZsh
 	export ZSH_CUSTOM="$XDG_DATA_HOME/ohmyzsh/custom"
+
+	# HomeBrew installing x86 stuff here
+	export PATH="/usr/local/bin:$PATH"
 
 	# kitty
 	export KITTY_CONFIG_DIRECTORY="$XDG_CONFIG_HOME/kitty"
