@@ -1,7 +1,10 @@
 #!/usr/bin/env zsh
 
-DOTFILES=$HOME/.dotfiles
-STOW_FOLDERS="git,zsh"
+DEFAULT_DOTFILES="$HOME/.dotfiles"
+DOTFILES="${DOTFILES:-$DEFAULT_DOTFILES}"
+
+DEFAULT_STOW_FOLDERS="git,zsh"
+STOW_FOLDERS="${STOW_FOLDERS:-$DEFAULT_STOW_FOLDERS}"
 
 pushd $DOTFILES
 for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
