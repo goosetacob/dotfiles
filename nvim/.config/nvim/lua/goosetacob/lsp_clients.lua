@@ -1,8 +1,11 @@
+-- https://github.com/williamboman/nvim-lsp-installer#available-lsps
 local lsp_installer_servers = require'nvim-lsp-installer.servers'
 local language_servers = {
 	'sumneko_lua',
 	'tsserver',
 	'efm',
+	'terraformls',
+	'gopls',
 }
 
 for _, lang in ipairs(language_servers) do
