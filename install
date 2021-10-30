@@ -1,10 +1,5 @@
 #!/usr/bin/env zsh
-
-DEFAULT_DOTFILES="$HOME/.dotfiles"
-DOTFILES="${DOTFILES:-$DEFAULT_DOTFILES}"
-
-DEFAULT_STOW_FOLDERS="kitty,tmux,git,nvim,zsh"
-STOW_FOLDERS="${STOW_FOLDERS:-$DEFAULT_STOW_FOLDERS}"
+source .env
 
 pushd $DOTFILES
 for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
