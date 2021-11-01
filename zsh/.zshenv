@@ -14,13 +14,10 @@ if [[ -z $TMUX ]]; then
 
 	# HomeBrew installing x86 stuff here
 	export PATH="/usr/local/bin:$PATH"
+	eval "$(/opt/homebrew/bin/brew shellenv)"
 
 	# kitty
 	export KITTY_CONFIG_DIRECTORY="$XDG_CONFIG_HOME/kitty"
-
-	# n
-	export N_PREFIX="$XDG_DATA_HOME/n"
-	export PATH="$N_PREFIX/bin:$PATH"
 
 	# Go
 	export PATH="/usr/local/go/bin:$PATH"
@@ -46,6 +43,10 @@ if [[ -z $TMUX ]]; then
 
 	# Boto - used by gsutil
 	export BOTO_CONFIG="$XDG_CONFIG_HOME/.boto"
+
+	# n
+	export N_PREFIX="$XDG_DATA_HOME/n"
+	export PATH="$N_PREFIX/bin:$PATH"
 
 	# Updates PATH w/ Google Cloud SDK.
 	# source "$LOCAL_BIN/google-cloud-sdk/path.zsh.inc"
