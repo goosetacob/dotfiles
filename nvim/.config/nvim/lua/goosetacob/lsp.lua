@@ -61,7 +61,7 @@ local eslint = {
 	formatStdin = true
 }
 local prettier = {
-	formatCommand = 'prettier --find-config-path --stdin-filepath ${INPUT}',
+	formatCommand = './node_modules/.bin/prettier --find-config-path --stdin-filepath ${INPUT}',
 	formatStdin = true
 }
 lspconfig.efm.setup {
