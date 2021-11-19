@@ -10,6 +10,7 @@ HYPHEN_INSENSITIVE="true"
 DISABLE_LS_COLORS="true" # exa provides colors
 ENABLE_CORRECTION="false"
 COMPLETION_WAITING_DOTS="true"
+DISABLE_AUTO_UPDATE=true
 plugins=(
   git
   docker
