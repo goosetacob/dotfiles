@@ -15,9 +15,8 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 vim.o.termguicolors = true
 
 require('goosetacob.colors')
-require('goosetacob.telescope')
-require('goosetacob.lualine')
-require('goosetacob.lsp_clients')
-require('goosetacob.lsp')
-require('goosetacob.treesitter')
 require('goosetacob.completion')
+require('goosetacob.lsp')
+require('goosetacob.lualine')
+require('goosetacob.telescope')
+require('goosetacob.treesitter')
