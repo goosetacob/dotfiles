@@ -41,6 +41,9 @@ export SAVEHIST=10000
 unsetopt inc_append_history
 unsetopt share_history
 
+# Autocomplete hidden files
+setopt globdots
+
 # Setup McFly
 eval "$(mcfly init zsh)"
 
