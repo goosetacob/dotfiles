@@ -14,3 +14,7 @@ nnoremap <leader>grn :lua require'lspsaga.rename'.rename()<CR>
 " nnoremap <leader>grn :lua vim.lsp.buf.rename()<CR>
 nnoremap <leader>gca :lua require'lspsaga.codeaction'.code_action()<CR>
 " nnoremap <leader>gca :lua vim.lsp.buf.code_action()<CR>
+
+" manually format
+nnoremap <leader>ff :lua vim.lsp.buf.formatting()<CR>
+xnoremap <leader>ff :lua vim.lsp.buf.range_formatting()<CR>

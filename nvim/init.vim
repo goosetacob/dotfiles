@@ -118,7 +118,7 @@ augroup GANSITO
 	" cleanup trailing whitespaces
 	autocmd BufWritePre * :call TrimWhitespace()
 	" format on save
-	autocmd BufWritePre * :lua vim.lsp.buf.formatting()
+	autocmd BufWritePre * if &ft != "terraform" | :lua vim.lsp.buf.formatting()
 	" inlay hints
 	" autocmd CursorHold,CursorHoldI,CursorMoved *.rs :lua require'lsp_extensions'.inlay_hints{}
 	" autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
