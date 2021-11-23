@@ -11,3 +11,6 @@
 [submodule "zsh/.local/share/ohmyzsh/custom/plugins/zsh-autosuggestions"]
 	path = zsh/.local/share/ohmyzsh/custom/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "personal/.local/bin/lua-language-server"]
+	path = personal/.local/bin/lua-language-server
+	url = https://github.com/sumneko/lua-language-server
