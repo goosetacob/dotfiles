@@ -1,100 +1,110 @@
 -- Docs: https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
 local lspconfig = require 'lspconfig'
+local cmp_nvim_lsp = require 'cmp_nvim_lsp'
 
 local custom_attach = function(client, bufnr)
-    client.resolved_capabilities.document_formatting = true
+	client.resolved_capabilities.document_formatting = true
 end
 
-local custom_capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local custom_capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol
+	                                                             .make_client_capabilities())
 
 local sumneko_root_path = vim.env.HOME .. '/.local/bin/lua-language-server'
 local sumneko_binary = sumneko_root_path .. '/bin/macOS/lua-language-server'
 
 local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, "lua/?.lua")
-table.insert(runtime_path, "lua/?/init.lua")
+table.insert(runtime_path, 'lua/?.lua')
+table.insert(runtime_path, 'lua/?/init.lua')
 
 lspconfig.sumneko_lua.setup {
-    capabilities = custom_capabilities,
-    cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
-    settings = {
-        Lua = {
-            runtime = {
-                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                version = 'LuaJIT',
-                -- Setup your lua path
-                path = runtime_path
-            },
-            diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                globals = {'vim'}
-            },
-            workspace = {
-                -- Make the server aware of Neovim runtime files
-                library = vim.api.nvim_get_runtime_file("", true)
-            },
-            telemetry = {
-                -- Do not send telemetry data containing a randomized but unique identifier
-                enable = false
-            }
-        }
-    }
+	capabilities = custom_capabilities,
+	cmd = {sumneko_binary, '-E', sumneko_root_path .. '/main.lua'},
+	settings = {
+		Lua = {
+			runtime = {
+				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+				version = 'LuaJIT',
+				-- Setup your lua path
+				path = runtime_path
+			},
+			diagnostics = {
+				-- Get the language server to recognize the `vim` global
+				globals = {'vim'}
+			},
+			workspace = {
+				-- Make the server aware of Neovim runtime files
+				library = vim.api.nvim_get_runtime_file('', true)
+			},
+			telemetry = {
+				-- Do not send telemetry data containing a randomized but unique identifier
+				enable = false
+			}
+		}
+	}
 }
 
 lspconfig.tsserver.setup {
-    capabilities = custom_capabilities,
-    handlers = {
-        -- disable diagnostics from tsserver, user efm's eslint/prettier
-        ["textDocument/publishDiagnostics"] = function()
-        end
-    },
-    on_attach = function(client)
-        custom_attach(client)
-        client.resolved_capabilities.document_formatting = false
-    end
+	capabilities = custom_capabilities,
+	handlers = {
+		-- disable diagnostics from tsserver, user efm's eslint/prettier
+		['textDocument/publishDiagnostics'] = function() end
+	},
+	on_attach = function(client)
+		custom_attach(client)
+		client.resolved_capabilities.document_formatting = false
+	end
 }
 local eslint = {
-    lintCommand = 'eslint_d -f unix --stdin --stdin-filename ${INPUT}',
-    lintStdin = true,
-    lintFormats = {"%f:%l:%c: %m"},
-    lintIgnoreExitCode = true,
-    formatCommand = 'eslint_d --fix-to-stdout --stdin --stdin-filename ${INPUT}',
-    formatStdin = true
+	lintCommand = 'eslint_d -f unix --stdin --stdin-filename ${INPUT}',
+	lintStdin = true,
+	lintFormats = {'%f:%l:%c: %m'},
+	lintIgnoreExitCode = true,
+	formatCommand = 'eslint_d --fix-to-stdout --stdin --stdin-filename ${INPUT}',
+	formatStdin = true
 }
-local prettier = {formatCommand = './node_modules/.bin/prettier --find-config-path --stdin-filepath ${INPUT}', formatStdin = true}
+local prettier = {
+	formatCommand = 'prettier --find-config-path --stdin-filepath ${INPUT}',
+	formatStdin = true
+}
 local lua_format = {
-    formatCommand = "lua-format -i --no-keep-simple-function-one-line --no-break-after-operator --column-limit=150 --break-after-table-lb",
-    formatStdin = true
+	formatCommand = 'lua-format -i --use-tab --indent-width=1 --continuation-indent-width=1 --chop-down-table --chop-down-kv-table --no-break-after-operator --break-after-table-lb --break-before-table-rb --double-quote-to-single-quote',
+	formatStdin = true
 }
 lspconfig.efm.setup {
-    capabilities = custom_capabilities,
-    init_options = {documentFormatting = true},
-    on_attach = custom_attach,
-    filetypes = {"javascript", "javascriptreact", "typescript", "typescriptreact", "lua"},
-    settings = {
-        rootMarkers = {'.git/'},
-        languages = {
-            javascript = {eslint, prettier},
-            javascriptreact = {eslint, prettier},
-            typescript = {eslint, prettier},
-            typescriptreact = {eslint, prettier},
-            lua = {lua_format}
-        }
-    }
+	capabilities = custom_capabilities,
+	init_options = {documentFormatting = true},
+	on_attach = custom_attach,
+	filetypes = {
+		'javascript',
+		'javascriptreact',
+		'typescript',
+		'typescriptreact',
+		'lua'
+	},
+	settings = {
+		rootMarkers = {'.git/'},
+		languages = {
+			javascript = {eslint, prettier},
+			javascriptreact = {eslint, prettier},
+			typescript = {eslint, prettier},
+			typescriptreact = {eslint, prettier},
+			lua = {lua_format}
+		}
+	}
 }
 
 lspconfig.terraformls.setup {
-    capabilities = custom_capabilities,
-    on_attach = function(client)
-        custom_attach(client)
-        client.resolved_capabilities.document_formatting = false
-    end
+	capabilities = custom_capabilities,
+	on_attach = function(client)
+		custom_attach(client)
+		client.resolved_capabilities.document_formatting = false
+	end
 }
 
 lspconfig.gopls.setup {
-    capabilities = custom_capabilities,
-    on_attach = custom_attach,
-    settings = {gopls = {analyses = {unusedparams = true}, staticcheck = true}}
+	capabilities = custom_capabilities,
+	on_attach = custom_attach,
+	settings = {gopls = {analyses = {unusedparams = true}, staticcheck = true}}
 }
 
 -- lspconfig.rust_analyzer.setup{ on_attach=on_attach }

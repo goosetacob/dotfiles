@@ -1,14 +1,12 @@
 -- super helpful video (basically copied all of it): https://www.youtube.com/watch?v=_DnmphIwnjo
-vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
+vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
 
 local cmp = require 'cmp'
 local lspkind = require 'lspkind'
+local luasnip = require 'luasnip'
+
 cmp.setup {
-	snippet = {
-		expand = function(args)
-			require('luasnip').lsp_expand(args.body)
-		end,
-	},
+	snippet = {expand = function(args) luasnip.lsp_expand(args.body) end},
 	mapping = {
 		['<C-u>'] = cmp.mapping.scroll_docs(-4),
 		['<C-d>'] = cmp.mapping.scroll_docs(4),
@@ -17,15 +15,15 @@ cmp.setup {
 		['<CR>'] = cmp.mapping.confirm {
 			behavior = cmp.ConfirmBehavior.Replace,
 			select = true
-		},
+		}
 	},
 	sources = {
-		{ name = 'nvim_lua' },
-		{ name = 'nvim_lsp' },
-		{ name = 'spell', keyword_length = 5 },
-		{ name = 'path' },
-		{ name = 'luasnip' },
-		{ name = 'buffer', keyword_length = 5 },
+		{name = 'nvim_lua'},
+		{name = 'nvim_lsp'},
+		{name = 'spell', keyword_length = 5},
+		{name = 'path'},
+		{name = 'luasnip'},
+		{name = 'buffer', keyword_length = 5}
 	},
 	formatting = {
 		format = lspkind.cmp_format {
@@ -36,12 +34,9 @@ cmp.setup {
 				nvim_lsp = '[lsp]',
 				nvim_lua = '[api]',
 				path = '[path]',
-				spell = '[spell]',
-			},
-		},
+				spell = '[spell]'
+			}
+		}
 	},
-	experimental = {
-		native_menu = false,
-		ghost_text = true,
-	},
+	experimental = {native_menu = false, ghost_text = true}
 }
