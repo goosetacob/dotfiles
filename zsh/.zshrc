@@ -61,3 +61,4 @@ alias localscan="nmap -sn 192.168.1.0/24"
 alias cleanup="find . -type f \( -name '.DS_Store' -o -name '.localized' \) -delete"
 alias valid-yaml="ruby -ryaml -e 'p YAML.load(STDIN.read)' < "
 alias p3-venv="python3 -m venv env"
+alias luamake=/Users/gustavo/.dotfiles/personal/.local/bin/lua-language-server/3rd/luamake/luamake
