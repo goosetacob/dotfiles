@@ -20,3 +20,5 @@ require('goosetacob.lualine')
 require('goosetacob.lsp')
 require('goosetacob.treesitter')
 require('goosetacob.completion')
+
+require('Comment').setup()

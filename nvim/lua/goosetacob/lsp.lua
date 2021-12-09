@@ -91,14 +91,6 @@ lspconfig.terraformls.setup{
 	end
 }
 
-lspconfig.tflint.setup{
-	capabilities = custom_capabilities,
-	on_attach = function(client)
-		custom_attach(client)
-		client.resolved_capabilities.document_formatting = false
-	end
-}
-
 lspconfig.gopls.setup {
 	capabilities = custom_capabilities,
 	on_attach=custom_attach,
