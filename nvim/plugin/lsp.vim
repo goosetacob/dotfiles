@@ -3,7 +3,7 @@
 set updatetime=600
 
 " Show diagnostic popup on cursor hold
-autocmd CursorHold * lua require'lspsaga.diagnostic'.show_line_diagnostics()
+" autocmd CursorHold * lua require'lspsaga.diagnostic'.show_line_diagnostics()
 
 " Code navigation shortcuts
 " nnoremap <leader>gd :lua vim.lsp.buf.definition()<CR>
@@ -16,5 +16,5 @@ nnoremap <leader>gca :lua require'lspsaga.codeaction'.code_action()<CR>
 " nnoremap <leader>gca :lua vim.lsp.buf.code_action()<CR>
 
 " manually format
-nnoremap <leader>ff :lua vim.lsp.buf.formatting()<CR>
-xnoremap <leader>ff :lua vim.lsp.buf.range_formatting()<CR>
+nnoremap <leader>ff :lua vim.lsp.buf.formatting_sync() vim.api.nvim_command('retab!')<CR>
+vnoremap <leader>ff :lua vim.lsp.buf.range_formatting()<CR>

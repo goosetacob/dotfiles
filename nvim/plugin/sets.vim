@@ -2,9 +2,10 @@ set background=dark
 set nu relativenumber
 set nohlsearch
 set hidden
-set tabstop=4 softtabstop=4
-set shiftwidth=4
-set noexpandtab
+set tabstop=2
+" set softtabstop=2
+" set shiftwidth=2
+" set noexpandtab
 set smartindent
 set smartcase
 set ignorecase
@@ -27,7 +28,7 @@ set updatetime=50 " ms
 " do not pass messages to |ins-completion-menu|
 set shortmess+=c
 " More space for messages
-set cmdheight=2
+set cmdheight=3
 " enable mouse support
 set mouse=a
 set clipboard=unnamedplus

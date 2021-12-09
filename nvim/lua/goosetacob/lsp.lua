@@ -44,10 +44,10 @@ lspconfig.sumneko_lua.setup {
 
 lspconfig.tsserver.setup {
 	capabilities = custom_capabilities,
-	handlers = {
-		-- disable diagnostics from tsserver, user efm's eslint/prettier
-		["textDocument/publishDiagnostics"] = function() end
-	},
+	-- handlers = {
+	-- 	-- disable diagnostics from tsserver, user efm's eslint/prettier
+	-- 	["textDocument/publishDiagnostics"] = function() end
+	-- },
 	on_attach = function(client)
 		custom_attach(client)
 		client.resolved_capabilities.document_formatting = false
@@ -85,6 +85,13 @@ lspconfig.efm.setup {
 }
 
 lspconfig.terraformls.setup{
+	capabilities = custom_capabilities,
+	on_attach = function(client)
+		custom_attach(client)
+	end
+}
+
+lspconfig.tflint.setup{
 	capabilities = custom_capabilities,
 	on_attach = function(client)
 		custom_attach(client)

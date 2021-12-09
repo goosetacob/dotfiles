@@ -45,7 +45,7 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'hoob3rt/lualine.nvim'
 
 " lang file types
-Plug 'hashivim/vim-terraform'
+" Plug 'hashivim/vim-terraform'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'rust-lang/rust.vim'
@@ -68,6 +68,7 @@ Plug 'mbbill/undotree'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-sleuth'
 " Plug 'nvim-lspinstall'
 " Plug 'tpope/vim-scriptease'
 " Plug 'phaazon/hop.nvim'
