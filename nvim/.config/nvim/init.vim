@@ -57,7 +57,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 
 " text manipulation
-Plug 'tpope/vim-commentary'
+Plug 'numToStr/Comment.nvim'
+Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 
@@ -66,6 +67,7 @@ Plug 'mbbill/undotree'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'airblade/vim-gitgutter'
+Plug 'stevearc/dressing.nvim'
 " Plug 'nvim-lspinstall'
 " Plug 'tpope/vim-scriptease'
 " Plug 'phaazon/hop.nvim'
@@ -116,7 +118,7 @@ augroup GANSITO
 	" cleanup trailing whitespaces
 	autocmd BufWritePre * :call TrimWhitespace()
 	" format on save
-	autocmd BufWritePre * :lua vim.lsp.buf.formatting()
+	autocmd BufWritePre * :lua vim.lsp.buf.formatting_sync()
 	" inlay hints
 	" autocmd CursorHold,CursorHoldI,CursorMoved *.rs :lua require'lsp_extensions'.inlay_hints{}
 	" autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
