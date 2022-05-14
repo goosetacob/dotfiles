@@ -7,6 +7,10 @@ export LOCAL_BIN="$HOME/.local/bin"
 # ZSH
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
+# Homebrew
+export PATH=/opt/homebrew/bin:$PATH
+export PATH=/opt/homebrew/sbin:$PATH
+
 # Go
 export PATH="$PATH:/usr/local/go/bin"
 export GOPATH="$LOCAL_BIN/golib"
@@ -26,8 +30,8 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 
 # Terraform - greedier by default
-export TF_CLI_ARGS_plan="--parallelism=50 --compact-warnings"
-export TF_CLI_ARGS_apply="--parallelism=50 --compact-warnings"
+export TF_CLI_ARGS_plan="--parallelism=100 --compact-warnings"
+export TF_CLI_ARGS_apply="--parallelism=100 --compact-warnings"
 
 # Boto - used by gsutil
 export BOTO_CONFIG="$XDG_CONFIG_HOME/.boto"
@@ -37,6 +41,9 @@ source "$LOCAL_BIN/google-cloud-sdk/path.zsh.inc"
 
 # gcloud shell command completion
 source "$LOCAL_BIN/google-cloud-sdk/completion.zsh.inc"
+
+# cheat.sh
+export PATH="$LOCAL_BIN/cheat.sh/cht.sh:$PATH"
 
 # kubectl shell command completion
 source <(kubectl completion zsh)

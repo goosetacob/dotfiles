@@ -1,8 +1,8 @@
 -- Docs: https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
 local lspconfig = require'lspconfig'
-local saga = require 'lspsaga'
+-- local saga = require 'lspsaga'
 
-saga.init_lsp_saga()
+-- saga.init_lsp_saga()
 
 local custom_attach = function(client, bufnr)
 	client.resolved_capabilities.document_formatting = true
@@ -56,7 +56,7 @@ lspconfig.tsserver.setup {
 local eslint = {
 	lintCommand = 'eslint_d -f unix --stdin --stdin-filename ${INPUT}',
 	lintStdin = true,
-    lintFormats = {
+	lintFormats = {
 		"%f:%l:%c: %m",
 	},
 	lintIgnoreExitCode = true,
@@ -73,13 +73,17 @@ lspconfig.efm.setup {
 	on_attach = custom_attach,
 	filetypes = {
 		'javascript',
+		'javascriptreact',
 		'typescript',
+		'typescriptreact',
 	},
 	settings = {
-		rootMarkers = {'.git/'},
+		rootMarkers = {"package.json", "tsconfig.json", "jsconfig.json", ".git"},
 		languages = {
 			javascript = {eslint, prettier},
+			javascriptreact = {eslint, prettier},
 			typescript = {eslint, prettier},
+			typescriptreact = {eslint, prettier},
 		}
 	}
 }

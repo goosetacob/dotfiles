@@ -10,7 +10,7 @@ call plug#begin('$XDG_DATA_HOME/nvim/plugged')
 Plug 'neovim/nvim-lspconfig'
 Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'tjdevries/nlua.nvim'
-Plug 'glepnir/lspsaga.nvim'
+" Plug 'glepnir/lspsaga.nvim'
 " Plug 'ray-x/navigator.lua' " looks sweet, but can't figure out setup...
 " Plug 'williamboman/nvim-lsp-installer' " i think i want this, but too much work rn
 
@@ -97,15 +97,15 @@ let g:mapleader=" "
 " avoid loading matchparen
 let g:loaded_matchparen = 1
 
-" netrw delete
-let g:netrw_localrmdir='rm -r'
+" netrw to remove non-empty local directories
+let g:netrw_localrmdir = 'rm -r'
 
 if executable('rg')
 	let g:rg_derive_root='true'
 endif
 
 " node.js provider install with yarn1
-let g:node_host_prog='~/.local/share/yarn/global/node_modules/neovim/bin/cli.js'
+" let g:node_host_prog='~/.local/share/yarn/global/node_modules/neovim/bin/cli.js'
 
 fun! TrimWhitespace()
 	let l:save = winsaveview()
@@ -119,7 +119,7 @@ augroup GANSITO
 	" cleanup trailing whitespaces
 	autocmd BufWritePre * :call TrimWhitespace()
 	" format on save
-	autocmd BufWritePre * if &ft != "terraform" | :lua vim.lsp.buf.formatting()
+	" autocmd BufWritePre * if &ft != "terraform" | :lua vim.lsp.buf.formatting_sync()
 	" inlay hints
 	" autocmd CursorHold,CursorHoldI,CursorMoved *.rs :lua require'lsp_extensions'.inlay_hints{}
 	" autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}

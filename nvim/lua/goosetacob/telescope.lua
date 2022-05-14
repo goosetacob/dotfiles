@@ -17,7 +17,7 @@ telescope.setup {
 		qflist_previewer = previewers.vim_buffer_qflist.new,
 		mappings = {
 			i = {
-				["<C-q>"] = actions.send_to_qflist,
+				["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
 			},
 		}
 	},
