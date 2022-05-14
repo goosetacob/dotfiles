@@ -3,7 +3,8 @@
 set updatetime=600
 
 " Show diagnostic popup on cursor hold
-autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({ focusable = false })
+" autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({ focusable = false })
+" autocmd CursorHold * lua vim.diagnostic.open_float()
 autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()
 
 " lsp keymaps
