@@ -6,8 +6,8 @@ local custom_attach = function(client, bufnr)
 	client.resolved_capabilities.document_formatting = true
 end
 
-local custom_capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol
-	                                                             .make_client_capabilities())
+local custom_capabilities = vim.lsp.protocol.make_client_capabilities()
+custom_capabilities = cmp_nvim_lsp.update_capabilities(custom_capabilities)
 
 local sumneko_root_path = vim.env.HOME .. '/.local/bin/lua-language-server'
 local sumneko_binary = sumneko_root_path .. '/bin/macOS/lua-language-server'

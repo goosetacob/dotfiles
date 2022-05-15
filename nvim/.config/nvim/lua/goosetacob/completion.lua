@@ -5,16 +5,25 @@ local cmp = require 'cmp'
 local lspkind = require 'lspkind'
 local luasnip = require 'luasnip'
 
+lspkind.init()
+
 cmp.setup {
 	snippet = {expand = function(args) luasnip.lsp_expand(args.body) end},
 	mapping = {
+		['<C-n>'] = cmp.mapping.select_next_item {
+			behavior = cmp.SelectBehavior.Insert
+		},
+		['<C-p>'] = cmp.mapping.select_prev_item {
+			behavior = cmp.SelectBehavior.Insert
+		},
 		['<C-u>'] = cmp.mapping.scroll_docs(-4),
 		['<C-d>'] = cmp.mapping.scroll_docs(4),
 		['<C-Space>'] = cmp.mapping.complete(),
 		['<C-e>'] = cmp.mapping.close(),
 		['<CR>'] = cmp.mapping.confirm {
-			behavior = cmp.ConfirmBehavior.Replace,
-			select = true
+			behavior = cmp.ConfirmBehavior.Insert,
+			select = true,
+			{'i', 'c'}
 		}
 	},
 	sources = {
@@ -38,5 +47,5 @@ cmp.setup {
 			}
 		}
 	},
-	experimental = {native_menu = false, ghost_text = true}
+	experimental = {native_menu = false, ghost_text = false}
 }
