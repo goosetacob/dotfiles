@@ -22,6 +22,9 @@ plugins=(
   zsh-syntax-highlighting # https://github.com/zsh-users/zsh-syntax-highlighting
 )
 
+# autocomplete tools installed with brew
+fpath+=/opt/homebrew/share/zsh/site-functions
+
 source $ZSH/oh-my-zsh.sh
 
 # pure prompt
@@ -54,9 +57,9 @@ alias vi='nvim'
 alias less="less --LINE-NUMBERS"
 alias ls="exa --group-directories-first"
 alias cat="bat --paging=never --style=plain"
+alias comm="comm -12"
 
 # util aliases
-alias vpn-connect-nova="osascript -e 'tell application \"Viscosity\" to connect \"TycheVPN\"'"
 alias localscan="nmap -sn 192.168.1.0/24"
 alias cleanup="find . -type f \( -name '.DS_Store' -o -name '.localized' \) -delete"
 alias valid-yaml="ruby -ryaml -e 'p YAML.load(STDIN.read)' < "
