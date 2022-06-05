@@ -15,30 +15,33 @@ export ARCHFLAGS='-arch arm64'
 # OhMyZsh
 export ZSH_CUSTOM="$XDG_DATA_HOME/ohmyzsh/custom"
 
-# HomeBrew installing x86 stuff here
+# Homebrew x86
 export PATH="/usr/local/bin:$PATH"
+
+# Homebrew aarm64
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # personal scripts
 export PATH="$LOCAL_BIN/personal:$PATH"
 
-# kitty
-export KITTY_CONFIG_DIRECTORY="$XDG_CONFIG_HOME/kitty"
-
 # Go
-export PATH="/usr/local/go/bin:$PATH"
-export GOPATH="$LOCAL_BIN/golib"
-export PATH="$GOPATH/bin:$PATH"
-export GOPATH="$GOPATH:$HOME/Projects/go"
+# export PATH="/usr/local/go/bin:$PATH"
+# export GOPATH="$HOME/.go"
+# export PATH="$GOPATH/bin:$PATH"
+# export PATH="$GOPATH/bin:$PATH"
+# export GOPATH="$GOPATH:$HOME/Projects/go"
 
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# OpenJDK (Java)
+# export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
 # Deno
-export PATH="$HOME/.deno/bin:$PATH"
+# export PATH="$HOME/.deno/bin:$PATH"
 
 # Yarn
-export PATH="$HOME/.yarn/bin:$PATH"
+# export PATH="$HOME/.yarn/bin:$PATH"
 
 # GNU sed
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
@@ -62,3 +65,5 @@ export PATH="$N_PREFIX/bin:$PATH"
 
 # kubectl shell command completion
 # source <(kubectl completion zsh)
+
+# . "$HOME/.cargo/env"
