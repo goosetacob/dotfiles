@@ -1,0 +1,8 @@
+# paths = ["/path/to/override"] # path dependency overrides
+
+[env]
+# Set ENV_VAR_NAME=value for any process run by Cargo
+DATABASE_URL = "mysql://127.0.0.1:3306" # planetscale brev
+
+[cargo-new]
+vcs = "none" # VCS to use ('git', 'hg', 'pijul', 'fossil', 'none')
