@@ -1,9 +1,9 @@
--- Docs: https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
+-- Docs: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 local lspconfig = require 'lspconfig'
 local cmp_nvim_lsp = require 'cmp_nvim_lsp'
 
 local custom_attach = function(client, bufnr)
-	client.resolved_capabilities.document_formatting = true
+	client.server_capabilities.document_formatting = true
 end
 
 local custom_capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -107,7 +107,58 @@ lspconfig.gopls.setup {
 	settings = {gopls = {analyses = {unusedparams = true}, staticcheck = true}}
 }
 
--- lspconfig.rust_analyzer.setup{ on_attach=on_attach }
+-- lspconfig.sqls.setup {
+-- 	capabilities = custom_capabilities,
+-- 	on_attach = custom_attach
+-- }
+
+-- lspconfig.rust_analyzer.setup {
+-- 	on_attach = custom_attach,
+-- 	settings = {
+-- 		['rust-analyzer'] = {
+-- 			imports = {granularity = {group = 'module'}, prefix = 'self'},
+-- 			cargo = {buildScripts = {enable = true}},
+-- 			procMacro = {enable = true}
+-- 		}
+-- 	}
+-- }
+
+-- https://sharksforarms.dev/posts/neovim-rust/
+require('rust-tools').setup({
+	tools = { -- rust-tools options
+		autoSetHints = true,
+		-- hover_with_actions = true,
+		inlay_hints = {
+			show_parameter_hints = true,
+			parameter_hints_prefix = '',
+			other_hints_prefix = '=> ',
+			highlight = 'Comment'
+		}
+	},
+
+	-- all the opts to send to nvim-lspconfig
+	-- these override the defaults set by rust-tools.nvim
+	-- see https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rust_analyzer
+	server = {
+		-- on_attach is a callback called when the language server attachs to the buffer
+		-- on_attach = on_attach,
+		settings = {
+			-- to enable rust-analyzer settings visit:
+			-- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+			['rust-analyzer'] = {
+				-- enable clippy on save
+				checkOnSave = {command = 'clippy'}
+				-- server = {
+				-- 	extra_env = {
+				-- 		DATABASE_URL = 'mysql://127.0.0.1:3306' -- planetscale
+				-- 	}
+				-- }
+			}
+		}
+	}
+})
+
+lspconfig.taplo.setup {}
 
 -- lspconfig.svelte.setup{ on_attach=on_attach }
 

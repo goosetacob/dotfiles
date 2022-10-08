@@ -4,7 +4,7 @@ set updatetime=600
 
 " Show diagnostic popup on cursor hold
 " autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({ focusable = false })
-" autocmd CursorHold * lua vim.diagnostic.open_float()
+autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 " autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()
 
 " lsp keymaps
@@ -22,4 +22,4 @@ nnoremap <leader>dk vim.diagnostic.goto_prev()<CR>
 nnoremap <leader>dl Telescope diagnostics<CR>
 
 " formatting
-nnoremap <leader>ff :lua vim.lsp.buf.formatting_sync()<CR>
+nnoremap <leader>ff :lua vim.lsp.buf.format()<CR>

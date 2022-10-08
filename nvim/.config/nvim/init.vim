@@ -10,6 +10,7 @@ call plug#begin('$XDG_DATA_HOME/nvim/plugged')
 Plug 'neovim/nvim-lspconfig'
 Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'tjdevries/nlua.nvim'
+Plug 'simrat39/rust-tools.nvim'
 " Plug 'ray-x/navigator.lua' " looks sweet, but can't figure out setup...
 
 " tree sitter
