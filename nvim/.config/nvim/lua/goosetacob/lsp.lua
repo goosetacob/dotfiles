@@ -51,7 +51,7 @@ lspconfig.tsserver.setup {
 	},
 	on_attach = function(client)
 		custom_attach(client)
-		client.resolved_capabilities.document_formatting = false
+		client.server_capabilities.document_formatting = false
 	end
 }
 local eslint = {
@@ -97,7 +97,7 @@ lspconfig.terraformls.setup {
 	capabilities = custom_capabilities,
 	on_attach = function(client)
 		custom_attach(client)
-		client.resolved_capabilities.document_formatting = false
+		client.server_capabilities.document_formatting = false
 	end
 }
 
