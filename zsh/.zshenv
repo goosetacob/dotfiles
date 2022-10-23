@@ -25,11 +25,10 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH="$LOCAL_BIN/personal:$PATH"
 
 # Go
-# export PATH="/usr/local/go/bin:$PATH"
-# export GOPATH="$HOME/.go"
-# export PATH="$GOPATH/bin:$PATH"
-# export PATH="$GOPATH/bin:$PATH"
-# export GOPATH="$GOPATH:$HOME/Projects/go"
+export GOPATH=$HOME/Projects/go
+# export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin
+# export PATH=$PATH:$GOROOT/bin
 
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
