@@ -119,7 +119,7 @@ augroup GANSITO
 	" cleanup trailing whitespaces
 	autocmd BufWritePre * :call TrimWhitespace()
 	" format on save
-	autocmd BufWritePre * :lua vim.lsp.buf.formatting_sync()
+	autocmd BufWritePre * :lua vim.lsp.buf.format()
 	" inlay hints
 	" autocmd CursorHold,CursorHoldI,CursorMoved *.rs :lua require'lsp_extensions'.inlay_hints{}
 	" autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
