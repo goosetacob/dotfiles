@@ -12,7 +12,7 @@ telescope.setup {
 		file_previewer = previewers.vim_buffer_cat.new,
 		grep_previewer = previewers.vim_buffer_vimgrep.new,
 		qflist_previewer = previewers.vim_buffer_qflist.new,
-		mappings = {i = {['<C-q>'] = actions.send_to_qflist}}
+		mappings = {i = {['<C-q>'] =  actions.send_to_qflist + actions.open_qflist}}
 	},
 	extensions = {
 		fzy_native = {override_generic_sorter = false, override_file_sorter = true}

@@ -92,6 +92,12 @@ lspconfig.efm.setup {
 		}
 	}
 }
+lspconfig.jsonls.setup {
+	capabilities = custom_capabilities,
+	on_attach = function(client)
+		custom_attach(client)
+	end
+}
 
 lspconfig.terraformls.setup {
 	capabilities = custom_capabilities,
@@ -103,8 +109,10 @@ lspconfig.terraformls.setup {
 
 lspconfig.gopls.setup {
 	capabilities = custom_capabilities,
-	on_attach = custom_attach,
-	settings = {gopls = {analyses = {unusedparams = true}, staticcheck = true}}
+	settings = {gopls = {analyses = {unusedparams = true}, staticcheck = true}},
+	on_attach = function(client)
+		custom_attach(client)
+	end
 }
 
 -- lspconfig.sqls.setup {
@@ -159,6 +167,8 @@ require('rust-tools').setup({
 })
 
 lspconfig.taplo.setup {}
+
+lspconfig.pylsp.setup {}
 
 -- lspconfig.svelte.setup{ on_attach=on_attach }
 

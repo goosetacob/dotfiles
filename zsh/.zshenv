@@ -26,9 +26,7 @@ export PATH="$LOCAL_BIN/personal:$PATH"
 
 # Go
 export GOPATH=$HOME/Projects/go
-# export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
-# export PATH=$PATH:$GOROOT/bin
 
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -40,14 +38,14 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # export PATH="$HOME/.deno/bin:$PATH"
 
 # Yarn
-# export PATH="$HOME/.yarn/bin:$PATH"
+export PATH="$HOME/.yarn/bin:$PATH"
 
 # GNU sed
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 
 # Terraform - greedier by default
-export TF_CLI_ARGS_plan="--parallelism=50 --compact-warnings"
-export TF_CLI_ARGS_apply="--parallelism=50 --compact-warnings"
+export TF_CLI_ARGS_plan="--parallelism=75 -lock=false"
+export TF_CLI_ARGS_apply="--parallelism=75"
 
 # Boto - used by gsutil
 export BOTO_CONFIG="$XDG_CONFIG_HOME/.boto"

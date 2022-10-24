@@ -44,7 +44,7 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'hoob3rt/lualine.nvim'
 
 " lang file types
-Plug 'hashivim/vim-terraform'
+" Plug 'hashivim/vim-terraform'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'rust-lang/rust.vim'
@@ -119,7 +119,7 @@ augroup GANSITO
 	" cleanup trailing whitespaces
 	autocmd BufWritePre * :call TrimWhitespace()
 	" format on save
-	autocmd BufWritePre * :lua vim.lsp.buf.format()
+	" autocmd BufWritePre * :lua vim.lsp.buf.format()
 	" inlay hints
 	" autocmd CursorHold,CursorHoldI,CursorMoved *.rs :lua require'lsp_extensions'.inlay_hints{}
 	" autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}

@@ -23,3 +23,5 @@ nnoremap <leader>dl Telescope diagnostics<CR>
 
 " formatting
 nnoremap <leader>ff :lua vim.lsp.buf.format()<CR>
+" nnoremap <leader>ff :lua vim.lsp.buf.formatting()<CR>
+" vnoremap <leader>ff :lua vim.lsp.buf.range_formatting()<CR>
