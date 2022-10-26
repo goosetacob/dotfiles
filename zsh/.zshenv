@@ -50,6 +50,10 @@ export TF_CLI_ARGS_apply="--parallelism=75"
 # Boto - used by gsutil
 export BOTO_CONFIG="$XDG_CONFIG_HOME/.boto"
 
+# pyenv
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+
 # n
 export N_PREFIX="$XDG_DATA_HOME/n"
 export PATH="$N_PREFIX/bin:$PATH"

@@ -14,10 +14,10 @@ DISABLE_AUTO_UPDATE=true
 plugins=(
   git
   docker
-  docker-compose
+  # docker-compose SLOW
   terraform
   cargo
-  yarn
+  # yarn SLOW
   zsh-autosuggestions # https://github.com/zsh-users/zsh-autosuggestions
   zsh-syntax-highlighting # https://github.com/zsh-users/zsh-syntax-highlighting
 )
