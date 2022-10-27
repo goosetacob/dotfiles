@@ -1,10 +1,14 @@
 [user]
 	name = Gustavo Blanco
 	email = gustavo.jr.blanco@gmail.com
+	signingkey = ~/.ssh/id_rsa.pub
+[github]
+	user = goosetacob
 [core]
 	editor = nvim
 	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 	pager = diff-so-fancy | less --tabs=4 -RFX
+	excludesfile = ~/.gitexcludesfile
 [interactive]
 	diffFilter = diff-so-fancy --patch
 [pull]
@@ -30,3 +34,9 @@
 	required = true
 [alias]
 	recent-branches = for-each-ref --sort=-committerdate refs/heads/ --count=15 --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true
