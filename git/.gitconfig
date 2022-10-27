@@ -40,3 +40,5 @@
 	gpgsign = true
 [tag]
 	gpgsign = true
+[gpg "ssh"]
+	allowedSignersFile = ~/.ssh/allowed_signers
