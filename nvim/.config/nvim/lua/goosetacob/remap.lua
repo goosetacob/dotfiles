@@ -1,3 +1,5 @@
+vim.keymap.set("n", ";", ":")
+
 -- netrw
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 

@@ -1,4 +1,8 @@
 vim.g.mapleader=" "
+-- avoid loading matchparen
+vim.g.loaded_matchparen=true
+-- netrw delete
+vim.g.netrw_localrmdir='rm -r'
 
 vim.opt.clipboard="unnamedplus"
 
@@ -33,9 +37,7 @@ vim.opt.updatetime=50 -- ms
 
 vim.opt.colorcolumn="80"
 
-
-
--- background=dark
+vim.opt.background="dark"
 -- set hidden
 -- set smartcase
 -- set ignorecase
@@ -44,10 +46,10 @@ vim.opt.colorcolumn="80"
 -- set backspace=indent,eol,start
 -- set list
 -- set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
--- set ttyfast
+vim.opt.ttyfast=true
 -- " do not pass messages to |ins-completion-menu|
 -- set shortmess+=c
--- " More space for messages
--- set cmdheight=2
--- " enable mouse support
--- set mouse=a
+-- More space for messages
+vim.opt.cmdheight=2
+-- enable mouse support
+vim.opt.mouse="a"
