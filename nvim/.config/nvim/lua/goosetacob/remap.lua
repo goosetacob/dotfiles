@@ -19,7 +19,7 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 -- delete without overwritting prev yanked string
 vim.keymap.set("x", "<leader>p", [["_dP]])
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 -- copy into clipboard?
 -- vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
