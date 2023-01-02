@@ -1,15 +1,19 @@
 local lsp = require('lsp-zero')
+require('null-ls')
 lsp.preset('recommended')
 
 lsp.ensure_installed({
-	'tsserver',
-	--'prettier',
-	'eslint',
-	--'eslint_d',
-	'sumneko_lua',
-	'terraformls',
+	'bashls',
+	-- 'eslint',
 	'gopls',
-	'pylsp'
+	'jsonls',
+	'pylsp',
+	'sumneko_lua',
+	'taplo', -- toml
+	'terraformls',
+	'terraformls',
+	'tsserver',
+	-- 'prettier',
 })
 
 -- Fix Undefined global 'vim'
@@ -23,23 +27,38 @@ lsp.configure('sumneko_lua', {
 	}
 })
 
+-- No double formatting
+lsp.configure("tsserver", {
+	on_init = function(client)
+		client.server_capabilities.documentFormattingProvider = false
+		client.server_capabilities.documentFormattingRangeProvider = false
+	end
+})
+
 
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
 	['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
 	['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-	['<C-y>'] = cmp.mapping.confirm({ select = true }),
 	["<C-Space>"] = cmp.mapping.complete(),
+	['<C-u>'] = cmp.mapping.scroll_docs(-4),
+	['<C-d>'] = cmp.mapping.scroll_docs(4),
+	['<C-e>'] = cmp.mapping.close(),
+	--['<C-y>'] = cmp.mapping.confirm({ select = true }),
+	['<CR>'] = cmp.mapping.confirm {
+		select = true,
+		{ 'i', 'c' }
+	}
 })
-
 -- disable completion with tab
 -- this helps with copilot setup
 cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
 
 lsp.setup_nvim_cmp({
-	mapping = cmp_mappings
+	mapping = cmp_mappings,
+	experimental = { native_menu = false, ghost_text = false }
 })
 
 lsp.set_preferences({
@@ -73,7 +92,21 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
 end)
 
+lsp.nvim_workspace()
+
 lsp.setup()
+
+-- see documentation of null-null-ls for more configuration options!
+local mason_nullls = require("mason-null-ls")
+mason_nullls.setup({
+	automatic_installation = true,
+	automatic_setup = true,
+	ensure_installed = {
+		"eslint_d",
+		"prettier",
+	},
+})
+mason_nullls.setup_handlers({})
 
 vim.diagnostic.config({
 	virtual_text = true,
