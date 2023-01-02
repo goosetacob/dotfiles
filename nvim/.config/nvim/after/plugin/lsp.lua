@@ -21,18 +21,38 @@ lsp.configure('sumneko_lua', {
 	settings = {
 		Lua = {
 			diagnostics = {
+				-- Get the language server to recognize the `vim` global
 				globals = { 'vim' }
-			}
+			},
+			telemetry = {
+				-- Do not send telemetry data containing a randomized but unique identifier
+				enable = false
+			},
 		}
 	}
 })
 
 -- No double formatting
 lsp.configure("tsserver", {
+	handlers = {
+		-- disable diagnostics from tsserver, user efm's eslint/prettier
+		['textDocument/publishDiagnostics'] = function() end
+	},
 	on_init = function(client)
 		client.server_capabilities.documentFormattingProvider = false
 		client.server_capabilities.documentFormattingRangeProvider = false
 	end
+})
+
+lsp.configure("gopls", {
+	settings = {
+		gopls = {
+			analyses = {
+				unusedparams = true
+			},
+			staticcheck = true
+		}
+	},
 })
 
 
@@ -79,22 +99,43 @@ lsp.on_attach(function(client, bufnr)
 		return
 	end
 
-	vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+	vim.keymap.set("n", "<leader>vd", vim.lsp.buf.definition, opts)
+	vim.keymap.set("n", "<leader>vi", vim.lsp.buf.implementation, opts)
+	vim.keymap.set("n", "<leader>vr", vim.lsp.buf.references, opts)
+	vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
 	vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
-	vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
+	vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
+
+	-- diagnostics
+	-- vim.keymap.set("n", "vd", vim.diagnostic.open_float, opts)
 	vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
 	vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts)
-	vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
-	vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, opts)
-	vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
+
 	vim.keymap.set("n", "<leader>ff", vim.lsp.buf.format, opts)
+
 	vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
 end)
 
 lsp.nvim_workspace()
 
+local rust_lsp = lsp.build_options('rust_analyzer', {})
+
 lsp.setup()
+
+require('rust-tools').setup({
+	server = rust_lsp,
+	tools = { -- rust-tools options
+		autoSetHints = true,
+		-- hover_with_actions = true,
+		inlay_hints = {
+			show_parameter_hints = true,
+			parameter_hints_prefix = '',
+			other_hints_prefix = '=> ',
+			highlight = 'Comment'
+		}
+	},
+})
 
 -- see documentation of null-null-ls for more configuration options!
 local mason_nullls = require("mason-null-ls")

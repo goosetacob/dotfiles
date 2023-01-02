@@ -27,10 +27,11 @@ return require('packer').startup(function(use)
 
 	use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 	use('nvim-treesitter/playground')
+	use('p00f/nvim-ts-rainbow')
 
 	use('mbbill/undotree')
-	use('tpope/vim-fugitive')
 	use('hoob3rt/lualine.nvim')
+	use('simrat39/rust-tools.nvim')
 
 	-- text manipulation
 	use {
@@ -64,6 +65,7 @@ return require('packer').startup(function(use)
 		end
 	}
 	use('JoosepAlviste/nvim-ts-context-commentstring')
+	use('tpope/vim-fugitive')
 	use('tpope/vim-sensible')
 	use('tpope/vim-surround')
 	use('tpope/vim-rhubarb')

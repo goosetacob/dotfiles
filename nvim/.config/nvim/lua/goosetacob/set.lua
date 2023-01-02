@@ -37,7 +37,6 @@ vim.opt.updatetime = 50 -- ms
 
 vim.opt.colorcolumn = "80"
 
-vim.opt.background = "dark"
 -- set hidden
 -- set smartcase
 -- set ignorecase
