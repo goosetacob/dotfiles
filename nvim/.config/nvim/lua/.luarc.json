@@ -23,6 +23,7 @@
         "/Users/gustavo/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
         "/Users/gustavo/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
         "/Users/gustavo/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
+        "/Users/gustavo/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects",
         "/Users/gustavo/.local/share/nvim/site/pack/packer/start/nvim-ts-context-commentstring",
         "/Users/gustavo/.local/share/nvim/site/pack/packer/start/nvim-ts-rainbow",
         "/Users/gustavo/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -33,8 +34,6 @@
         "/Users/gustavo/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
         "/Users/gustavo/.local/share/nvim/site/pack/packer/start/telescope-fzy-native.nvim",
         "/Users/gustavo/.local/share/nvim/site/pack/packer/start/telescope.nvim",
-        "/opt/homebrew/Cellar/neovim/0.8.2/share/nvim/runtime/lua",
-        "/Users/gustavo/.config/nvim/lua",
         "${3rd}/luassert/library"
     ]
 }

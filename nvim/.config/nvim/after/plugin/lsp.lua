@@ -93,15 +93,15 @@ lsp.on_attach(function(_, bufnr)
 	local opts = { buffer = bufnr, remap = false }
 
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-	vim.keymap.set("n", "<leader>vd", vim.lsp.buf.definition, opts)
-	vim.keymap.set("n", "<leader>vi", vim.lsp.buf.implementation, opts)
-	vim.keymap.set("n", "<leader>vr", vim.lsp.buf.references, opts)
-	vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
-	vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
-	vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
+	vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, opts)
+	vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, opts)
+	vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, opts)
+	vim.keymap.set("n", "<leader>grn", vim.lsp.buf.rename, opts)
+	vim.keymap.set("n", "<leader>gws", vim.lsp.buf.workspace_symbol, opts)
+	vim.keymap.set("n", "<leader>gca", vim.lsp.buf.code_action, opts)
 
 	-- diagnostics
-	-- vim.keymap.set("n", "vd", vim.diagnostic.open_float, opts)
+	vim.keymap.set("n", "vd", vim.diagnostic.open_float, opts)
 	vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
 	vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts)
 
