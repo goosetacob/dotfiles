@@ -1,19 +1,18 @@
 local lsp = require('lsp-zero')
-require('null-ls')
+local nullls = require('null-ls')
+local mason_nullls = require("mason-null-ls")
+
 lsp.preset('recommended')
 
 lsp.ensure_installed({
 	'bashls',
-	-- 'eslint',
 	'gopls',
 	'jsonls',
 	'pylsp',
 	'sumneko_lua',
 	'taplo', -- toml
 	'terraformls',
-	'terraformls',
 	'tsserver',
-	-- 'prettier',
 })
 
 -- Fix Undefined global 'vim'
@@ -32,7 +31,7 @@ lsp.configure('sumneko_lua', {
 	}
 })
 
--- No double formatting
+-- using prettier for formatting
 lsp.configure("tsserver", {
 	handlers = {
 		-- disable diagnostics from tsserver, user efm's eslint/prettier
@@ -54,7 +53,6 @@ lsp.configure("gopls", {
 		}
 	},
 })
-
 
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
@@ -91,13 +89,8 @@ lsp.set_preferences({
 	}
 })
 
-lsp.on_attach(function(client, bufnr)
+lsp.on_attach(function(_, bufnr)
 	local opts = { buffer = bufnr, remap = false }
-
-	if client.name == "eslint" then
-		vim.cmd.LspStop('eslint')
-		return
-	end
 
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 	vim.keymap.set("n", "<leader>vd", vim.lsp.buf.definition, opts)
@@ -117,9 +110,20 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
 end)
 
-lsp.nvim_workspace()
-
 local rust_lsp = lsp.build_options('rust_analyzer', {})
+
+nullls.setup({
+	sources = {
+		nullls.builtins.formatting.prettierd,
+		nullls.builtins.formatting.eslint_d,
+	}
+})
+
+mason_nullls.setup({
+	ensure_installed = nil,
+	automatic_installation = true,
+	automatic_setup = false,
+})
 
 lsp.setup()
 
@@ -136,18 +140,6 @@ require('rust-tools').setup({
 		}
 	},
 })
-
--- see documentation of null-null-ls for more configuration options!
-local mason_nullls = require("mason-null-ls")
-mason_nullls.setup({
-	automatic_installation = true,
-	automatic_setup = true,
-	ensure_installed = {
-		"eslint_d",
-		"prettier",
-	},
-})
-mason_nullls.setup_handlers({})
 
 vim.diagnostic.config({
 	virtual_text = true,

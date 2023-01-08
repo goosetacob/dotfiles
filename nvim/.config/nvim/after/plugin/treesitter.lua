@@ -18,6 +18,21 @@ require 'nvim-treesitter.configs'.setup {
 	-- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
 	auto_install = true,
 
+	-- enabling JoosepAlviste/nvim-ts-context-commentstring
+	context_commentstring = {
+		enable = true,
+		enable_autocmd = false,
+		config = {
+			javascript = {
+				__default = '// %s',
+				jsx_element = '{/* %s */}',
+				jsx_fragment = '{/* %s */}',
+				jsx_attribute = '// %s',
+				comment = '// %s'
+			}
+		}
+	},
+
 	highlight = {
 		-- `false` will disable the whole extension
 		enable = true,

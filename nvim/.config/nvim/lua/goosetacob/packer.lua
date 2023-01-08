@@ -11,74 +11,7 @@ require('packer').startup(function(use)
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
 
-	use {
-		'nvim-telescope/telescope.nvim',
-		tag = '0.1.0',
-		-- or branch = '0.1.x',
-		requires = {
-			{ 'nvim-lua/plenary.nvim' },
-			{ 'nvim-lua/popup.nvim' }
-		}
-	}
-	use('nvim-telescope/telescope-fzy-native.nvim')
-
-	use({
-		'rose-pine/neovim',
-		as = 'rose-pine',
-		config = function()
-			vim.cmd('colorscheme rose-pine')
-		end
-	})
-
-	use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
-	use('nvim-treesitter/playground')
-	use('p00f/nvim-ts-rainbow')
-
-	use('mbbill/undotree')
-	use('hoob3rt/lualine.nvim')
-	use('simrat39/rust-tools.nvim')
-
-	-- text manipulation
-	use {
-		'numToStr/Comment.nvim',
-		config = function()
-			require('Comment').setup({
-				pre_hook = function(ctx)
-					-- Only calculate commentstring for tsx filetypes
-					if vim.bo.filetype == 'typescriptreact' then
-						local U = require('Comment.utils')
-
-						-- Detemine whether to use linewise or blockwise commentstring
-						local type = ctx.ctype == U.ctype.line and '__default' or '__multiline'
-
-						-- Determine the location where to calculate commentstring from
-						local location = nil
-						if ctx.ctype == U.ctype.block then
-							location = require('ts_context_commentstring.utils').get_cursor_location()
-						elseif ctx.cmotion == U.cmotion.v or ctx.cmotion == U.cmotion.V then
-							location =
-							require('ts_context_commentstring.utils').get_visual_start_location()
-						end
-
-						return require('ts_context_commentstring.internal').calculate_commentstring({
-							key = type,
-							location = location
-						})
-					end
-				end
-			})
-		end
-	}
-
-	use('tpope/vim-fugitive')
-	use('tpope/vim-rhubarb')
-	use('lewis6991/gitsigns.nvim')
-
-	use('tpope/vim-sensible')
-	use('tpope/vim-surround')
-	use('tpope/vim-sleuth')
-	use('JoosepAlviste/nvim-ts-context-commentstring')
-
+	-- lsp
 	use {
 		'VonHeikemen/lsp-zero.nvim',
 		requires = {
@@ -89,7 +22,7 @@ require('packer').startup(function(use)
 			{ 'jose-elias-alvarez/null-ls.nvim' },
 			{ 'jay-babu/mason-null-ls.nvim' },
 
-			-- Useful status updates for LSP
+			-- Useful lsp status updates
 			{ 'j-hui/fidget.nvim' },
 
 			-- Additional lua configuration, makes nvim stuff amazing
@@ -109,9 +42,64 @@ require('packer').startup(function(use)
 		}
 	}
 
-	-- rando nice stuff
+	-- treesitter
+	use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
+	use('nvim-treesitter/playground')
+	use('nvim-treesitter/nvim-treesitter-textobjects')
+	use('p00f/nvim-ts-rainbow')
+
+	-- telescope
+	use {
+		'nvim-telescope/telescope.nvim',
+		tag = '0.1.0',
+		-- or branch = '0.1.x',
+		requires = {
+			{ 'nvim-lua/plenary.nvim' },
+			{ 'nvim-lua/popup.nvim' }
+		}
+	}
+	use('nvim-telescope/telescope-fzy-native.nvim')
+
+	-- extra language stuffs
+	use('simrat39/rust-tools.nvim')
+
+	-- text manipulation
+	use {
+		'numToStr/Comment.nvim',
+		requires = {
+			{ 'JoosepAlviste/nvim-ts-context-commentstring' },
+		},
+		config = function()
+			require('Comment').setup({
+				pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+			})
+		end
+	}
+
+	-- git stuff
+	use('tpope/vim-fugitive')
+	use('tpope/vim-rhubarb')
+	use('lewis6991/gitsigns.nvim')
+
+	-- nice ui stuff
+	use('hoob3rt/lualine.nvim')
 	use('norcalli/nvim-colorizer.lua')
 	use('airblade/vim-gitgutter')
+
+	-- nice tools / settings
+	use('mbbill/undotree')
+	use('tpope/vim-sensible')
+	use('tpope/vim-surround')
+	use('tpope/vim-sleuth')
+
+	-- colors
+	use({
+		'rose-pine/neovim',
+		as = 'rose-pine',
+		config = function()
+			vim.cmd('colorscheme rose-pine')
+		end
+	})
 
 	if is_bootstrap then
 		require('packer').sync()
