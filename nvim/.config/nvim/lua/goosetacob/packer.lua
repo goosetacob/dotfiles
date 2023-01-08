@@ -92,6 +92,13 @@ require('packer').startup(function(use)
 	use('tpope/vim-surround')
 	use('tpope/vim-sleuth')
 
+	-- extra stuff from vimscript config
+	-- not sure if i need it?
+	-- Plug 'ray-x/navigator.lua' " looks sweet, but can't figure out setup...
+	-- Plug 'ekalinin/Dockerfile.vim'
+	-- Plug 'evanleck/vim-svelte', {'branch': 'main'}
+	-- Plug 'rust-lang/rust.vim'
+
 	-- colors
 	use({
 		'rose-pine/neovim',
