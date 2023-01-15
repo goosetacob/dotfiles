@@ -29,13 +29,13 @@ telescope.setup {
 
 telescope.load_extension('fzy_native')
 
-vim.keymap.set('n', '<C-p>', builtin.git_files, {})
-vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
-vim.keymap.set('n', '<leader>ph', builtin.help_tags, {})
-vim.keymap.set('n', '<leader>pb', builtin.buffers, {})
+vim.keymap.set('n', '<C-p>', builtin.git_files, { desc = 'Open [p]roject git files' })
+vim.keymap.set('n', '<leader>pf', builtin.find_files, { desc = 'Open [p]roject [f]iles' })
+vim.keymap.set('n', '<leader>ph', builtin.help_tags, { desc = 'Open [p]roject [h]elp tags' })
+vim.keymap.set('n', '<leader>pb', builtin.buffers, { desc = 'Open [p]roject [b]uffers' })
 vim.keymap.set('n', '<leader>pw', function()
-	builtin.grep_string { search = vim.fn.expand("<cword>") }
-end)
+	builtin.grep_string { search = vim.fn.expand('<cword>') }
+end, { desc = 'Search for [p]roject [w]ord' })
 vim.keymap.set('n', '<leader>ps', function()
-	builtin.grep_string({ search = vim.fn.input("grep string > ") })
-end)
+	builtin.grep_string({ search = vim.fn.input({ prompt = 'grep string > ' }), use_regex = true })
+end, { desc = 'Search for [p]roject [s]tring' })

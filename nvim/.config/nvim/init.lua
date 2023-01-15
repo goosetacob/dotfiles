@@ -1,1 +1,1 @@
-require('goosetacob')
+require 'goosetacob'

@@ -7,7 +7,7 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 	vim.cmd [[packadd packer.nvim]]
 end
 
-require('packer').startup(function(use)
+require 'packer'.startup(function(use)
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
 
@@ -70,8 +70,8 @@ require('packer').startup(function(use)
 			{ 'JoosepAlviste/nvim-ts-context-commentstring' },
 		},
 		config = function()
-			require('Comment').setup({
-				pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+			require 'Comment'.setup({
+				pre_hook = require 'ts_context_commentstring.integrations.comment_nvim'.create_pre_hook(),
 			})
 		end
 	}
@@ -109,7 +109,7 @@ require('packer').startup(function(use)
 	})
 
 	if is_bootstrap then
-		require('packer').sync()
+		require 'packer'.sync()
 	end
 end)
 

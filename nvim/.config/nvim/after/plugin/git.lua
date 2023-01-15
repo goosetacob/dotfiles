@@ -1,9 +1,9 @@
-vim.keymap.set("n", "<leader>gl", vim.cmd.GBrowse)
-vim.keymap.set("v", "<leader>gl", function()
+vim.keymap.set('n', '<leader>gl', vim.cmd.GBrowse)
+vim.keymap.set('v', '<leader>gl', function()
 	vim.cmd([['<,'>GBrowse]])
 end)
 
-require('gitsigns').setup {
+require 'gitsigns'.setup {
 	signs = {
 		add = { text = '+' },
 		change = { text = '~' },

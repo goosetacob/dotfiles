@@ -1,4 +1,4 @@
-require("goosetacob.packer")
-require("goosetacob.remap")
-require("goosetacob.set")
-require("goosetacob.autocmd")
+require 'goosetacob.packer'
+require 'goosetacob.set'
+require 'goosetacob.remap'
+require 'goosetacob.autocmd'
