@@ -1,6 +1,6 @@
 vim.keymap.set('n', ';', ':')
 
-vim.keymap.set('n', '<leader>pv', vim.cmd.Ex, { desc = 'Open file explorer' })
+vim.keymap.set('n', '<leader>pv', '<cmd>Vex 25<CR>', { desc = 'Open file explorer' })
 
 vim.keymap.set('n', '<leader><leader>', function()
 	local filename = os.getenv('HOME') .. '/notes.md'
