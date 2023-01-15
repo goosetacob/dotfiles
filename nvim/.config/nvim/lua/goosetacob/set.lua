@@ -55,4 +55,4 @@ vim.opt.cmdheight = 2
 -- enable mouse support
 vim.opt.mouse = "a"
 -- highlight current line
-vim.opt.cursorline = true
+-- vim.opt.cursorline = true

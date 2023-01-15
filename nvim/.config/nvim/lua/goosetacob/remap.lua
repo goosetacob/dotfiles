@@ -40,3 +40,9 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- regex replace the word cursor is on
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- get by with C-w?
+-- vim.keymap.set("n", "<leader>h", "<cmd>wincmd h<CR>")
+-- vim.keymap.set("n", "<leader>j", "<cmd>wincmd j<CR>")
+-- vim.keymap.set("n", "<leader>k", "<cmd>wincmd k<CR>")
+-- vim.keymap.set("n", "<leader>l", "<cmd>wincmd l<CR>")

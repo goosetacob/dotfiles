@@ -32,6 +32,7 @@ telescope.load_extension('fzy_native')
 vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
 vim.keymap.set('n', '<leader>ph', builtin.help_tags, {})
+vim.keymap.set('n', '<leader>pb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>pw', function()
 	builtin.grep_string { search = vim.fn.expand("<cword>") }
 end)
