@@ -3,15 +3,17 @@ vim.g.mapleader = " "
 vim.g.loaded_matchparen = true
 -- netrw delete
 vim.g.netrw_localrmdir = 'rm -r'
+vim.g.grepprg = 'rg'
 
 vim.opt.clipboard = "unnamedplus"
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
+vim.opt.ruler = true
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = false
 
 vim.opt.smartindent = true
@@ -41,8 +43,8 @@ vim.opt.colorcolumn = "80"
 -- set smartcase
 -- set ignorecase
 -- set noerrorbells
--- set autoindent
--- set backspace=indent,eol,start
+vim.opt.autoindent = true
+vim.opt.backspace = "indent,eol,start"
 -- set list
 -- set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 vim.opt.ttyfast = true

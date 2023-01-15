@@ -1,6 +1,8 @@
 local lsp = require('lsp-zero')
 local nullls = require('null-ls')
 local mason_nullls = require("mason-null-ls")
+local neodev = require('neodev')
+local fidget = require('fidget')
 
 lsp.preset('recommended')
 
@@ -140,6 +142,9 @@ require('rust-tools').setup({
 		}
 	},
 })
+
+neodev.setup()
+fidget.setup()
 
 vim.diagnostic.config({
 	virtual_text = true,
