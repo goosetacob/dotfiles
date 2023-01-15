@@ -3,6 +3,16 @@ vim.keymap.set("n", ";", ":")
 -- netrw
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
+-- edit a notes file
+vim.keymap.set("n", "<leader><leader>", function()
+	local filename = os.getenv("HOME") .. "/notes.md"
+	vim.cmd('e ' .. filename)
+end)
+
+-- navigate buffers
+vim.keymap.set("n", "<leader>h", vim.cmd.bprevious)
+vim.keymap.set("n", "<leader>l", vim.cmd.bnext)
+
 -- when move visual block up/down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
