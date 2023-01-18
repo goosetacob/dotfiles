@@ -1,13 +1,13 @@
-require'lualine'.setup {
+require 'lualine'.setup {
 	options = {
-		theme = 'codedark',
+		theme = 'rose-pine',
 		icons_enabled = false,
 		section_separators = '',
 		component_separators = ''
 	},
 	sections = {
-		lualine_a = {'mode'},
-		lualine_b = {'branch'},
+		lualine_a = { 'mode' },
+		lualine_b = { 'branch' },
 		lualine_c = {
 			{
 				'filename',
@@ -15,9 +15,9 @@ require'lualine'.setup {
 				path = 2 -- absolute path
 			}
 		},
-		lualine_x = {'encoding', 'fileformat', 'filetype'},
-		lualine_y = {'progress'},
-		lualine_z = {'location'}
+		lualine_x = { 'encoding', 'fileformat', 'filetype' },
+		lualine_y = { 'progress' },
+		lualine_z = { 'location' }
 	},
 	inactive_sections = {
 		lualine_a = {},
@@ -29,9 +29,9 @@ require'lualine'.setup {
 				path = 2 -- absolute path
 			}
 		},
-		lualine_x = {'location'},
+		lualine_x = { 'location' },
 		lualine_y = {},
 		lualine_z = {}
 	},
-	extensions = {'fugitive'}
+	extensions = { 'fugitive' }
 }
