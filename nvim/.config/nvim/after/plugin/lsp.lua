@@ -1,3 +1,4 @@
+local lspconfig = require 'lspconfig'
 local lsp = require 'lsp-zero'
 local nullls = require 'null-ls'
 local mason_nullls = require 'mason-null-ls'
@@ -58,7 +59,17 @@ lsp.configure('tsserver', {
 	on_init = function(client)
 		client.server_capabilities.documentFormattingProvider = false
 		client.server_capabilities.documentFormattingRangeProvider = false
-	end
+	end,
+	root_dir = lspconfig.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', '.git'),
+	init_options = {
+		hostInfo = 'neovim',
+		-- tsserver = {
+		-- 	logDirectory = os.getenv('HOME') .. '/.local/state/nvim',
+		-- 	logVerbosity = 'normal',
+		-- 	trace = 'verbose'
+		-- },
+		-- maxTsServerMemory = 4096 -- 4GB
+	}
 })
 
 lsp.configure('gopls', {
@@ -111,10 +122,13 @@ lsp.on_attach(function(_, bufnr)
 	local opts = { buffer = bufnr, remap = false }
 
 	vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-	vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, opts)
-	vim.keymap.set('n', '<leader>gi', vim.lsp.buf.implementation, opts)
-	vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, opts)
-	vim.keymap.set('n', '<leader>grn', vim.lsp.buf.rename, opts)
+	vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition,
+		{ buffer = bufnr, remap = false, desc = '[G]o to [D]efinition' })
+	vim.keymap.set('n', '<leader>gi', vim.lsp.buf.implementation,
+		{ buffer = bufnr, remap = false, desc = '[G]o to [I]mplementation' })
+	vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references,
+		{ buffer = bufnr, remap = false, desc = '[G]o to [R]eferences' })
+	vim.keymap.set('n', '<leader>grn', vim.lsp.buf.rename, { buffer = bufnr, remap = false, desc = '[G]o [r]e[n]ame' })
 	vim.keymap.set('n', '<leader>gws', vim.lsp.buf.workspace_symbol, opts)
 	vim.keymap.set('n', '<leader>gca', vim.lsp.buf.code_action, opts)
 
