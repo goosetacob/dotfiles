@@ -60,9 +60,15 @@ alias ls="exa --group-directories-first"
 alias cat="bat --paging=never --style=plain"
 alias comm="comm -12"
 
-# util aliases
+# utils
+function docker-clean {
+  docker ps -a -q | xargs docker kill -f
+  docker ps -a -q | xargs docker rm -f
+  docker images | awk '{print $3}' | xargs docker rmi -f
+  docker volume prune -f
+}
+
+# aliases
 alias localscan="nmap -sn 192.168.1.0/24"
 alias cleanup="find . -type f \( -name '.DS_Store' -o -name '.localized' \) -delete"
 alias valid-yaml="ruby -ryaml -e 'p YAML.load(STDIN.read)' < "
-alias p3-venv="python3 -m venv env"
-alias luamake=/Users/gustavo/.dotfiles/personal/.local/bin/lua-language-server/3rd/luamake/luamake
