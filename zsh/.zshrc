@@ -27,12 +27,7 @@ fpath+=/opt/homebrew/share/zsh/site-functions
 
 source $ZSH/oh-my-zsh.sh
 
-# pure prompt
-# https://github.com/sindresorhus/pure
-fpath+=$HOME/.config/zsh/pure
-autoload -U promptinit; promptinit
-zstyle :prompt:pure:git:stash show yes
-prompt pure
+eval "$(starship init zsh)"
 
 # User Config
 export MANPATH="/usr/local/man:$MANPATH"
