@@ -27,11 +27,14 @@ truncate_to_repo = false
 
 [time]
 disabled = false
-style = "bold white"
+style = 'bold white'
 format = '[\[$time\]]($style)'
 
 [fill]
-symbol = " "
+symbol = ' '
+
+[git_branch]
+symbol = ''
 
 [git_status]
 format = '([\[$all_status$ahead_behind\]]($style) )'
