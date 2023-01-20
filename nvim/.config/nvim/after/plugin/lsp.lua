@@ -148,7 +148,7 @@ local rust_lsp = lsp.build_options('rust_analyzer', {})
 nullls.setup({
 	sources = {
 		nullls.builtins.formatting.prettierd,
-		nullls.builtins.formatting.eslint_d,
+		nullls.builtins.diagnostics.eslint_d,
 	}
 })
 
