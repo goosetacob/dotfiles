@@ -1,4 +1,3 @@
-vim.g.mapleader = ' '
 -- avoid loading matchparen
 vim.g.loaded_matchparen = true
 -- netrw delete
