@@ -62,6 +62,13 @@ function docker-clean {
   docker images | awk '{print $3}' | xargs docker rmi -f
   docker volume prune -f
 }
+function serial-connect {
+  local serial_device=`ls /dev/cu.usbmodem* | gum choose`
+  local baud_rate=`gum input --prompt='baud: ' --value=115200`
+
+  # exit with: CTRL+SHFT+A and then CTRL+SHFT+X
+  picocom -b $baud_rate $serial_device
+}
 
 # aliases
 alias localscan="nmap -sn 192.168.1.0/24"
