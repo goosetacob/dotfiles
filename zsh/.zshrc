@@ -69,6 +69,11 @@ function serial-connect {
   # exit with: CTRL+SHFT+A and then CTRL+SHFT+X
   picocom -b $baud_rate $serial_device
 }
+# function unmount {
+# to unmount the microbit before disconnecting USB
+# ➜ diskutil list
+# ➜ diskutil unmount /dev/disk4
+# }
 
 # aliases
 alias localscan="nmap -sn 192.168.1.0/24"
