@@ -11,8 +11,6 @@
 	excludesfile = ~/.gitexcludesfile
 [interactive]
 	diffFilter = diff-so-fancy --patch
-[pull]
-	ff = only
 [push]
 	default = current
 [init]
