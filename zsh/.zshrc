@@ -57,7 +57,6 @@ alias comm="comm -12"
 
 # utils
 function docker-clean {
-  docker ps -a -q | xargs docker kill -f
   docker ps -a -q | xargs docker rm -f
   docker images | awk '{print $3}' | xargs docker rmi -f
   docker volume prune -f
@@ -74,6 +73,12 @@ function serial-connect {
 # ➜ diskutil list
 # ➜ diskutil unmount /dev/disk4
 # }
+
+function calc-cidr {
+# -sL: List Scan - simply list targets to scan
+# -n: Never do DNS resolution
+  nmap -sL -n $1 | awk '/Nmap scan report/{print $NF}'
+}
 
 # aliases
 alias localscan="nmap -sn 192.168.1.0/24"
