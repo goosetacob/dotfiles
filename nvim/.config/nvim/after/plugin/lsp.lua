@@ -140,6 +140,11 @@ lsp.on_attach(function(_, bufnr)
 	vim.keymap.set('n', ']d', vim.diagnostic.goto_prev, opts)
 
 	vim.keymap.set('n', '<leader>ff', vim.lsp.buf.format, opts)
+	vim.keymap.set('v', '<leader>ff', '[[<ESC><cmd>lua vim.lsp.buf.range_formatting()<CR>]]', opts)
+	-- vim.keymap.set('v', '<leader>ff', function()
+	-- 	vim.lsp.buf.
+	-- 	vim.lsp.buf.range_formatting()
+	-- end, opts)
 
 	vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
 end)
@@ -147,10 +152,12 @@ end)
 local rust_lsp = lsp.build_options('rust_analyzer', {})
 
 nullls.setup({
-		sources = {
-				nullls.builtins.formatting.prettierd,
-				nullls.builtins.diagnostics.eslint_d,
-		}
+	sources = {
+		nullls.builtins.formatting.prettierd,
+		nullls.builtins.diagnostics.eslint_d.with({
+			diagnostics_format = '[#{c}] #{m}'
+		}),
+	}
 })
 
 mason_nullls.setup({
