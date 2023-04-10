@@ -106,8 +106,7 @@ dynamic_title: true
 # tip(macOS): look at FontBook to get family name
 font:
   normal:
-    # family: "Hack Nerd Font Mono"
-    family: "FiraMono Nerd Font Mono"
+    family: "UbuntuMono Nerd Font Mono"
 
   # Point size
   size: 18.0
