@@ -12,14 +12,14 @@ lsp.ensure_installed({
 		'gopls',
 		'jsonls',
 		'pylsp',
-		'sumneko_lua',
+	  'lua_ls', -- 'sumneko_lua',
 		'taplo', -- toml
 		'terraformls',
 		'tsserver',
 })
 
 -- Fix Undefined global 'vim'
-lsp.configure('sumneko_lua', {
+lsp.configure('lua_ls', {
 		settings = {
 				Lua = {
 						runtime = {
