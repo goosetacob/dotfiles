@@ -9,12 +9,15 @@
 	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 	pager = diff-so-fancy | less --tabs=4 -RFX
 	excludesfile = ~/.gitexcludesfile
+[init]
+	defaultBranch = main
 [interactive]
 	diffFilter = diff-so-fancy --patch
 [push]
 	default = current
-[init]
-	defaultBranch = main
+[rebase]
+	instructionFormat = "[%an - %ar] %s"
+	autoStash = true
 [color]
 	ui = auto
 [mergetool "nvim"]
@@ -32,7 +35,8 @@
 	required = true
 [alias]
 	recent-branches = for-each-ref --sort=-committerdate refs/heads/ --count=15 --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
-	lg = log --all --graph --format=oneline
+	; lg = log --all --graph --format=oneline
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 [gpg]
 	format = ssh
 [commit]
