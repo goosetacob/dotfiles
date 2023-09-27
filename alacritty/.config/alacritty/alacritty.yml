@@ -423,7 +423,7 @@ shell:
  args:
    - -l
    - -c
-   - "tmux attach-session -t root || tmux new -s root"
+   - "tmux attach-session -t ${USER} || tmux new -s ${USER}"
 
 # Startup directory
 #
