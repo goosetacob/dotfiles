@@ -7,7 +7,11 @@ local fidget = require 'fidget'
 
 lsp.preset('recommended')
 
-lsp.ensure_installed({
+require('mason').setup({})
+require('mason-lspconfig').setup({
+	-- Replace the language servers listed here 
+	-- with the ones you want to install
+	ensure_installed = {
 		'bashls',
 		'gopls',
 		'jsonls',
@@ -16,6 +20,10 @@ lsp.ensure_installed({
 		'taplo', -- toml
 		'terraformls',
 		'tsserver',
+	},
+	handlers = {
+		lsp.default_setup,
+	},
 })
 
 -- Fix Undefined global 'vim'
@@ -85,29 +93,61 @@ lsp.configure('gopls', {
 		},
 })
 
+-- local cmp = require('cmp')
+-- local cmp_select = { behavior = cmp.SelectBehavior.Select }
+-- local cmp_mappings = lsp.defaults.cmp_mappings({
+-- 				['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+-- 				['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+-- 				['<C-Space>'] = cmp.mapping.complete(),
+-- 				['<C-u>'] = cmp.mapping.scroll_docs( -4),
+-- 				['<C-d>'] = cmp.mapping.scroll_docs(4),
+-- 				['<C-e>'] = cmp.mapping.close(),
+-- 				--['<C-y>'] = cmp.mapping.confirm({ select = true }),
+-- 				['<CR>'] = cmp.mapping.confirm {
+-- 						select = true,
+-- 						{ 'i', 'c' }
+-- 				}
+-- 		})
+-- -- disable completion with tab
+-- -- this helps with copilot setup
+-- cmp_mappings['<Tab>'] = nil
+-- cmp_mappings['<S-Tab>'] = nil
+--
+-- lsp.setup_nvim_cmp({
+-- 		mapping = cmp_mappings,
+-- 		experimental = { native_menu = false, ghost_text = false }
+-- })
+
+
 local cmp = require('cmp')
+local cmp_action = require('lsp-zero').cmp_action()
+
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
-local cmp_mappings = lsp.defaults.cmp_mappings({
-				['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-				['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-				['<C-Space>'] = cmp.mapping.complete(),
-				['<C-u>'] = cmp.mapping.scroll_docs( -4),
-				['<C-d>'] = cmp.mapping.scroll_docs(4),
-				['<C-e>'] = cmp.mapping.close(),
-				--['<C-y>'] = cmp.mapping.confirm({ select = true }),
-				['<CR>'] = cmp.mapping.confirm {
-						select = true,
-						{ 'i', 'c' }
-				}
-		})
+local cmp_mappings = cmp.mapping.preset.insert({
+		['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+		['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+		['<C-Space>'] = cmp.mapping.complete(),
+		['<C-u>'] = cmp.mapping.scroll_docs( -4),
+		['<C-d>'] = cmp.mapping.scroll_docs(4),
+		['<C-e>'] = cmp.mapping.close(),
+		--['<C-y>'] = cmp.mapping.confirm({ select = true }),
+		['<CR>'] = cmp.mapping.confirm {
+				select = true,
+				{ 'i', 'c' }
+		}
+})
 -- disable completion with tab
 -- this helps with copilot setup
 cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
 
-lsp.setup_nvim_cmp({
-		mapping = cmp_mappings,
-		experimental = { native_menu = false, ghost_text = false }
+cmp.setup({
+	window = {
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
+	},
+	mapping = cmp_mappings,
+	experimental = { native_menu = false, ghost_text = false }
 })
 
 lsp.set_preferences({

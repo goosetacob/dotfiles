@@ -3,7 +3,8 @@ require 'lualine'.setup {
 				theme = 'rose-pine',
 				icons_enabled = false,
 				section_separators = '',
-				component_separators = ''
+				component_separators = '',
+				globalstatus = true,
 		},
 		sections = {
 				lualine_a = { 'mode' },
