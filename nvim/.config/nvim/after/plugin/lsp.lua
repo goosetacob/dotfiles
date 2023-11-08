@@ -24,41 +24,45 @@ require('mason-lspconfig').setup({
 	},
 	handlers = {
 		lsp.default_setup,
+		lua_ls = function()
+			local lua_opts = lsp.nvim_lua_ls()
+			lspconfig.lua_ls.setup(lua_opts)
+		end,
 	},
 })
 
 -- Fix Undefined global 'vim'
-lsp.configure('lua_ls', {
-	settings = {
-		Lua = {
-			runtime = {
-				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-				version = 'LuaJIT',
-			},
-			diagnostics = {
-				-- Get the language server to recognize the `vim` global
-				globals = { 'vim' }
-			},
-			workspace = {
-				-- Make the server aware of Neovim runtime files
-				library = vim.api.nvim_get_runtime_file('', true),
-				checkThirdParty = false,
-			},
-			telemetry = {
-				-- Do not send telemetry data containing a randomized but unique identifier
-				enable = false
-			},
-			format = {
-				enable = true,
-				-- Put format options here
-				-- NOTE: the value should be STRING!!
-				defaultConfig = {
-					quote_style = 'single'
-				}
-			},
-		}
-	}
-})
+-- lsp.configure('lua_ls', {
+-- 	settings = {
+-- 		Lua = {
+-- 			runtime = {
+-- 				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+-- 				version = 'LuaJIT',
+-- 			},
+-- 			diagnostics = {
+-- 				-- Get the language server to recognize the `vim` global
+-- 				globals = { 'vim' }
+-- 			},
+-- 			workspace = {
+-- 				-- Make the server aware of Neovim runtime files
+-- 				library = vim.api.nvim_get_runtime_file('', true),
+-- 				checkThirdParty = false,
+-- 			},
+-- 			telemetry = {
+-- 				-- Do not send telemetry data containing a randomized but unique identifier
+-- 				enable = false
+-- 			},
+-- 			format = {
+-- 				enable = true,
+-- 				-- Put format options here
+-- 				-- NOTE: the value should be STRING!!
+-- 				defaultConfig = {
+-- 					quote_style = 'single'
+-- 				}
+-- 			},
+-- 		}
+-- 	}
+-- })
 
 -- using prettier for formatting
 lsp.configure('tsserver', {
@@ -121,7 +125,7 @@ lsp.configure('gopls', {
 
 
 local cmp = require('cmp')
-local cmp_action = require('lsp-zero').cmp_action()
+-- local cmp_action = require('lsp-zero').cmp_action()
 
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = cmp.mapping.preset.insert({
