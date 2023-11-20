@@ -4,6 +4,8 @@ vim.g.loaded_matchparen = true
 vim.g.netrw_localrmdir = 'rm -r'
 vim.g.grepprg = 'rg'
 
+vim.g.skip_ts_context_commentstring_module = true
+
 vim.opt.clipboard = 'unnamedplus'
 
 vim.opt.nu = true

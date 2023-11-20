@@ -95,6 +95,7 @@ require 'lazy'.setup({
 
 	-- nice tools / settings
 	'mbbill/undotree',
+	'sindrets/diffview.nvim',
 	'tpope/vim-sensible',
 	'tpope/vim-surround',
 	'tpope/vim-sleuth',
