@@ -43,9 +43,6 @@ require 'lazy'.setup({
 			{ 'hrsh7th/cmp-nvim-lsp' },
 			{ 'hrsh7th/cmp-nvim-lua' },
 
-			-- Snippets
-			{ 'L3MON4D3/LuaSnip' },
-			{ 'rafamadriz/friendly-snippets' },
 		}
 	},
 
@@ -66,6 +63,12 @@ require 'lazy'.setup({
 		}
 	},
 	'nvim-telescope/telescope-fzy-native.nvim',
+
+	-- Snippets
+	{
+		'L3MON4D3/LuaSnip',
+		dependencies = { "rafamadriz/friendly-snippets" },
+	},
 
 	-- extra language stuffs
 	'simrat39/rust-tools.nvim',
@@ -99,13 +102,6 @@ require 'lazy'.setup({
 	'tpope/vim-sensible',
 	'tpope/vim-surround',
 	'tpope/vim-sleuth',
-
-	-- extra stuff from vimscript config
-	-- not sure if i need it?
-	-- Plug 'ray-x/navigator.lua' " looks sweet, but can't figure out setup...
-	-- Plug 'ekalinin/Dockerfile.vim'
-	-- Plug 'evanleck/vim-svelte', {'branch': 'main'}
-	-- Plug 'rust-lang/rust.vim'
 
 	-- colors
 	{
