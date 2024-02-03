@@ -2,9 +2,9 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.config/ohmyzsh"
+export ZSH="$XDG_CONFIG_HOME/ohmyzsh"
 
-ZSH_THEME="" # disable oh-my-zsh themes
+# ZSH_THEME="" # disable oh-my-zsh themes
 
 HYPHEN_INSENSITIVE="true"
 DISABLE_LS_COLORS="true" # exa provides colors
@@ -14,10 +14,8 @@ DISABLE_AUTO_UPDATE=true
 plugins=(
   git
   docker
-  # docker-compose SLOW
   terraform
   cargo
-  # yarn SLOW
   zsh-autosuggestions # https://github.com/zsh-users/zsh-autosuggestions
   zsh-syntax-highlighting # https://github.com/zsh-users/zsh-syntax-highlighting
 )
@@ -27,7 +25,8 @@ fpath+=/opt/homebrew/share/zsh/site-functions
 
 source $ZSH/oh-my-zsh.sh
 
-eval "$(starship init zsh)"
+source $XDG_DATA_HOME/ohmyzsh/custom/plugins/zsh-async/async.zsh # https://github.com/mafredri/zsh-async
+source $XDG_CONFIG_HOME/zsh/prompt.zsh
 
 # User Config
 export MANPATH="/usr/local/man:$MANPATH"
