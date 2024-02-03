@@ -21,8 +21,8 @@ export PATH="/usr/local/bin:$PATH"
 # Homebrew aarm64
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# personal scripts
-export PATH="$LOCAL_BIN/personal:$PATH"
+# local bin
+export PATH="$LOCAL_BIN:$PATH"
 
 # Go
 export GOPATH=$HOME/Projects/go
