@@ -14,8 +14,8 @@ vim.keymap.set('n', '<leader><leader>', function()
 end, { desc = 'Toggle notes buffer' })
 
 -- navigate buffers
-vim.keymap.set('n', '<leader>h', vim.cmd.bprevious, { desc = 'Previous buffer' })
-vim.keymap.set('n', '<leader>l', vim.cmd.bnext, { desc = 'Next buffer' })
+vim.keymap.set('n', '[b', vim.cmd.bprevious, { desc = 'Previous buffer' })
+vim.keymap.set('n', ']b', vim.cmd.bnext, { desc = 'Next buffer' })
 
 -- when move visual block up/down
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
