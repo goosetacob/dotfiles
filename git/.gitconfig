@@ -1,7 +1,8 @@
 [user]
 	name = Gustavo Blanco
 	email = gustavo.jr.blanco@gmail.com
-	signingkey = ~/.ssh/id_ed25519.pub
+	; ln -sFf ~/.ssh/id_ed25519.pub ~/.ssh/github.pub
+	signingkey = ~/.ssh/github.pub
 [github]
 	user = goosetacob
 [core]
