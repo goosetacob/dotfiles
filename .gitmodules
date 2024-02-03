@@ -7,3 +7,6 @@
 [submodule "zsh/.local/share/ohmyzsh/custom/plugins/zsh-autosuggestions"]
 	path = zsh/.local/share/ohmyzsh/custom/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "zsh/.local/share/ohmyzsh/custom/plugins/zsh-async"]
+	path = zsh/.local/share/ohmyzsh/custom/plugins/zsh-async
+	url = https://github.com/mafredri/zsh-async
