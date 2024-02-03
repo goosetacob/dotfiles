@@ -44,8 +44,8 @@ export PATH="$HOME/.yarn/bin:$PATH"
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 
 # Terraform - greedier by default
-export TF_CLI_ARGS_plan="--parallelism=75 -lock=false"
-export TF_CLI_ARGS_apply="--parallelism=75"
+export TF_CLI_ARGS_plan="--parallelism=50 -lock=false"
+export TF_CLI_ARGS_apply="--parallelism=50"
 
 # Boto - used by gsutil
 export BOTO_CONFIG="$XDG_CONFIG_HOME/.boto"
