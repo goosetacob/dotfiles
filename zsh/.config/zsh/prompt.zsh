@@ -175,7 +175,7 @@ async_register_callback vcs_info git_status_done
 
 add-zsh-hook precmd () {
     # print -P "\n\e[1m%F{075}%~\e[0m $(node_prompt)"
-    print -P "\n\e[1m%F{014}%~\e[0m $(node_prompt)"
+    print -P "\n\e[1m%F{014}%~\e[0m"
     async_job vcs_info git_status "$PWD"
 }
 
