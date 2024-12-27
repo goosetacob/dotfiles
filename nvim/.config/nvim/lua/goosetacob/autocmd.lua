@@ -1,14 +1,28 @@
--- show cursor line only in active window
 -- https://vim.fandom.com/wiki/Highlight_current_line
-local cursorGrp = vim.api.nvim_create_augroup('CursorLine', { clear = true })
-vim.api.nvim_create_autocmd(
-		{ 'InsertLeave', 'WinEnter' },
-		{ pattern = '*', command = 'set cursorline', group = cursorGrp }
-)
-vim.api.nvim_create_autocmd(
-		{ 'InsertEnter', 'WinLeave' },
-		{ pattern = '*', command = 'set nocursorline', group = cursorGrp }
-)
+local cursorLine = vim.api.nvim_create_augroup("CursorLine", { clear = true })
+vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
+	desc = "Enable cursorline in active window",
+	pattern = "*",
+	group = cursorLine,
+	command = "set cursorline",
+})
+vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, {
+	desc = "Diable cursorline in active window",
+	pattern = "*",
+	group = cursorLine,
+	command = "set nocursorline",
+})
 
--- don't auto comment new line
-vim.api.nvim_create_autocmd('BufEnter', { command = [[set formatoptions-=cro]] })
+vim.api.nvim_create_autocmd("BufEnter", {
+	desc = "Don't auto comment on newline",
+	group = vim.api.nvim_create_augroup("NoNewlineComment", { clear = true }),
+	command = [[set formatoptions-=cro]],
+})
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlight when yanking text",
+	group = vim.api.nvim_create_augroup("HighlightYank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+})

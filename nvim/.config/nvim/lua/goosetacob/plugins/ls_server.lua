@@ -18,7 +18,7 @@ return {
 				"pylsp",
 				"taplo", -- toml
 				"terraformls",
-				"tsserver",
+				"ts_ls",
 				"zls",
 			},
 		})

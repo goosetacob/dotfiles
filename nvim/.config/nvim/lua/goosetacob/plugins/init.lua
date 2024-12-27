@@ -14,11 +14,4 @@ return {
 			require("fidget").setup()
 		end,
 	},
-
-	{
-		"folke/neodev.nvim",
-		config = function()
-			require("neodev").setup()
-		end,
-	},
 }

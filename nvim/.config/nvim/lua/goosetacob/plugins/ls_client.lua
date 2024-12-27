@@ -3,6 +3,17 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
+		{
+			"folke/lazydev.nvim",
+			ft = "lua", -- only load on lua files
+			opts = {
+				library = {
+					-- See the configuration section for more details
+					-- Load luvit types when the `vim.uv` word is found
+					{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+				},
+			},
+		},
 	},
 	config = function()
 		local lspconfig = require("lspconfig")
@@ -26,7 +37,7 @@ return {
 			)
 			vim.keymap.set(
 				"n",
-				"<leader>gr",
+				"<leader>grr",
 				vim.lsp.buf.references,
 				{ buffer = bufnr, remap = false, desc = "[G]o to [R]eferences" }
 			)
@@ -36,8 +47,8 @@ return {
 				vim.lsp.buf.rename,
 				{ buffer = bufnr, remap = false, desc = "[G]o [r]e[n]ame" }
 			)
-			vim.keymap.set("n", "<leader>gws", vim.lsp.buf.workspace_symbol, opts)
-			vim.keymap.set("n", "<leader>gca", vim.lsp.buf.code_action, opts)
+			-- vim.keymap.set("n", "<leader>gws", vim.lsp.buf.workspace_symbol, opts)
+			vim.keymap.set("n", "<leader>ga", vim.lsp.buf.code_action, opts)
 
 			vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
 		end
@@ -45,7 +56,7 @@ return {
 		-- used to enable autocompletion (assign to every lsp server config)
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
-		lspconfig.tsserver.setup({
+		lspconfig.ts_ls.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 			-- handlers = {
