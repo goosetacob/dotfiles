@@ -45,8 +45,7 @@ return {
 		-- used to enable autocompletion (assign to every lsp server config)
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
-		-- javascript / typescript
-		lspconfig["tsserver"].setup({
+		lspconfig.tsserver.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 			-- handlers = {
@@ -70,17 +69,30 @@ return {
 			-- }
 		})
 
-		-- python
-		lspconfig["pyright"].setup({
+		lspconfig.pyright.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
-		-- lua
+		lspconfig.gopls.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+
+		lspconfig.zls.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+
+		lspconfig.ocamllsp.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+
 		local runtime_path = vim.split(package.path, ";")
 		table.insert(runtime_path, "lua/?.lua")
 		table.insert(runtime_path, "lua/?/init.lua")
-		lspconfig["lua_ls"].setup({
+		lspconfig.lua_ls.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 			settings = {

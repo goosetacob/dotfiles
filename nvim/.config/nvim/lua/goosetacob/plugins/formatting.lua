@@ -18,6 +18,15 @@ return {
 				markdown = { "prettier" },
 				lua = { "stylua" },
 				python = { "black" },
+				sql = { "sql_formatter" },
+			},
+			formatters = {
+				sqlformatter = {
+					prepend_args = {
+						"--config",
+						vim.fn.json_encode({ tabWidth = 2, keywordCase = "upper", linesBetweenQueries = 2 }),
+					},
+				},
 			},
 			-- format_on_save = {
 			-- 	lsp_fallback = true,

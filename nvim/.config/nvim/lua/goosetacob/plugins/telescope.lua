@@ -16,7 +16,7 @@ return {
 				file_sorter = sorters.get_fzy_sorter,
 				prompt_prefix = " >",
 				color_devicons = true,
-				file_ignore_patterns = { "node_modules/*", "%.env" },
+				file_ignore_patterns = { "node_modules/*", "%.env", "_build/*" },
 				file_previewer = previewers.vim_buffer_cat.new,
 				grep_previewer = previewers.vim_buffer_vimgrep.new,
 				qflist_previewer = previewers.vim_buffer_qflist.new,

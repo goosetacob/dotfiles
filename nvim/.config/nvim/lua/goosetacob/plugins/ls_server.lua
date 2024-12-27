@@ -10,16 +10,17 @@ return {
 		require("mason-lspconfig").setup({
 			-- list of servers for mason to install
 			ensure_installed = {
-				'bashls',
-				'clangd',
-				-- 'gopls',
-				'jsonls',
-				'lua_ls', -- 'sumneko_lua',
-				'pylsp',
-				'taplo', -- toml
-				'terraformls',
-				'tsserver',
-			}
+				"bashls",
+				"clangd",
+				"gopls",
+				"lua_ls",
+				"ocamllsp",
+				"pylsp",
+				"taplo", -- toml
+				"terraformls",
+				"tsserver",
+				"zls",
+			},
 		})
 
 		require("mason-tool-installer").setup({
@@ -29,8 +30,10 @@ return {
 				"prettierd", -- formatter
 				-- lua
 				"stylua", -- formatter
-				-- python	
+				-- python
 				"black", -- formatter
+				-- sql
+				"sql-formatter", -- formatter
 			},
 		})
 	end,
