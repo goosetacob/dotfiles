@@ -58,6 +58,9 @@ eval "$(pyenv init -)"
 export N_PREFIX="$XDG_DATA_HOME/n"
 export PATH="$N_PREFIX/bin:$PATH"
 
+# opam configuration
+[[ ! -r /Users/gustavo/.opam/opam-init/init.zsh ]] || source /Users/gustavo/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
 # Updates PATH w/ Google Cloud SDK.
 # source "$LOCAL_BIN/google-cloud-sdk/path.zsh.inc"
 

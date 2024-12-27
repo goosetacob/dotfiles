@@ -43,12 +43,8 @@ unsetopt share_history
 # Autocomplete hidden files
 setopt globdots
 
-# Setup McFly
-eval "$(mcfly init zsh)"
-
 # modern unix aliases
 alias vim="nvim"
-alias vi='nvim'
 alias less="less --LINE-NUMBERS"
 alias ls="exa --group-directories-first"
 alias cat="bat --paging=never --style=plain"
