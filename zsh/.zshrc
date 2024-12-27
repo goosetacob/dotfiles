@@ -7,7 +7,7 @@ export ZSH="$XDG_CONFIG_HOME/ohmyzsh"
 # ZSH_THEME="" # disable oh-my-zsh themes
 
 HYPHEN_INSENSITIVE="true"
-DISABLE_LS_COLORS="true" # exa provides colors
+DISABLE_LS_COLORS="true" # eza provides colors
 ENABLE_CORRECTION="false"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_AUTO_UPDATE=true
@@ -21,7 +21,7 @@ plugins=(
 )
 
 # autocomplete tools installed with brew
-fpath+=/opt/homebrew/share/zsh/site-functions
+# fpath+=/opt/homebrew/share/zsh/site-functions
 
 source $ZSH/oh-my-zsh.sh
 
@@ -46,7 +46,7 @@ setopt globdots
 # modern unix aliases
 alias vim="nvim"
 alias less="less --LINE-NUMBERS"
-alias ls="exa --group-directories-first"
+alias ls="eza --group-directories-first"
 alias cat="bat --paging=never --style=plain"
 alias comm="comm -12"
 

@@ -1,8 +1,5 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 source .env
-
-# Manually setup brew - it has stow
-eval "$(/opt/homebrew/bin/brew shellenv)"
 
 pushd $DOTFILES
 for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
