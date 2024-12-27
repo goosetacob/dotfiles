@@ -1,0 +1,23 @@
+# Theme
+theme = Mathias
+cursor-invert-fg-bg = true
+window-theme = ghostty
+
+font-family = Berkeley Mono Variable
+font-size = 16
+
+# Window
+window-padding-y = 2,0
+window-padding-balance = true
+window-decoration = false
+
+# Other
+copy-on-select = clipboard
+shell-integration-features = cursor,sudo,no-title
+
+# Keybindings
+keybind = ctrl+z=close_surface
+keybind = ctrl+d=new_split:right
+keybind = super+shift+i=inspector:toggle
+keybind = super+shift+r=reload_config
+keybind = super+shift+s=write_scrollback_file:paste
