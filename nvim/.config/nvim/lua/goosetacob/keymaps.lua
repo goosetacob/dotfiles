@@ -2,7 +2,7 @@ vim.keymap.set('n', ';', ':')
 
 vim.keymap.set('n', '<leader>pv', '<cmd>Vex 25<CR>', { desc = 'Open file explorer' })
 
-vim.keymap.set('n', '<leader><leader>', function()
+vim.keymap.set('n', '<leader>en', function()
 	local notesFilename = os.getenv('XDG_DATA_HOME') .. '/notes.md'
 	local bufferFilename = vim.fn.expand('%')
 	if (notesFilename == bufferFilename) then
@@ -11,7 +11,7 @@ vim.keymap.set('n', '<leader><leader>', function()
 	else
 		vim.cmd.edit(notesFilename)
 	end
-end, { desc = 'Toggle notes buffer' })
+end, { desc = '[E]dit [n]otes' })
 
 -- navigate buffers
 vim.keymap.set('n', '[b', vim.cmd.bprevious, { desc = 'Previous buffer' })
