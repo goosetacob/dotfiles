@@ -1,7 +1,7 @@
 return {
 	"stevearc/conform.nvim",
 	lazy = true,
-	event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
+	event = { "BufReadPre", "BufNewFile", "ModeChanged" }, -- to disable, comment this out
 	config = function()
 		local conform = require("conform")
 
@@ -17,11 +17,15 @@ return {
 				yaml = { "prettier" },
 				markdown = { "prettier" },
 				lua = { "stylua" },
-				python = { "black" },
 				sql = { "sql_formatter" },
+				python = {
+					"ruff_fix", -- To fix lint errors. (ruff with argument --fix)
+					"ruff_format", -- To run the formatter. (ruff with argument format)
+				},
+				toml = { "taplo" },
 			},
 			formatters = {
-				sqlformatter = {
+				sql_formatter = {
 					prepend_args = {
 						"--config",
 						vim.fn.json_encode({ tabWidth = 2, keywordCase = "upper", linesBetweenQueries = 2 }),

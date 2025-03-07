@@ -80,24 +80,42 @@ return {
 			-- }
 		})
 
+		lspconfig.terraformls.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+
+		lspconfig.bashls.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+
 		lspconfig.pyright.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
+			settings = {
+				pyright = {
+					-- Using Ruff's import organizer
+					disableOrganizeImports = true,
+				},
+				python = {
+					analysis = {
+						-- Ignore all files for analysis to exclusively use Ruff for linting
+						ignore = { "*" },
+					},
+				},
+			},
 		})
 
-		lspconfig.gopls.setup({
+		lspconfig.ruff.setup({
+			settings = {
+				path = { vim.fn.exepath("ruff") },
+			},
 			capabilities = capabilities,
 			on_attach = on_attach,
-		})
-
-		lspconfig.zls.setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		lspconfig.ocamllsp.setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
+			on_init = function(client)
+				client.server_capabilities.hoverProvider = false
+			end,
 		})
 
 		local runtime_path = vim.split(package.path, ";")

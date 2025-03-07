@@ -11,29 +11,23 @@ return {
 			-- list of servers for mason to install
 			ensure_installed = {
 				"bashls",
-				"clangd",
-				"gopls",
 				"lua_ls",
-				"ocamllsp",
-				"pylsp",
+				"pyright",
 				"taplo", -- toml
 				"terraformls",
 				"ts_ls",
-				"zls",
+				"ruff", -- python
 			},
 		})
 
 		require("mason-tool-installer").setup({
 			ensure_installed = {
-				-- js
-				"eslint_d", -- linter
-				"prettierd", -- formatter
-				-- lua
-				"stylua", -- formatter
-				-- python
-				"black", -- formatter
-				-- sql
-				"sql-formatter", -- formatter
+				"eslint_d", -- js linter
+				"prettierd", -- js formatter
+				"stylua", -- lua formatter
+				"sql-formatter",
+				-- "sleek", -- sql formatter
+				-- "sqlfluff",
 			},
 		})
 	end,
