@@ -22,7 +22,7 @@
 [color]
 	ui = auto
 [mergetool "nvim"]
-	cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
+	; cmd = nvim -f -c \"Gdiffsplit\!\" \"$MERGED\"
 [merge]
 	tool = nvim
 	conflictstyle = diff3
@@ -36,8 +36,16 @@
 	required = true
 [alias]
 	recent-branches = for-each-ref --sort=-committerdate refs/heads/ --count=15 --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
-	; lg = log --all --graph --format=oneline
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	commit = commit -n
+	co = checkout
+	br = branch --sort=-committerdate
+	st = status
+	type = cat-file -t
+	dump = cat-file -p
+	llog = log --all --graph
+	linediff = diff --no-index --word-diff
+	sw = ! "f () { QUERY=${1:-'-'}; echo $QUERY; git br | fzf -q $QUERY | xargs git checkout; }; f"
 [gpg]
 	format = ssh
 [commit]
