@@ -7,17 +7,17 @@ return {
 		"hrsh7th/cmp-path", -- source for file system paths
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-nvim-lua",
+		"f3fora/cmp-spell",
 		"rafamadriz/friendly-snippets", -- useful snippets
 		"onsails/lspkind.nvim", -- vs-code like pictograms
 	},
 	config = function()
 		local cmp = require("cmp")
-
+		local context = require("cmp.config.context")
 		local luasnip = require("luasnip")
-
 		local lspkind = require("lspkind")
 
-		-- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
+		-- loads VSCode style snippets from installed plugins (e.g. friendly-snippets)
 		require("luasnip.loaders.from_vscode").lazy_load()
 
 		cmp.setup({
@@ -48,14 +48,38 @@ return {
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" }, -- snippets
 				{ name = "buffer" }, -- text within current buffer
+				{
+					name = "spell",
+					option = {
+						keep_all_entries = false,
+						enable_in_context = function()
+							return context.in_treesitter_capture("spell")
+						end,
+						preselect_correct_word = true,
+					},
+				},
 				{ name = "path" }, -- file system paths
 			}),
 
 			-- configure lspkind for vs-code like pictograms in completion menu
 			formatting = {
+				expandable_indicator = false,
+				fields = { "abbr", "kind", "menu" },
 				format = lspkind.cmp_format({
+					mode = "symbol",
 					maxwidth = 50,
 					ellipsis_char = "...",
+					menu = {
+						nvim_lsp = "[LSP]",
+						nvim_lua = "[LUA]",
+						beancount = "[BEAN]",
+						spell = "[SPELL]",
+						treesitter = "[TREE]",
+						async_path = "[PATH]",
+						buffer = "[BUF]",
+						calc = "[CALC]",
+						commitlint = "[COMMIT]",
+					},
 				}),
 			},
 			experimental = { native_menu = false, ghost_text = false },
