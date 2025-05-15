@@ -1,3 +1,4 @@
 --dir=$PWD/home
 --target=$HOME
+--dotfiles
 --verbose
