@@ -3,37 +3,54 @@
 	email = gustavo.jr.blanco@gmail.com
 	; ln -sFf ~/.ssh/id_ed25519.pub ~/.ssh/gh.pub && ln -sFf ~/.ssh/id_ed25519 ~/.ssh/gh
 	signingkey = ~/.ssh/id_gh.pub
+
 [github]
 	user = goosetacob
+
 [core]
 	editor = nvim
 	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = diff-so-fancy | $PAGER --tabs=4 -RFX
 	excludesfile = ~/.gitexcludesfile
+	compression = 9  # trade cpu for network
+
 [init]
 	defaultBranch = main
+
 [interactive]
 	diffFilter = diff-so-fancy --patch
+
 [push]
-	default = current
+	default = current  # push only current branch by default
+	autoSetupRemote = true  # easier to push new branches
+
+[pull]
+    rebase = true
+
 [rebase]
 	instructionFormat = "[%an - %ar] %s"
 	autoStash = true
+
 [color]
 	ui = auto
+
 [mergetool "nvim"]
 	; cmd = nvim -f -c \"Gdiffsplit\!\" \"$MERGED\"
+
 [merge]
 	tool = nvim
 	conflictstyle = diff3
+
 [mergetool]
 	prompt = false
 	keepBackup = false
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
 [alias]
 	recent-branches = for-each-ref --sort=-committerdate refs/heads/ --count=15 --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
 	hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
@@ -46,11 +63,15 @@
 	llog = log --all --graph
 	linediff = diff --no-index --word-diff
 	sw = ! "f () { QUERY=${1:-'-'}; echo $QUERY; git br | fzf -q $QUERY | xargs git checkout; }; f"
+
 [gpg]
 	format = ssh
+
 [commit]
 	gpgsign = true
+
 [tag]
 	gpgsign = true
+
 [gpg "ssh"]
 	allowedSignersFile = ~/.ssh/allowed_signers

@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-source .env
-
-pushd $DOTFILES
-for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
-do
-	stow -D $folder
-done
-popd
