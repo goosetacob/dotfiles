@@ -7,6 +7,12 @@
 [github]
 	user = goosetacob
 
+[gpg]
+	format = ssh
+
+[gpg "ssh"]
+	allowedSignersFile = ~/.ssh/allowed_signers
+
 [core]
 	editor = nvim
 	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
@@ -14,25 +20,63 @@
 	excludesfile = ~/.gitexcludesfile
 	compression = 9  # trade cpu for network
 
+[color]
+	ui = auto
+
 [init]
 	defaultBranch = main
 
-[interactive]
-	diffFilter = diff-so-fancy --patch
-
 [push]
-	default = current  # push only current branch by default
-	autoSetupRemote = true  # easier to push new branches
+	default = simple
+	autoSetupRemote = true
+	followTags = true
 
 [pull]
-    rebase = true
+	rebase = true
+
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
 
 [rebase]
 	instructionFormat = "[%an - %ar] %s"
+	autoSquash = true
 	autoStash = true
+	updateRefs = true
 
-[color]
-	ui = auto
+[commit]
+	gpgsign = true
+	verbose = true
+
+[branch]
+	sort = -committerdate
+
+[tag]
+	gpgsign = true
+	sort = version:refname
+
+[alias]
+	recent-branches = for-each-ref --sort=-committerdate refs/heads/ --count=15 --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+	hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	commit = commit -n
+	co = checkout
+	br = branch --sort=-committerdate
+	st = status -s
+	type = cat-file -t
+	dump = cat-file -p
+	llog = log --all --graph
+	linediff = diff --no-index --word-diff
+	sw = ! "f () { QUERY=${1:-'-'}; echo $QUERY; git br | fzf -q $QUERY | xargs git checkout; }; f"
+
+[interactive]
+	diffFilter = diff-so-fancy --patch
 
 [mergetool "nvim"]
 	; cmd = nvim -f -c \"Gdiffsplit\!\" \"$MERGED\"
@@ -45,33 +89,9 @@
 	prompt = false
 	keepBackup = false
 
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+[rerere]
+	enabled = true
+	autoupdate = true
 
-[alias]
-	recent-branches = for-each-ref --sort=-committerdate refs/heads/ --count=15 --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
-	hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-	commit = commit -n
-	co = checkout
-	br = branch --sort=-committerdate
-	st = status
-	type = cat-file -t
-	dump = cat-file -p
-	llog = log --all --graph
-	linediff = diff --no-index --word-diff
-	sw = ! "f () { QUERY=${1:-'-'}; echo $QUERY; git br | fzf -q $QUERY | xargs git checkout; }; f"
-
-[gpg]
-	format = ssh
-
-[commit]
-	gpgsign = true
-
-[tag]
-	gpgsign = true
-
-[gpg "ssh"]
-	allowedSignersFile = ~/.ssh/allowed_signers
+[help]
+	autocorrect = prompt
