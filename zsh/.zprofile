@@ -20,11 +20,6 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 export N_PREFIX="$XDG_DATA_HOME/n"
 export PATH="$N_PREFIX/bin:$PATH"
 
-# Python 
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
-
 # Go
 export GOPATH=$HOME/Projects/go
 export PATH="$GOPATH/bin:$PATH"
@@ -41,4 +36,3 @@ export BOTO_CONFIG="$XDG_CONFIG_HOME/.boto"
 # Terraform - greedier by default
 export TF_CLI_ARGS_plan="--parallelism=50 -lock=false"
 export TF_CLI_ARGS_apply="--parallelism=50"
-

@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$XDG_CONFIG_HOME/ohmyzsh"
@@ -52,10 +52,16 @@ alias comm="comm -12"
 
 # utils
 function docker-clean {
-  docker ps -a -q | xargs docker rm -f
-  docker images | awk '{print $3}' | xargs docker rmi -f
-  docker volume prune -f
+  docker ps -a -q | xargs docker rm -f 2>/dev/null
+  docker images | awk '{print $3}' | xargs docker rmi -f 2>/dev/null
+  docker volume prune -f 2>/dev/null
+  docker network prune -f 2>/dev/null
+  docker system prune -f 2>/dev/null
+
+  # delete build history
+  docker buildx history ls --format json | jq -r '.ref | split("/") | .[2]' | xargs -n1 docker buildx history rm
 }
+
 function serial-connect {
   local serial_device=`ls /dev/cu.usbmodem* | gum choose`
   local baud_rate=`gum input --prompt='baud: ' --value=115200`
@@ -63,6 +69,7 @@ function serial-connect {
   # exit with: CTRL+SHFT+A and then CTRL+SHFT+X
   picocom -b $baud_rate $serial_device
 }
+
 # function unmount {
 # to unmount the microbit before disconnecting USB
 # ➜ diskutil list
@@ -74,6 +81,19 @@ function calc-cidr {
 # -n: Never do DNS resolution
   nmap -sL -n $1 | awk '/Nmap scan report/{print $NF}'
 }
+
+function cleanup {
+  rm -f $HOME/.local/state/nvim/lsp.log
+  echo "deleted: $HOME/.local/state/nvim/lsp.log"
+
+  rm -f $HOME/.local/state/nvim/conform.log
+  echo "deleted: $HOME/.local/state/nvim/conform.log"
+}
+
+# Python
+if command -v uv &> /dev/null; then
+  eval "$(uv generate-shell-completion zsh)"
+fi
 
 # aliases
 alias localscan="nmap -sn 192.168.1.0/24"

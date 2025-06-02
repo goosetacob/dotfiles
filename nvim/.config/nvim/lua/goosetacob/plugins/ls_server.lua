@@ -17,6 +17,7 @@ return {
 				"terraformls",
 				"ts_ls",
 				"ruff", -- python
+				-- "sqlfluff",
 			},
 		})
 
@@ -25,8 +26,8 @@ return {
 				"eslint_d", -- js linter
 				"prettierd", -- js formatter
 				"stylua", -- lua formatter
-				"sql-formatter",
-				-- "sqlfluff", can't install for some reason but looks nicer?? /shrug
+				-- "sql-formatter",
+				"sqlfluff", -- can't install for some reason but looks nicer?? /shrug
 			},
 		})
 	end,
