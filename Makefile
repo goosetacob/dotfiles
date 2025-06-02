@@ -1,4 +1,4 @@
-.PHONY: brew-install build-rust-analyzer download-nvim submodules link-files
+.PHONY: brew-install submodules
 HOSTNAME:=$(shell hostname -s)
 
 brew-install:

@@ -27,7 +27,7 @@ return {
 				"prettierd", -- js formatter
 				"stylua", -- lua formatter
 				-- "sql-formatter",
-				"sqlfluff", -- can't install for some reason but looks nicer?? /shrug
+				"sqlfluff",
 			},
 		})
 	end,

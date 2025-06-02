@@ -4,7 +4,7 @@ if [[ $# -eq 1 ]]; then
     selected=$1
 else
     selected=$(
-        cat <(find ~/Projects/zeus ~/Projects \( ! -regex '.*/\..*' \) -mindepth 1 -maxdepth 1 -type d -not -path "$HOME/Projects/zeus") <(echo ~) <(echo ~/.dotfiles) |
+        cat <(find ~/Projects/zeus ~/Projects \( ! -regex '.*/\..*' \) -mindepth 1 -maxdepth 1 -type d -not -path "$HOME/Projects/zeus") <(echo ~) |
             sort -r |
             fzf
     )

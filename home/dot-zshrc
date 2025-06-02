@@ -58,8 +58,9 @@ function docker-clean {
   docker network prune -f 2>/dev/null
   docker system prune -f 2>/dev/null
 
-  # delete build history
-  docker buildx history ls --format json | jq -r '.ref | split("/") | .[2]' | xargs -n1 docker buildx history rm
+  docker buildx history ls --format json \
+    | jq -r '.ref | split("/") | .[2]' \
+    | xargs -n1 docker buildx history rm
 }
 
 function serial-connect {
@@ -90,7 +91,7 @@ function cleanup {
   echo "deleted: $HOME/.local/state/nvim/conform.log"
 }
 
-# Python
+# uv
 if command -v uv &> /dev/null; then
   eval "$(uv generate-shell-completion zsh)"
 fi

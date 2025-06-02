@@ -1,12 +1,12 @@
-[submodule "zsh/.config/ohmyzsh"]
-	path = zsh/.config/ohmyzsh
+[submodule "home/.config/ohmyzsh"]
+	path = home/dot-config/ohmyzsh
 	url = https://github.com/ohmyzsh/ohmyzsh
-[submodule "zsh/.local/share/ohmyzsh/custom/plugins/zsh-syntax-highlighting"]
-	path = zsh/.local/share/ohmyzsh/custom/plugins/zsh-syntax-highlighting
+[submodule "home/.local/share/ohmyzsh/custom/plugins/zsh-syntax-highlighting"]
+	path = home/dot-local/share/ohmyzsh/custom/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
-[submodule "zsh/.local/share/ohmyzsh/custom/plugins/zsh-autosuggestions"]
-	path = zsh/.local/share/ohmyzsh/custom/plugins/zsh-autosuggestions
+[submodule "home/.local/share/ohmyzsh/custom/plugins/zsh-autosuggestions"]
+	path = home/dot-local/share/ohmyzsh/custom/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
-[submodule "zsh/.local/share/ohmyzsh/custom/plugins/zsh-async"]
-	path = zsh/.local/share/ohmyzsh/custom/plugins/zsh-async
+[submodule "home/.local/share/ohmyzsh/custom/plugins/zsh-async"]
+	path = home/dot-local/share/ohmyzsh/custom/plugins/zsh-async
 	url = https://github.com/mafredri/zsh-async
