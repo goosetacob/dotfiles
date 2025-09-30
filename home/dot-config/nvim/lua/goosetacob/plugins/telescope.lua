@@ -59,6 +59,6 @@ return {
 		vim.keymap.set("n", "<leader>fw", function()
 			builtin.grep_string({ search = vim.fn.expand("<cword>") })
 		end, { desc = "[F]ind [w]ord" })
-		vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "[F]ind [g]rep" })
+		vim.keymap.set("n", "<leader>fg", require("goosetacob.custom_fn").multi_rg, { desc = "[F]ind [g]rep" })
 	end,
 }

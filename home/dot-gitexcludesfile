@@ -15,3 +15,7 @@ target/
 # zig
 .zig-cache/
 zig-out/
+
+# claude
+.claude
+CLAUDE.md

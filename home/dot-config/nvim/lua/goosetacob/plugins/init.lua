@@ -6,7 +6,7 @@ return {
 	"tpope/vim-sensible",
 	"tpope/vim-surround",
 	"tpope/vim-sleuth",
-
+	"tpope/vim-abolish",
 	{
 		"j-hui/fidget.nvim", -- Useful lsp status updates
 		tag = "legacy",
