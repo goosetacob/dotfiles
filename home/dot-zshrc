@@ -89,6 +89,9 @@ function cleanup {
 
   rm -f $HOME/.local/state/nvim/conform.log
   echo "deleted: $HOME/.local/state/nvim/conform.log"
+
+  find . -type f \( -name '.DS_Store' -o -name '.localized' \) -delete
+  echo "deleted: .DS_Store and .localized files"
 }
 
 # uv
@@ -98,5 +101,4 @@ fi
 
 # aliases
 alias localscan="nmap -sn 192.168.1.0/24"
-alias cleanup="find . -type f \( -name '.DS_Store' -o -name '.localized' \) -delete"
 alias valid-yaml="ruby -ryaml -e 'p YAML.load(STDIN.read)' < "
