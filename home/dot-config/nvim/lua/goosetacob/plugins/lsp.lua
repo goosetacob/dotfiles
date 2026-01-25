@@ -26,40 +26,6 @@ return {
 
 		require("mason").setup()
 
-		local on_attach = function(_, bufnr)
-			local opts = { buffer = bufnr, remap = false }
-
-			vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-			vim.keymap.set(
-				"n",
-				"<leader>gd",
-				vim.lsp.buf.definition,
-				{ buffer = bufnr, remap = false, desc = "[G]o to [D]efinition" }
-			)
-			vim.keymap.set(
-				"n",
-				"<leader>gi",
-				vim.lsp.buf.implementation,
-				{ buffer = bufnr, remap = false, desc = "[G]o to [I]mplementation" }
-			)
-			vim.keymap.set(
-				"n",
-				"<leader>grr",
-				vim.lsp.buf.references,
-				{ buffer = bufnr, remap = false, desc = "[G]o to [R]eferences" }
-			)
-			vim.keymap.set(
-				"n",
-				"<leader>grn",
-				vim.lsp.buf.rename,
-				{ buffer = bufnr, remap = false, desc = "[G]o [r]e[n]ame" }
-			)
-			-- vim.keymap.set("n", "<leader>gws", vim.lsp.buf.workspace_symbol, opts)
-			vim.keymap.set("n", "<leader>ga", vim.lsp.buf.code_action, opts)
-
-			vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
-		end
-
 		-- used to enable autocompletion (assign to every lsp server config)
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
@@ -75,6 +41,7 @@ return {
 				"terraformls",
 				"ts_ls",
 				"ruff", -- python
+				"sqlls",
 				-- "sqlfluff",
 			},
 			handlers = {
@@ -82,7 +49,6 @@ return {
 				function(server_name)
 					lspconfig[server_name].setup({
 						capabilities = capabilities,
-						on_attach = on_attach,
 						offset_encoding = "utf-16",
 					})
 				end,
@@ -91,14 +57,28 @@ return {
 				ts_ls = function()
 					lspconfig.ts_ls.setup({
 						capabilities = capabilities,
-						on_attach = on_attach,
 						offset_encoding = "utf-16",
+						settings = {
+							typescript = {
+								diagnostics = {
+									ignoredCodes = {
+										80001, -- File is a CommonJS module; it may be converted to an ES module.
+									},
+								},
+							},
+							javascript = {
+								diagnostics = {
+									ignoredCodes = {
+										80001, -- File is a CommonJS module; it may be converted to an ES module.
+									},
+								},
+							},
+						},
 					})
 				end,
 				pyright = function()
 					lspconfig.pyright.setup({
 						capabilities = capabilities,
-						on_attach = on_attach,
 						offset_encoding = "utf-16",
 						settings = {
 							pyright = {
@@ -115,7 +95,6 @@ return {
 				ruff = function()
 					lspconfig.ruff.setup({
 						capabilities = capabilities,
-						on_attach = on_attach,
 						offset_encoding = "utf-16",
 						on_init = function(client)
 							client.server_capabilities.hoverProvider = false
@@ -128,7 +107,6 @@ return {
 					table.insert(runtime_path, "lua/?/init.lua")
 					lspconfig.lua_ls.setup({
 						capabilities = capabilities,
-						on_attach = on_attach,
 						offset_encoding = "utf-16",
 						settings = {
 							Lua = {
@@ -162,6 +140,33 @@ return {
 				-- "sql-formatter",
 				"sqlfluff",
 			},
+		})
+
+		-- Set up LSP keybindings using LspAttach autocommand (modern pattern)
+		vim.api.nvim_create_autocmd("LspAttach", {
+			group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
+			callback = function(event)
+				local bufnr = event.buf
+				local client = vim.lsp.get_client_by_id(event.data.client_id)
+
+				-- if client then
+				-- 	print(string.format("LSP attached: %s to buffer %d", client.name, bufnr))
+				-- end
+
+				local opts = { buffer = bufnr, remap = false }
+
+				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+				vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition,
+					{ buffer = bufnr, remap = false, desc = "[G]o to [D]efinition" })
+				vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation,
+					{ buffer = bufnr, remap = false, desc = "[G]o to [I]mplementation" })
+				vim.keymap.set("n", "<leader>grr", vim.lsp.buf.references,
+					{ buffer = bufnr, remap = false, desc = "[G]o to [R]eferences" })
+				vim.keymap.set("n", "<leader>grn", vim.lsp.buf.rename,
+					{ buffer = bufnr, remap = false, desc = "[G]o [r]e[n]ame" })
+				vim.keymap.set("n", "<leader>ga", vim.lsp.buf.code_action, opts)
+				vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
+			end,
 		})
 	end,
 }
