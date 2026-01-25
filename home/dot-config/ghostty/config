@@ -4,7 +4,7 @@ font-size = 16
 
 # Theme
 theme = Mathias
-cursor-invert-fg-bg = true
+# cursor-invert-fg-bg = true
 window-theme = ghostty
 
 # Window
