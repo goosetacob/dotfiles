@@ -2,6 +2,17 @@ return {
 	"folke/trouble.nvim",
 	config = function()
 		local trouble = require("trouble")
+
+		-- Configure diagnostic display
+		vim.diagnostic.config({
+			float = {
+				format = function(diagnostic)
+					local source = diagnostic.source or "unknown"
+					return string.format("[%s] %s", source, diagnostic.message)
+				end,
+			},
+		})
+
 		-- diagnostics
 		vim.keymap.set("n", "vd", vim.diagnostic.open_float)
 		vim.keymap.set("n", "vdd", function() trouble.toggle("quickfix") end)
