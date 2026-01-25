@@ -74,6 +74,7 @@
 	llog = log --all --graph
 	linediff = diff --no-index --word-diff
 	sw = ! "f () { QUERY=${1:-'-'}; echo $QUERY; git br | fzf -q $QUERY | xargs git checkout; }; f"
+	jump = "!$(brew --prefix git)/share/git-core/contrib/git-jump/git-jump"
 
 [interactive]
 	diffFilter = diff-so-fancy --patch
