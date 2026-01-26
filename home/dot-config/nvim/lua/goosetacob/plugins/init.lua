@@ -3,7 +3,6 @@ return {
 
 	-- rando tools
 	"sindrets/diffview.nvim",
-	"tpope/vim-sensible",
 	"tpope/vim-surround",
 	"tpope/vim-sleuth",
 	"tpope/vim-abolish",

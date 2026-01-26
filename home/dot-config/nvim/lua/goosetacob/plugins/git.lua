@@ -1,6 +1,5 @@
 return {
 	"tpope/vim-rhubarb",
-	"airblade/vim-gitgutter",
 	{
 		"tpope/vim-fugitive",
 		config = function()

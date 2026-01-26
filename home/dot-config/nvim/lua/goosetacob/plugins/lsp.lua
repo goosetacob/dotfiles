@@ -13,7 +13,6 @@ return {
 			ft = "lua", -- only load on lua files
 			opts = {
 				library = {
-					-- See the configuration section for more details
 					-- Load luvit types when the `vim.uv` word is found
 					{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
 				},
@@ -21,8 +20,61 @@ return {
 		},
 	},
 	config = function()
-		local lspconfig = require("lspconfig")
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
+
+		vim.lsp.config("lua_ls", {
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = { "vim" },
+					},
+					workspace = {
+						checkThirdParty = false,
+					},
+					telemetry = {
+						enable = false,
+					},
+				},
+			},
+		})
+
+		vim.lsp.config("ts_ls", {
+			settings = {
+				typescript = {
+					diagnostics = {
+						ignoredCodes = {
+							80001, -- File is a CommonJS module; it may be converted to an ES module.
+						},
+					},
+				},
+				javascript = {
+					diagnostics = {
+						ignoredCodes = {
+							80001, -- File is a CommonJS module; it may be converted to an ES module.
+						},
+					},
+				},
+			},
+		})
+
+		vim.lsp.config("pyright", {
+			settings = {
+				pyright = {
+					disableOrganizeImports = true,
+				},
+				python = {
+					analysis = {
+						ignore = { "*" },
+					},
+				},
+			},
+		})
+
+		vim.lsp.config("ruff", {
+			on_init = function(client)
+				client.server_capabilities.hoverProvider = false
+			end,
+		})
 
 		require("mason").setup()
 
@@ -42,91 +94,13 @@ return {
 				"ts_ls",
 				"ruff", -- python
 				"sqlls",
-				-- "sqlfluff",
 			},
 			handlers = {
-				-- Default handler - applies to all servers without a dedicated handler
+				-- default handler
 				function(server_name)
-					lspconfig[server_name].setup({
+					vim.lsp.config(server_name, {
 						capabilities = capabilities,
 						offset_encoding = "utf-16",
-					})
-				end,
-
-				-- Custom handlers for specific servers
-				ts_ls = function()
-					lspconfig.ts_ls.setup({
-						capabilities = capabilities,
-						offset_encoding = "utf-16",
-						settings = {
-							typescript = {
-								diagnostics = {
-									ignoredCodes = {
-										80001, -- File is a CommonJS module; it may be converted to an ES module.
-									},
-								},
-							},
-							javascript = {
-								diagnostics = {
-									ignoredCodes = {
-										80001, -- File is a CommonJS module; it may be converted to an ES module.
-									},
-								},
-							},
-						},
-					})
-				end,
-				pyright = function()
-					lspconfig.pyright.setup({
-						capabilities = capabilities,
-						offset_encoding = "utf-16",
-						settings = {
-							pyright = {
-								disableOrganizeImports = true,
-							},
-							python = {
-								analysis = {
-									ignore = { "*" },
-								},
-							},
-						},
-					})
-				end,
-				ruff = function()
-					lspconfig.ruff.setup({
-						capabilities = capabilities,
-						offset_encoding = "utf-16",
-						on_init = function(client)
-							client.server_capabilities.hoverProvider = false
-						end,
-					})
-				end,
-				lua_ls = function()
-					local runtime_path = vim.split(package.path, ";")
-					table.insert(runtime_path, "lua/?.lua")
-					table.insert(runtime_path, "lua/?/init.lua")
-					lspconfig.lua_ls.setup({
-						capabilities = capabilities,
-						offset_encoding = "utf-16",
-						settings = {
-							Lua = {
-								telemetry = { enable = false },
-								runtime = {
-									version = "LuaJIT",
-									path = runtime_path,
-								},
-								diagnostics = {
-									globals = { "vim" },
-								},
-								workspace = {
-									checkThirdParty = false,
-									library = {
-										vim.fn.expand("$VIMRUNTIME/lua"),
-										vim.fn.stdpath("config") .. "/lua",
-									},
-								},
-							},
-						},
 					})
 				end,
 			},
@@ -147,7 +121,7 @@ return {
 			group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
 			callback = function(event)
 				local bufnr = event.buf
-				local client = vim.lsp.get_client_by_id(event.data.client_id)
+				local _ = vim.lsp.get_client_by_id(event.data.client_id)
 
 				-- if client then
 				-- 	print(string.format("LSP attached: %s to buffer %d", client.name, bufnr))
@@ -156,14 +130,30 @@ return {
 				local opts = { buffer = bufnr, remap = false }
 
 				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-				vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition,
-					{ buffer = bufnr, remap = false, desc = "[G]o to [D]efinition" })
-				vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation,
-					{ buffer = bufnr, remap = false, desc = "[G]o to [I]mplementation" })
-				vim.keymap.set("n", "<leader>grr", vim.lsp.buf.references,
-					{ buffer = bufnr, remap = false, desc = "[G]o to [R]eferences" })
-				vim.keymap.set("n", "<leader>grn", vim.lsp.buf.rename,
-					{ buffer = bufnr, remap = false, desc = "[G]o [r]e[n]ame" })
+				vim.keymap.set(
+					"n",
+					"<leader>gd",
+					vim.lsp.buf.definition,
+					{ buffer = bufnr, remap = false, desc = "[G]o to [D]efinition" }
+				)
+				vim.keymap.set(
+					"n",
+					"<leader>gi",
+					vim.lsp.buf.implementation,
+					{ buffer = bufnr, remap = false, desc = "[G]o to [I]mplementation" }
+				)
+				vim.keymap.set(
+					"n",
+					"<leader>grr",
+					vim.lsp.buf.references,
+					{ buffer = bufnr, remap = false, desc = "[G]o to [R]eferences" }
+				)
+				vim.keymap.set(
+					"n",
+					"<leader>grn",
+					vim.lsp.buf.rename,
+					{ buffer = bufnr, remap = false, desc = "[G]o [r]e[n]ame" }
+				)
 				vim.keymap.set("n", "<leader>ga", vim.lsp.buf.code_action, opts)
 				vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
 			end,
