@@ -33,6 +33,7 @@ is_git() {
 }
 
 PROMPT_SYMBOL='➜'
+GIT_STATUS_INFO=""
 
 # indicate a job (for example, vim) has been backgrounded
 # If there is a job in the background, display a ✱
@@ -62,8 +63,17 @@ node_prompt() {
 }
 
 git_status_done() {
-    # $3 is the stdout of the git_status command
-    RPROMPT="$3 $(suspended_jobs)"
+    # Skip if job failed
+    [[ $2 -ne 0 ]] && return
+
+    local git_info="$3"
+    local jobs_info="$(suspended_jobs)"
+
+    # Build status line with spacing
+    GIT_STATUS_INFO=""
+    [[ -n "$git_info" ]] && GIT_STATUS_INFO=" $git_info"
+    [[ -n "$jobs_info" ]] && GIT_STATUS_INFO="$GIT_STATUS_INFO $jobs_info"
+
     zle reset-prompt
 }
 
@@ -165,8 +175,9 @@ git_status() {
 
     [[ -n "$git_status" ]] || git_status="$GIT_STATUS_CLEAN"
 
-    bold "$git_status"
     write '241' "$git_branch"
+    echo -n " "
+    bold "$git_status"
 }
 
 async_init
@@ -174,11 +185,10 @@ async_start_worker vcs_info
 async_register_callback vcs_info git_status_done
 
 add-zsh-hook precmd () {
-    # print -P "\n\e[1m%F{075}%~\e[0m $(node_prompt)"
-    print -P "\n\e[1m%F{014}%~\e[0m"
+    # Just trigger async job, don't print anything
+    # (directory will be part of PROMPT now)
     async_job vcs_info git_status "$PWD"
 }
 
 
-export PROMPT='%(?.%F{002}.%F{009})$PROMPT_SYMBOL%f '
-export RPROMPT="$(suspended_jobs)"
+export PROMPT=$'\n%B%F{014}%~%f%b$GIT_STATUS_INFO\n%(?.%F{002}.%F{009})$PROMPT_SYMBOL%f '
