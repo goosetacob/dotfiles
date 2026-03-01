@@ -76,6 +76,37 @@ return {
 			end,
 		})
 
+		vim.lsp.config("rust_analyzer", {
+			settings = {
+				["rust-analyzer"] = {
+					cargo = {
+						allFeatures = true,
+						loadOutDirsFromCheck = true,
+					},
+					check = {
+						command = "clippy",
+						features = "all",
+					},
+					procMacro = {
+						enable = true,
+					},
+					inlayHints = {
+						lifetimeElisionHints = {
+							enable = "always",
+							useParameterNames = true,
+						},
+						maxLength = 25,
+						parameterHintsPrefix = "<- ",
+						otherHintsPrefix = "=> ",
+					},
+					completion = {
+						addCallParentheses = true,
+						addCallArgumentSnippets = true,
+					},
+				},
+			},
+		})
+
 		require("mason").setup()
 
 		-- used to enable autocompletion (assign to every lsp server config)
@@ -94,6 +125,7 @@ return {
 				"ts_ls",
 				"ruff", -- python
 				"sqlls",
+				"rust_analyzer",
 			},
 			handlers = {
 				-- default handler
@@ -121,11 +153,16 @@ return {
 			group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
 			callback = function(event)
 				local bufnr = event.buf
-				local _ = vim.lsp.get_client_by_id(event.data.client_id)
+				local client = vim.lsp.get_client_by_id(event.data.client_id)
 
 				-- if client then
 				-- 	print(string.format("LSP attached: %s to buffer %d", client.name, bufnr))
 				-- end
+
+				-- Enable inlay hints for supported servers
+				if vim.lsp.inlay_hint and client:supports_method("textDocument/inlayHint") then
+					vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+				end
 
 				local opts = { buffer = bufnr, remap = false }
 
