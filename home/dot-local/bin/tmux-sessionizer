@@ -4,9 +4,18 @@ if [[ $# -eq 1 ]]; then
     selected=$1
 else
     selected=$(
-        cat <(find ~/Projects/zeus ~/Projects \( ! -regex '.*/\..*' \) -mindepth 1 -maxdepth 1 -type d -not -path "$HOME/Projects/zeus") <(echo ~) |
+        cat <(
+            find \
+                ~/Projects/infrastructure \
+                ~/Projects/zeus \
+                ~/Projects/dna-models \
+                ~/Projects \( ! -regex '.*/\..*' \) -mindepth 1 -maxdepth 1 -type d \
+                -not -path "$HOME/Projects/zeus" \
+                -not -path "$HOME/Projects/dna-models" \
+                -not -path "$HOME/Projects/infrastructure"
+        ) <(echo ~) |
             sort -r |
-            fzf
+            fzf --reverse --tac --no-sort
     )
 fi
 
@@ -15,6 +24,11 @@ if [[ -z $selected ]]; then
 fi
 
 selected_name=$(basename "$selected" | tr . _)
+if [[ "$selected" =~ Projects/(dna-models|zeus|infrastructure) ]]; then
+    selected_name="${selected#*/Projects/}"
+    selected_name="${selected_name//\//-}"
+fi
+
 tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then

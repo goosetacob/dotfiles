@@ -17,6 +17,12 @@ end, { desc = '[E]dit [n]otes' })
 vim.keymap.set('n', '[b', vim.cmd.bprevious, { desc = 'Previous buffer' })
 vim.keymap.set('n', ']b', vim.cmd.bnext, { desc = 'Next buffer' })
 
+vim.keymap.set('n', '<leader>yp', function()
+	local path = vim.fn.expand('%')
+	vim.fn.setreg('+', path)
+	vim.notify('Copied: ' .. path)
+end, { desc = '[Y]ank buffer [p]ath (relative) to clipboard' })
+
 -- when move visual block up/down
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")

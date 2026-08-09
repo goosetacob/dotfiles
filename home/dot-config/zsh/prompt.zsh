@@ -190,5 +190,8 @@ add-zsh-hook precmd () {
     async_job vcs_info git_status "$PWD"
 }
 
+# Virtualenv prompt styling (green)
+ZSH_THEME_VIRTUALENV_PREFIX="%F{002}("
+ZSH_THEME_VIRTUALENV_SUFFIX=")%f "
 
-export PROMPT=$'\n%B%F{014}%~%f%b$GIT_STATUS_INFO\n%(?.%F{002}.%F{009})$PROMPT_SYMBOL%f '
+export PROMPT=$'\n$(virtualenv_prompt_info)%B%F{014}%~%f%b$GIT_STATUS_INFO\n%(?.%F{002}.%F{009})$PROMPT_SYMBOL%f '

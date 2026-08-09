@@ -16,6 +16,7 @@ plugins=(
   docker
   terraform
   cargo
+  virtualenv
   zsh-autosuggestions # https://github.com/zsh-users/zsh-autosuggestions
   zsh-syntax-highlighting # https://github.com/zsh-users/zsh-syntax-highlighting
 )
@@ -53,7 +54,7 @@ alias comm="comm -12"
 # utils
 function docker-clean {
   docker ps -a -q | xargs docker rm -f 2>/dev/null
-  docker images | awk '{print $3}' | xargs docker rmi -f 2>/dev/null
+  docker rmi -f $(docker images -q)
   docker volume prune -f 2>/dev/null
   docker network prune -f 2>/dev/null
   docker system prune -f 2>/dev/null

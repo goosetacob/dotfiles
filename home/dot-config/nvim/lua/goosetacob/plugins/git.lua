@@ -12,7 +12,8 @@ return {
 	{
 		"lewis6991/gitsigns.nvim",
 		config = function()
-			require("gitsigns").setup({
+			local gs = require("gitsigns")
+			gs.setup({
 				signs = {
 					add = { text = "+" },
 					change = { text = "~" },
@@ -20,6 +21,18 @@ return {
 					topdelete = { text = "‾" },
 					changedelete = { text = "~" },
 				},
+			})
+			vim.api.nvim_create_autocmd("BufEnter", {
+				callback = function(ev)
+					if vim.bo[ev.buf].buftype ~= "" or vim.api.nvim_buf_get_name(ev.buf) == "" then
+						return
+					end
+					vim.schedule(function()
+						if vim.api.nvim_buf_is_valid(ev.buf) and vim.bo[ev.buf].buftype == "" then
+							gs.attach(ev.buf)
+						end
+					end)
+				end,
 			})
 		end,
 	},

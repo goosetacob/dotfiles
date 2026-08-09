@@ -75,20 +75,23 @@
 	linediff = diff --no-index --word-diff
 	sw = ! "f () { QUERY=${1:-'-'}; echo $QUERY; git br | fzf -q $QUERY | xargs git checkout; }; f"
 	jump = "!$(brew --prefix git)/share/git-core/contrib/git-jump/git-jump"
+	pr = !gh pr view --web 2>/dev/null || gh pr create --web
+	dependabot-alerts-critical = !gh api \"repos/{owner}/{repo}/dependabot/alerts?state=open&severity=critical\"
+	dependabot-alerts = !gh api \"repos/{owner}/{repo}/dependabot/alerts?state=open&severity=critical,high\"
 
 [interactive]
 	diffFilter = diff-so-fancy --patch
 
-[mergetool "nvim"]
-	; cmd = nvim -f -c \"Gdiffsplit\!\" \"$MERGED\"
-
 [merge]
-	tool = nvim
+	tool = nvimdiff
 	conflictstyle = zdiff3
 
 [mergetool]
-	prompt = false
+	prompt = true
 	keepBackup = false
+
+[mergetool "nvimdiff"]
+	cmd = "nvim -d \"$LOCAL\" \"$BASE\" \"$REMOTE\" \"$MERGED\" -c 'wincmd w' -c 'wincmd J'"
 
 [rerere]
 	enabled = true
